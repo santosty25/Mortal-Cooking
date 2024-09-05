@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://p78pg8co8gjq"]
 
-[ext_resource type="Script" path="res://Scenes/enemy_drop.gd" id="1_lc85g"]
+[ext_resource type="Script" path="res://Code/Enemy_Drop.gd" id="1_lc85g"]
 [ext_resource type="Texture2D" uid="uid://d3xwe2e8i7nix" path="res://art/Apple_Slices.png" id="2_ypg1w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbxkh"]
@@ -12,7 +12,7 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_lc85g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pbxkh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

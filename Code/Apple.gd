@@ -69,11 +69,12 @@ func _on_area_2d_body_entered(body):
 	$AnimatedSprite2D.play("Windup")
 	attack = 0.3
 
-func take_damage(amount):
+func take_damage(amount, damageLabel):
 	health -= amount
 	if (health < 0):
 		var drop_node = drop.instantiate()
 		drop_node.position = position
+		drop_node.label = ["apple", damageLabel]
 		$"..".add_child(drop_node)
 		# here we can set what teh drop should be
 		queue_free()

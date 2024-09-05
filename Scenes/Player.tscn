@@ -48,7 +48,6 @@ texture = ExtResource("2_4ww1s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5.91936, -32.4029)
 rotation = -0.174533
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_c40pp")
 animation = &"Idle"
 centered = false

@@ -44,13 +44,23 @@ func _process(delta):
 		for body in $Attack.get_overlapping_bodies():
 			if body is Apple:
 				$HitEffect.show()
-				body.take_damage(1)
+				body.take_damage(1, "chopped")
 	if Input.is_action_just_pressed("Interact"):
 		if heldItem:
-			if flipped:
-				heldItem.position = position+Vector2(-160,30)
+			var closest = null
+			for body in $Interaction.get_overlapping_bodies():
+				if body != heldItem && body is Plate:
+					if closest && (closest.position-position).length() > (body.position-position).length():
+						closest = body
+					elif !closest:
+						closest = body
+			if closest:
+				closest.add_item(heldItem, heldItem.label)
 			else:
-				heldItem.position = position+Vector2(160,30)
+				if flipped:
+					heldItem.position = position+Vector2(-160,30)
+				else:
+					heldItem.position = position+Vector2(160,30)
 			heldItem = null
 		else:
 			var closest = null

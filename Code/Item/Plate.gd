@@ -13,3 +13,11 @@ func add_item(node, itemLabel):
 	node.get_node("Hitbox").disabled = true
 	itemLabels.append(itemLabel)
 	itemNodes.append(node)
+
+func get_label():
+	return itemLabels
+
+func delete():
+	for each in itemNodes:
+		each.queue_free()
+	queue_free()

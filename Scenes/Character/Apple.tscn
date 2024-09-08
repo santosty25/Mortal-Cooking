@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://by7wt3jib5pss"]
 
-[ext_resource type="Script" path="res://Code/Apple.gd" id="1_d7q5p"]
-[ext_resource type="Texture2D" uid="uid://bj5uji7ystule" path="res://art/Apple.png" id="1_yl8n5"]
-[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Hit.png" id="2_eg7sn"]
-[ext_resource type="Texture2D" uid="uid://b6xxps3jcnwwd" path="res://art/Apple_Attack.png" id="2_jfxyn"]
+[ext_resource type="Script" path="res://Code/Character/Apple.gd" id="1_2a0yw"]
+[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_6v700"]
+[ext_resource type="Texture2D" uid="uid://bj5uji7ystule" path="res://art/Character/Enemies/Apple/Apple.png" id="3_6tppa"]
+[ext_resource type="Texture2D" uid="uid://b6xxps3jcnwwd" path="res://art/Character/Enemies/Apple/Apple_Attack.png" id="4_s6v4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_db0wn"]
-atlas = ExtResource("1_yl8n5")
+atlas = ExtResource("3_6tppa")
 region = Rect2(0, 0, 380, 380)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
@@ -21,7 +21,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jfxyn")
+"texture": ExtResource("4_s6v4y")
 }],
 "loop": false,
 "name": &"Windup",
@@ -39,13 +39,13 @@ position = Vector2(577, 327)
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_d7q5p")
+script = ExtResource("1_2a0yw")
 
 [node name="HitEffect" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-160, -6.66663)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_eg7sn")
+texture = ExtResource("2_6v700")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 0.174533

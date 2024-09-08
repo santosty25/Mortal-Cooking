@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://caunl41eul6nm"]
 
-[ext_resource type="Texture2D" uid="uid://q7kk0ghfdee" path="res://art/plate.png" id="1_ccq21"]
-[ext_resource type="Script" path="res://Code/Plate.gd" id="1_mmky1"]
+[ext_resource type="Texture2D" uid="uid://q7kk0ghfdee" path="res://art/Item/plate.png" id="1_ccq21"]
+[ext_resource type="Script" path="res://Code/Item/Plate.gd" id="1_mmky1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yftvc"]
 radius = 27.0185
@@ -15,6 +15,6 @@ script = ExtResource("1_mmky1")
 shape = SubResource("CircleShape2D_yftvc")
 
 [node name="Plate2" type="Sprite2D" parent="."]
-position = Vector2(0, -9.53674e-07)
+position = Vector2(0, -4)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ccq21")

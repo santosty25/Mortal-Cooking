@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6xxps3jcnwwd"
-path="res://.godot/imported/Apple_Attack.png-9e58bfc9e7b932e99dfadd571a1f4009.ctex"
+path="res://.godot/imported/Apple_Attack.png-18f51114761513fca56cc8b037521a0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Apple_Attack.png"
-dest_files=["res://.godot/imported/Apple_Attack.png-9e58bfc9e7b932e99dfadd571a1f4009.ctex"]
+source_file="res://art/Character/Enemies/Apple/Apple_Attack.png"
+dest_files=["res://.godot/imported/Apple_Attack.png-18f51114761513fca56cc8b037521a0e.ctex"]
 
 [params]
 

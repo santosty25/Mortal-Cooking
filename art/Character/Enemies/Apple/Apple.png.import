@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djdnfab38mswp"
-path="res://.godot/imported/Chef_Idle.png-153f26deae369e3ee8ca46f60ad0d846.ctex"
+uid="uid://bj5uji7ystule"
+path="res://.godot/imported/Apple.png-02d72b925c84771e45d392e313f925e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Chef_Idle.png"
-dest_files=["res://.godot/imported/Chef_Idle.png-153f26deae369e3ee8ca46f60ad0d846.ctex"]
+source_file="res://art/Character/Enemies/Apple/Apple.png"
+dest_files=["res://.godot/imported/Apple.png-02d72b925c84771e45d392e313f925e3.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c454qsgse2goj"]
+[gd_scene load_steps=8 format=3 uid="uid://c454qsgse2goj"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
-[ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Apple.tscn" id="1_o7xg1"]
-[ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Player.tscn" id="2_cqwo3"]
-[ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Plate.tscn" id="4_oynte"]
+[ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
+[ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="4_7apyq"]
+[ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
+[ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -14,29 +15,29 @@ size = Vector2(20, 667)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_144we")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
 scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4
 
-[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1.18799, -323)
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1.5, -322)
 shape = SubResource("RectangleShape2D_jntcb")
 
-[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1.375, 324)
 shape = SubResource("RectangleShape2D_jntcb")
 
-[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Right" type="CollisionShape2D" parent="Walls"]
 position = Vector2(577, -1)
 shape = SubResource("RectangleShape2D_af8gu")
 
-[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Left" type="CollisionShape2D" parent="Walls"]
 position = Vector2(-576, 0.5)
 shape = SubResource("RectangleShape2D_af8gu")
 
-[node name="Apple" parent="." instance=ExtResource("1_o7xg1")]
-position = Vector2(261, 17)
-
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, -1)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Player" parent="." instance=ExtResource("2_cqwo3")]
@@ -49,10 +50,22 @@ autostart = true
 [node name="Plate" parent="." instance=ExtResource("4_oynte")]
 position = Vector2(211, 302)
 
-[node name="Apple2" parent="." instance=ExtResource("1_o7xg1")]
-position = Vector2(-81, 206)
+[node name="Serving_Location" parent="." instance=ExtResource("4_7apyq")]
+position = Vector2(0, -475)
 
-[node name="Apple3" parent="." instance=ExtResource("1_o7xg1")]
-position = Vector2(-405, 443)
+[node name="Apple" parent="." instance=ExtResource("5_idls0")]
+position = Vector2(-102, 561)
+
+[node name="Apple2" parent="." instance=ExtResource("5_idls0")]
+position = Vector2(548, -3)
+
+[node name="Score" type="Label" parent="."]
+offset_left = 793.0
+offset_top = -618.0
+offset_right = 1128.0
+offset_bottom = -526.0
+theme_override_font_sizes/font_size = 80
+text = "$0"
+horizontal_alignment = 2
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

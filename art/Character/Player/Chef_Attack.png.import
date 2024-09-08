@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q7kk0ghfdee"
-path="res://.godot/imported/plate.png-fc5fd03b3cc28a96735715cf4c314d4a.ctex"
+uid="uid://d0hcr2o0b71xf"
+path="res://.godot/imported/Chef_Attack.png-d5cf2ec2cdd06cbbaf34507d019410ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/plate.png"
-dest_files=["res://.godot/imported/plate.png-fc5fd03b3cc28a96735715cf4c314d4a.ctex"]
+source_file="res://art/Character/Player/Chef_Attack.png"
+dest_files=["res://.godot/imported/Chef_Attack.png-d5cf2ec2cdd06cbbaf34507d019410ac.ctex"]
 
 [params]
 

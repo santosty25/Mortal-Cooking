@@ -2,19 +2,20 @@ extends CharacterBody2D
 
 
 const speed = 300.0
+
+# for animation
 var stepSide = false
-var walkDist = 200
-var waitTimer = 3
-var maxWait = 5
-var minWait = 2
 var flipTimerMax = 0.1
 var flipTimer = 0
+var flipped = false
+
+# input handling
 var canAttack = true
 var canDash = true
 var dashTime = 0.01
 var dashTimer = 0
-var flipped = false
 
+# other important variables
 var heldItem = null
 
 func _ready() -> void:
@@ -46,32 +47,7 @@ func _process(delta):
 				$HitEffect.show()
 				body.take_damage(1, "chopped")
 	if Input.is_action_just_pressed("Interact"):
-		if heldItem:
-			var closest = null
-			for body in $Interaction.get_overlapping_bodies():
-				if body != heldItem && body is Plate:
-					if closest && (closest.position-position).length() > (body.position-position).length():
-						closest = body
-					elif !closest:
-						closest = body
-			if closest:
-				closest.add_item(heldItem, heldItem.label)
-			else:
-				if flipped:
-					heldItem.position = position+Vector2(-160,30)
-				else:
-					heldItem.position = position+Vector2(160,30)
-			heldItem = null
-		else:
-			var closest = null
-			for body in $Interaction.get_overlapping_bodies():
-				if body != heldItem:
-					if closest && (closest.position-position).length() > (body.position-position).length():
-						closest = body
-					elif !closest:
-						closest = body
-			if closest:
-				heldItem = closest
+		interact()
 			
 	if heldItem:
 		heldItem.position = position+Vector2(0,-200)
@@ -125,3 +101,48 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	else:
 		$AnimatedSprite2D.play("Idle")
 		$HitEffect.hide()
+
+func interact():
+	if heldItem:
+		var target = null
+		for body in $Interaction.get_overlapping_bodies():
+			if body == heldItem:
+				continue
+			elif body is Plate:
+				if target && (target.position-position).length() > (body.position-position).length():
+					target = body
+				elif !target:
+					target = body
+			elif body is Serving_Location && heldItem is Plate:
+				target = body
+				break; # terrain interactions take precedence
+		if target:
+			if target is Plate:
+				target.add_item(heldItem, heldItem.get_label())
+				heldItem = null
+			elif target is Serving_Location && heldItem is Plate:
+				if $"..".serve(heldItem):
+					heldItem = null
+				else:
+					drop_item()
+		else:
+			drop_item()
+	else:
+		var target = null
+		for body in $Interaction.get_overlapping_bodies():
+			if body == heldItem:
+				continue
+			elif body is Enemy_Drop || body is Plate:
+				if target && (target.position-position).length() > (body.position-position).length():
+					target = body
+				elif !target:
+					target = body
+		if target:
+			heldItem = target
+
+func drop_item():
+	if flipped:
+		heldItem.position = position+Vector2(-160,30)
+	else:
+		heldItem.position = position+Vector2(160,30)
+	heldItem = null

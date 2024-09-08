@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj5uji7ystule"
-path="res://.godot/imported/Apple.png-9713abcb208a73c573df4f130b02adfb.ctex"
+uid="uid://bt7ynkvafdsk1"
+path="res://.godot/imported/serving_station.png-c86b3559ea7df7edc5498529852a6eab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Apple.png"
-dest_files=["res://.godot/imported/Apple.png-9713abcb208a73c573df4f130b02adfb.ctex"]
+source_file="res://art/Terrain/serving_station.png"
+dest_files=["res://.godot/imported/serving_station.png-c86b3559ea7df7edc5498529852a6eab.ctex"]
 
 [params]
 

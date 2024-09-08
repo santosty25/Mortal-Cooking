@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0hcr2o0b71xf"
-path="res://.godot/imported/Chef_Attack.png-8bd91f5308e93e8372a26fbbfc84bea4.ctex"
+uid="uid://b74i251p18tms"
+path="res://.godot/imported/table.png-4394cd804eccdd69b8a38a6439c7af68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Chef_Attack.png"
-dest_files=["res://.godot/imported/Chef_Attack.png-8bd91f5308e93e8372a26fbbfc84bea4.ctex"]
+source_file="res://art/Terrain/table.png"
+dest_files=["res://.godot/imported/table.png-4394cd804eccdd69b8a38a6439c7af68.ctex"]
 
 [params]
 

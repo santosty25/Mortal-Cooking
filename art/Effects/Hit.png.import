@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3xwe2e8i7nix"
-path="res://.godot/imported/Apple_Slices.png-cc6804514b86e8b247e791b7d61d8868.ctex"
+uid="uid://bkax38twpboyd"
+path="res://.godot/imported/Hit.png-7a393f4a418351c8c3d51380aa80813b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Apple_Slices.png"
-dest_files=["res://.godot/imported/Apple_Slices.png-cc6804514b86e8b247e791b7d61d8868.ctex"]
+source_file="res://art/Effects/Hit.png"
+dest_files=["res://.godot/imported/Hit.png-7a393f4a418351c8c3d51380aa80813b.ctex"]
 
 [params]
 

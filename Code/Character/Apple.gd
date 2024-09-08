@@ -14,7 +14,7 @@ var attack = 0
 
 var health = 3
 
-var drop = load("res://Scenes/Enemy_Drop.tscn")
+var drop = load("res://Scenes/Item/Enemy_Drop.tscn")
 
 func _ready():
 	target = getRandomWalk()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c454qsgse2goj"]
+[gd_scene load_steps=9 format=3 uid="uid://c454qsgse2goj"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
 [ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="4_7apyq"]
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
 [ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
+[ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://jazz-commercials-217891.mp3" id="6_kwsm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -67,5 +68,9 @@ offset_bottom = -526.0
 theme_override_font_sizes/font_size = 80
 text = "$0"
 horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kwsm0")
+autoplay = true
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

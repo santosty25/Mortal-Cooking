@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-
+#sound effects
+@onready var knifeSwing = $knifeSwing
+@onready var running = $running
 const speed = 300.0
 
 # for animation
@@ -42,6 +44,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Attack_Main"):
 		canAttack = false
 		$AnimatedSprite2D.play("Attack")
+		knifeSwing.play()
 		for body in $Attack.get_overlapping_bodies():
 			if body is Apple:
 				$HitEffect.show()

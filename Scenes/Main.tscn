@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c454qsgse2goj"]
+[gd_scene load_steps=11 format=3 uid="uid://c454qsgse2goj"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
+[ext_resource type="AudioStream" uid="uid://cjkunrgd32t27" path="res://Audio/knifeSwing.mp3" id="3_fsxps"]
 [ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="4_7apyq"]
+[ext_resource type="AudioStream" uid="uid://cdevfceoiejec" path="res://Audio/running.mp3" id="4_ep0w6"]
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
 [ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
-[ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://jazz-commercials-217891.mp3" id="6_kwsm0"]
+[ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -44,6 +46,12 @@ zoom = Vector2(0.5, 0.5)
 [node name="Player" parent="." instance=ExtResource("2_cqwo3")]
 position = Vector2(-202, 11)
 
+[node name="knifeSwing" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("3_fsxps")
+
+[node name="running" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("4_ep0w6")
+
 [node name="OrderCooldown" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
@@ -69,7 +77,7 @@ theme_override_font_sizes/font_size = 80
 text = "$0"
 horizontal_alignment = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="jazzBackground" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kwsm0")
 autoplay = true
 

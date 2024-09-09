@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c454qsgse2goj"]
+[gd_scene load_steps=12 format=3 uid="uid://c454qsgse2goj"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
+[ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="2_uti5l"]
 [ext_resource type="AudioStream" uid="uid://cjkunrgd32t27" path="res://Audio/knifeSwing.mp3" id="3_fsxps"]
 [ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="4_7apyq"]
 [ext_resource type="AudioStream" uid="uid://cdevfceoiejec" path="res://Audio/running.mp3" id="4_ep0w6"]
@@ -17,6 +18,11 @@ size = Vector2(20, 667)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_144we")
+
+[node name="KitchenFloor" type="Sprite2D" parent="."]
+position = Vector2(1.5, 2.00002)
+scale = Vector2(8.81641, 4.85938)
+texture = ExtResource("2_uti5l")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 scale = Vector2(2, 2)
@@ -69,6 +75,8 @@ position = Vector2(-102, 561)
 position = Vector2(548, -3)
 
 [node name="Score" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 offset_left = 793.0
 offset_top = -618.0
 offset_right = 1128.0

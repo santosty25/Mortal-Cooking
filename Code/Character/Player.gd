@@ -3,6 +3,7 @@ extends CharacterBody2D
 #sound effects
 @onready var knifeSwing = $knifeSwing
 @onready var running = $running
+@onready var cashGained = $cashGained
 const speed = 300.0
 
 # for animation
@@ -126,6 +127,7 @@ func interact():
 			elif target is Serving_Location && heldItem is Plate:
 				if $"..".serve(heldItem):
 					heldItem = null
+					cashGained.play()
 				else:
 					drop_item()
 		else:

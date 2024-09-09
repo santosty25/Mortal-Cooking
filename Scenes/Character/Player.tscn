@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://tq3hr05vu4ux"]
+[gd_scene load_steps=12 format=3 uid="uid://tq3hr05vu4ux"]
 
 [ext_resource type="Script" path="res://Code/Character/Player.gd" id="1_okj7e"]
 [ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_4ww1s"]
 [ext_resource type="Texture2D" uid="uid://d0hcr2o0b71xf" path="res://art/Character/Player/Chef_Attack.png" id="3_so3ve"]
 [ext_resource type="Texture2D" uid="uid://djdnfab38mswp" path="res://art/Character/Player/Chef_Idle.png" id="4_t673k"]
+[ext_resource type="AudioStream" uid="uid://cjkunrgd32t27" path="res://Audio/knifeSwing.mp3" id="5_oh0av"]
+[ext_resource type="AudioStream" uid="uid://cdevfceoiejec" path="res://Audio/running.mp3" id="6_ixig7"]
+[ext_resource type="AudioStream" uid="uid://cihql54q886cu" path="res://Audio/cashRegister.mp3" id="7_lywr1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
 animations = [{
@@ -83,6 +86,15 @@ position = Vector2(283.333, 110)
 
 [node name="HeldItemPosition" type="Node2D" parent="."]
 position = Vector2(-100, -600)
+
+[node name="knifeSwing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oh0av")
+
+[node name="running" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ixig7")
+
+[node name="cashGained" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lywr1")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Attack" to="." method="_on_area_2d_body_entered"]

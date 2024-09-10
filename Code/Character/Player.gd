@@ -119,9 +119,9 @@ func interact():
 					target = body
 			elif body is Serving_Location && heldItem is Plate:
 				target = body
-				break; # terrain interactions take precedence
+				break; # terrain interactions take precedence and there is only one serving location
 		if target:
-			if target is Plate:
+			if target is Plate && heldItem is Enemy_Drop:
 				target.add_item(heldItem, heldItem.get_label())
 				heldItem = null
 			elif target is Serving_Location && heldItem is Plate:
@@ -130,6 +130,8 @@ func interact():
 					cashGained.play()
 				else:
 					drop_item()
+			else:
+				drop_item()
 		else:
 			drop_item()
 	else:
@@ -142,7 +144,14 @@ func interact():
 					target = body
 				elif !target:
 					target = body
-		if target:
+			elif body is Bin && (not target || not (target is Enemy_Drop || target is Plate)): # less important than plates or drops
+				if target && (target.position-position).length() > (body.position-position).length():
+					target = body
+				elif !target:
+					target = body
+		if target is Bin:
+			target.spawn_enemy()
+		else:
 			heldItem = target
 
 func drop_item():

@@ -39,6 +39,7 @@ radius = 753.363
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(606, 317)
 scale = Vector2(0.3, 0.3)
+collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_okj7e")
 

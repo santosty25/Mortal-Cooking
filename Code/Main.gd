@@ -6,6 +6,9 @@ var preparationsLabels = ["chopped"] # list of all ways of preparing ingredients
 var ingredients = [load("res://Scenes/Character/Apple.tscn")]
 var dropImages = [[load("res://art/Item/Apple_Slices.png")]] # first index is ingredient, second is preparation
 
+# things we need to respawn
+var plate = load("res://Scenes/Item/Plate.tscn")
+
 # for creating order icons on screen
 var dropNode = load("res://Scenes/Item/Enemy_Drop.tscn")
 var orderNode = load("res://Scenes/UI/Order.tscn")
@@ -86,4 +89,24 @@ func serve(order):
 		score += currentOrders[id][0].get_reward()
 		remove_order(currentOrders[id])
 		order.delete()
+		
+		var plateCount = 0
+		for each in get_children():
+			if each is Plate:
+				plateCount += 1
+				
+		if plateCount-1 < 4: # plate we just served has yet to be removed
+			for each in get_children():
+				if each is Table:
+					var hasPlate = false
+					for body in each.get_overlapping_bodies():
+						if body is Plate:
+							hasPlate = true
+					if not hasPlate:
+						var plateNode = plate.instantiate()
+						plateNode.position = position
+						$"..".add_child(plateNode)
+						break
+					
+		
 		return true

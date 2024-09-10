@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c454qsgse2goj"]
+[gd_scene load_steps=14 format=3 uid="uid://c454qsgse2goj"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
 [ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
 [ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
+[ext_resource type="PackedScene" uid="uid://bo7j1g1seu3df" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -27,25 +28,25 @@ texture = ExtResource("2_uti5l")
 
 [node name="Table" parent="." instance=ExtResource("3_dryq0")]
 position = Vector2(-502, -176)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 4
 
 [node name="Table2" parent="." instance=ExtResource("3_dryq0")]
 position = Vector2(-508, 299)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 4
 
 [node name="Table3" parent="." instance=ExtResource("3_dryq0")]
 position = Vector2(500, -168)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 4
 
 [node name="Table4" parent="." instance=ExtResource("3_dryq0")]
 position = Vector2(483, 291)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 4
 
@@ -127,5 +128,10 @@ horizontal_alignment = 2
 [node name="jazzBackground" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kwsm0")
 autoplay = true
+
+[node name="AppleBin" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(974, -161)
+collision_layer = 4
+collision_mask = 4
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

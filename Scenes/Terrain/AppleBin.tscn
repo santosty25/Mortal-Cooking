@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo7j1g1seu3df"]
+
+[ext_resource type="Texture2D" uid="uid://d2nnk0lf6v80k" path="res://art/Terrain/AppleBin.png" id="1_xgxv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iugxj"]
+size = Vector2(179.688, 156.938)
+
+[node name="AppleBin" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 3)
+scale = Vector2(3.99219, 3.93555)
+texture = ExtResource("1_xgxv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_iugxj")

@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=13 format=3 uid="uid://c454qsgse2goj"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
 [ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="2_uti5l"]
+[ext_resource type="PackedScene" uid="uid://xb8c4wa7xv0c" path="res://Scenes/Terrain/Table.tscn" id="3_dryq0"]
+[ext_resource type="AudioStream" uid="uid://cjkunrgd32t27" path="res://Audio/knifeSwing.mp3" id="3_fsxps"]
 [ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="4_7apyq"]
+[ext_resource type="AudioStream" uid="uid://cdevfceoiejec" path="res://Audio/running.mp3" id="4_ep0w6"]
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
 [ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
 [ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
@@ -21,6 +24,33 @@ script = ExtResource("1_144we")
 position = Vector2(1.5, 2.00002)
 scale = Vector2(8.81641, 4.85938)
 texture = ExtResource("2_uti5l")
+
+[node name="Table" parent="." instance=ExtResource("3_dryq0")]
+position = Vector2(-502, -176)
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Table2" parent="." instance=ExtResource("3_dryq0")]
+position = Vector2(-508, 299)
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Table3" parent="." instance=ExtResource("3_dryq0")]
+position = Vector2(500, -168)
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Table4" parent="." instance=ExtResource("3_dryq0")]
+position = Vector2(483, 291)
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Serving_Location" parent="." instance=ExtResource("4_7apyq")]
+position = Vector2(0, -475)
 
 [node name="Walls" type="StaticBody2D" parent="."]
 scale = Vector2(2, 2)
@@ -47,24 +77,41 @@ shape = SubResource("RectangleShape2D_af8gu")
 position = Vector2(0, -1)
 zoom = Vector2(0.5, 0.5)
 
+[node name="Player" parent="." instance=ExtResource("2_cqwo3")]
+position = Vector2(3, 1)
+collision_layer = 4
+
+[node name="knifeSwing" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("3_fsxps")
+
+[node name="running" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("4_ep0w6")
+
 [node name="OrderCooldown" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
 
-[node name="Serving_Location" parent="." instance=ExtResource("4_7apyq")]
-position = Vector2(0, -475)
-
 [node name="Plate" parent="." instance=ExtResource("4_oynte")]
-position = Vector2(211, 302)
+position = Vector2(481, 265)
+scale = Vector2(1, 1)
+
+[node name="Plate2" parent="." instance=ExtResource("4_oynte")]
+position = Vector2(-509, -205)
+scale = Vector2(1, 1)
+
+[node name="Plate3" parent="." instance=ExtResource("4_oynte")]
+position = Vector2(497, -195)
+scale = Vector2(1, 1)
+
+[node name="Plate4" parent="." instance=ExtResource("4_oynte")]
+position = Vector2(-506, 269)
+scale = Vector2(1, 1)
 
 [node name="Apple" parent="." instance=ExtResource("5_idls0")]
 position = Vector2(-102, 561)
 
 [node name="Apple2" parent="." instance=ExtResource("5_idls0")]
 position = Vector2(548, -3)
-
-[node name="Player" parent="." instance=ExtResource("2_cqwo3")]
-position = Vector2(-202, 11)
 
 [node name="Score" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)

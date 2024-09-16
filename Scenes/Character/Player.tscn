@@ -1,31 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://tq3hr05vu4ux"]
+[gd_scene load_steps=17 format=3 uid="uid://tq3hr05vu4ux"]
 
 [ext_resource type="Script" path="res://Code/Character/Player.gd" id="1_okj7e"]
-[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_4ww1s"]
-[ext_resource type="Texture2D" uid="uid://d0hcr2o0b71xf" path="res://art/Character/Player/Chef_Attack.png" id="3_so3ve"]
-[ext_resource type="Texture2D" uid="uid://djdnfab38mswp" path="res://art/Character/Player/Chef_Idle.png" id="4_t673k"]
+[ext_resource type="Texture2D" uid="uid://d33bnrvu5njqo" path="res://art/Character/Player/Arm.PNG" id="3_bfx6l"]
+[ext_resource type="Script" path="res://Scenes/Character/Animator.gd" id="3_otf00"]
+[ext_resource type="Texture2D" uid="uid://bdpeb0syy1e0j" path="res://art/Character/Player/Leg.PNG" id="4_fwnpt"]
+[ext_resource type="Texture2D" uid="uid://bqi4ek1l3pa8c" path="res://art/Character/Player/Head.PNG" id="5_li66a"]
 [ext_resource type="AudioStream" uid="uid://cjkunrgd32t27" path="res://Audio/knifeSwing.mp3" id="5_oh0av"]
+[ext_resource type="Texture2D" uid="uid://oulexxw7jvv0" path="res://art/Character/Player/Hat.PNG" id="6_fgew8"]
 [ext_resource type="AudioStream" uid="uid://cdevfceoiejec" path="res://Audio/running.mp3" id="6_ixig7"]
+[ext_resource type="Texture2D" uid="uid://cxkso0b360wx2" path="res://art/Character/Player/Moustache.PNG" id="7_ikuw4"]
 [ext_resource type="AudioStream" uid="uid://cihql54q886cu" path="res://Audio/cashRegister.mp3" id="7_lywr1"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_so3ve")
-}],
-"loop": false,
-"name": &"Attack",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_t673k")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://bk4ung7vlgcwk" path="res://art/Character/Player/Node.PNG" id="8_xrton"]
+[ext_resource type="Texture2D" uid="uid://bgfo6hqoi6cee" path="res://art/Character/Player/Body.PNG" id="9_i0ju1"]
+[ext_resource type="Texture2D" uid="uid://d3r0a5begsfoi" path="res://art/Character/Player/Tie.PNG" id="10_dwekm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
 radius = 210.0
@@ -37,25 +24,10 @@ radius = 286.667
 radius = 753.363
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(606, 317)
 scale = Vector2(0.3, 0.3)
 collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_okj7e")
-
-[node name="HitEffect" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(353.333, -23.3333)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_4ww1s")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5.91936, -32.4029)
-rotation = -0.174533
-sprite_frames = SubResource("SpriteFrames_c40pp")
-animation = &"Idle"
-centered = false
-offset = Vector2(-400, -500)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.747238, 0.93045)
@@ -79,25 +51,86 @@ collision_mask = 8
 position = Vector2(-80, 33.3333)
 shape = SubResource("CircleShape2D_3w5p6")
 
-[node name="DashCooldown" type="Timer" parent="."]
-wait_time = 2.0
+[node name="Animator" type="CanvasGroup" parent="."]
+position = Vector2(63.3333, -160)
+script = ExtResource("3_otf00")
 
-[node name="SetDownPosition" type="Node2D" parent="."]
-position = Vector2(283.333, 110)
+[node name="Arm_Back" type="Sprite2D" parent="Animator"]
+position = Vector2(70, 153.333)
+texture = ExtResource("3_bfx6l")
+offset = Vector2(166.667, -166.667)
 
-[node name="HeldItemPosition" type="Node2D" parent="."]
-position = Vector2(-100, -600)
+[node name="Leg_R" type="Sprite2D" parent="Animator"]
+position = Vector2(30, 313.333)
+texture = ExtResource("4_fwnpt")
+centered = false
+offset = Vector2(-283.273, -703.333)
 
-[node name="knifeSwing" type="AudioStreamPlayer" parent="."]
+[node name="Leg_L" type="Sprite2D" parent="Animator"]
+position = Vector2(-166.667, 313.333)
+texture = ExtResource("4_fwnpt")
+centered = false
+offset = Vector2(-283.273, -703.333)
+
+[node name="Body" type="Node2D" parent="Animator"]
+
+[node name="Head" type="Node2D" parent="Animator/Body"]
+position = Vector2(-76.6666, 80)
+
+[node name="Head" type="Sprite2D" parent="Animator/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("5_li66a")
+
+[node name="Hat" type="Sprite2D" parent="Animator/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("6_fgew8")
+
+[node name="Moustache" type="Sprite2D" parent="Animator/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("7_ikuw4")
+
+[node name="Nose" type="Sprite2D" parent="Animator/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("8_xrton")
+
+[node name="Body" type="Sprite2D" parent="Animator/Body"]
+texture = ExtResource("9_i0ju1")
+
+[node name="Tie" type="Sprite2D" parent="Animator/Body"]
+texture = ExtResource("10_dwekm")
+
+[node name="Arm_Front" type="Sprite2D" parent="Animator"]
+position = Vector2(-153.333, 170)
+texture = ExtResource("3_bfx6l")
+offset = Vector2(166.667, -166.667)
+
+[node name="Hand" type="Node2D" parent="Animator/Arm_Front"]
+position = Vector2(-0.000298818, 96.6666)
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="knifeSwing" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_oh0av")
 
-[node name="running" type="AudioStreamPlayer" parent="."]
+[node name="running" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("6_ixig7")
 
-[node name="cashGained" type="AudioStreamPlayer" parent="."]
+[node name="cashGained" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("7_lywr1")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="Helpers" type="Node" parent="."]
+
+[node name="DashCooldown" type="Timer" parent="Helpers"]
+wait_time = 2.0
+
+[node name="SetDownPosition" type="Node2D" parent="Helpers"]
+position = Vector2(85.3499, 33)
+scale = Vector2(0.3, 0.3)
+
+[node name="HeldItemPosition" type="Node2D" parent="Helpers"]
+position = Vector2(23, 0)
+scale = Vector2(0.3, 0.3)
+
 [connection signal="body_entered" from="Attack" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Interaction" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]

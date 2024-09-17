@@ -6,8 +6,6 @@ var ingredientsLabels = ["apple"] # list of all base ingredients
 var preparationsLabels = ["chopped", "fire"] # list of all ways of preparing ingredients
 var ingredients = [load("res://Scenes/Character/Apple.tscn")]
 var dropImages = [[load("res://art/Item/Apple_Slices.png"), load("res://art/Item/Dried_Apples.png")]] # first index is ingredient, second is preparation
-var chickBody = load("res://Scenes/Character/Chicken.tscn")
-var chickenSpawn
 
 # things we need to respawn
 var plate = load("res://Scenes/Item/Plate.tscn")
@@ -110,6 +108,7 @@ func serve(order):
 						plateNode.position = each.position+Vector2(0,-20)
 						$"..".add_child(plateNode)
 						break
+					
 		
 		return true
 
@@ -119,9 +118,3 @@ func get_drop_image(label: Array):
 	if !x || !y:
 		print("invalid label: "+str(label))
 	return dropImages[x][y]
-		
-func spawn_chicken():
-	var chick = chickBody.instantiate()
-	add_child(chick)
-
-	chick.move(chick.position)

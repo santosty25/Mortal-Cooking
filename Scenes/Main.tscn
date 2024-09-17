@@ -20,8 +20,8 @@ size = Vector2(20, 667)
 script = ExtResource("1_144we")
 
 [node name="KitchenFloor" type="Sprite2D" parent="."]
-position = Vector2(9.42051e-05, 1.99995)
-scale = Vector2(8.84375, 4.88281)
+position = Vector2(1.5, 2.00002)
+scale = Vector2(8.81641, 4.85938)
 texture = ExtResource("2_uti5l")
 
 [node name="Table" parent="." instance=ExtResource("3_dryq0")]
@@ -73,7 +73,7 @@ position = Vector2(0, -1)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Player" parent="." instance=ExtResource("2_cqwo3")]
-position = Vector2(4, -6)
+position = Vector2(3, 1)
 collision_layer = 4
 
 [node name="OrderCooldown" type="Timer" parent="."]

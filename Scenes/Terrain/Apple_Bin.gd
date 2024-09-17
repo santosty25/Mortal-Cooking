@@ -1,4 +1,4 @@
-extends Terrain
+extends CharacterBody2D
 class_name Bin
 
 var spawn = load("res://Scenes/Character/Apple.tscn")

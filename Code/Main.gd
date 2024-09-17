@@ -5,6 +5,9 @@ var ingredientsLabels = ["apple"] # list of all base ingredients
 var preparationsLabels = ["chopped"] # list of all ways of preparing ingredients
 var ingredients = [load("res://Scenes/Character/Apple.tscn")]
 var dropImages = [[load("res://art/Item/Apple_Slices.png")]] # first index is ingredient, second is preparation
+var chickBody = load("res://Scenes/Character/Chicken.tscn")
+var chickenSpawn
+
 
 # things we need to respawn
 var plate = load("res://Scenes/Item/Plate.tscn")
@@ -26,6 +29,7 @@ var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingr
 func _ready() -> void:
 	generate_order()
 	generate_order()
+	spawn_chicken()
 	
 func _process(delta: float) -> void:
 	$Score.text = "$"+str(score)
@@ -110,3 +114,9 @@ func serve(order):
 					
 		
 		return true
+		
+func spawn_chicken():
+	var chick = chickBody.instantiate()
+	add_child(chick)
+
+	chick.move(chick.position)

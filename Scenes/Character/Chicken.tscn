@@ -1,0 +1,143 @@
+[gd_scene load_steps=21 format=3 uid="uid://n7v8utgxf485"]
+
+[ext_resource type="Script" path="res://Code/Character/Chicken.gd" id="1_qxdgn"]
+[ext_resource type="Texture2D" uid="uid://btlqrh7qhs84c" path="res://art/Character/Enemies/Chicken/Chicken_Sprite_Sheet_Black.png" id="1_uhwp8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl7ap"]
+radius = 44.0
+height = 88.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsak1"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gaot"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbqgg"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsyh3"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okvq4"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17cpi"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5b7e"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nodb"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ve8j"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp88i"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4djw"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_130p7"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxwun"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb6ue"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjkja"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7l4m"]
+atlas = ExtResource("1_uhwp8")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsc8g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsak1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gaot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbqgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsyh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okvq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17cpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5b7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nodb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ve8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp88i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4djw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_130p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxwun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb6ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjkja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7l4m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chicken" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_qxdgn")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(20, 60)
+shape = SubResource("CapsuleShape2D_rl7ap")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16.375, 57.75)
+scale = Vector2(2.85156, 2.82813)
+sprite_frames = SubResource("SpriteFrames_bsc8g")
+frame_progress = 0.501742

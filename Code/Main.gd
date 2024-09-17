@@ -29,7 +29,6 @@ var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingr
 func _ready() -> void:
 	generate_order()
 	generate_order()
-	spawn_chicken()
 	
 func _process(delta: float) -> void:
 	$Score.text = "$"+str(score)
@@ -111,9 +110,9 @@ func serve(order):
 						plateNode.position = each.position+Vector2(0,-20)
 						$"..".add_child(plateNode)
 						break
-					
 		
 		return true
+
 func get_drop_image(label: Array):
 	var x = ingredientsLabels.find(label[0])
 	var y = preparationsLabels.find(label[1])

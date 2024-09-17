@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btlqrh7qhs84c"
-path="res://.godot/imported/Chicken_Sprite_Sheet_Black.png-3b6d2ace27e780e0de3e7c43415eec82.ctex"
+uid="uid://bqi4ek1l3pa8c"
+path="res://.godot/imported/Head.PNG-8db72b5bf4ab3d426cf617c08c93134b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Character/Enemies/Chicken/Chicken_Sprite_Sheet_Black.png"
-dest_files=["res://.godot/imported/Chicken_Sprite_Sheet_Black.png-3b6d2ace27e780e0de3e7c43415eec82.ctex"]
+source_file="res://art/Character/Player/Head.PNG"
+dest_files=["res://.godot/imported/Head.PNG-8db72b5bf4ab3d426cf617c08c93134b.ctex"]
 
 [params]
 

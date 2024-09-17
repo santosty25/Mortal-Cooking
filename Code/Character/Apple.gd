@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 class_name Apple
 
 const SPEED = 100
@@ -12,15 +12,16 @@ var flipTimerMax = 0.1
 var flipTimer = 0
 var attack = 0
 
-var health = 3
-
-var drop = load("res://Scenes/Item/Enemy_Drop.tscn")
-
 # reference to the player
 var player
 
 func _ready():
 	player = get_parent().get_node("Player")
+	label = "apple"
+	
+	# overrides
+	maxHealth = 3
+	health = maxHealth
 
 func _process(delta):
 	if player:
@@ -75,11 +76,5 @@ func _on_area_2d_body_entered(body):
 	$AnimatedSprite2D.play("Windup")
 	attack = 0.3
 
-func take_damage(amount, damageLabel):
-	health -= amount
-	if health < 0:
-		var drop_node = drop.instantiate()
-		drop_node.position = position
-		drop_node.label = ["apple", damageLabel]
-		$"..".add_child(drop_node)
-		queue_free()
+func get_label():
+	return label

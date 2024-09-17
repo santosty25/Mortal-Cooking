@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://daejxoysatmw2"]
+
+[ext_resource type="Texture2D" uid="uid://b45g2q3lmfk6i" path="res://art/Effects/Flame_Large.PNG" id="1_iofi8"]
+[ext_resource type="Script" path="res://Code/Effects/Flame.gd" id="1_oo66e"]
+
+[node name="Flame" type="Sprite2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_iofi8")
+offset = Vector2(16, -49.6667)
+script = ExtResource("1_oo66e")

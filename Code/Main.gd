@@ -1,10 +1,11 @@
 extends Node2D
+class_name Main
 
 # lists of possible order ingredients including strings, scenes, and images
 var ingredientsLabels = ["apple"] # list of all base ingredients
-var preparationsLabels = ["chopped"] # list of all ways of preparing ingredients
+var preparationsLabels = ["chopped", "fire"] # list of all ways of preparing ingredients
 var ingredients = [load("res://Scenes/Character/Apple.tscn")]
-var dropImages = [[load("res://art/Item/Apple_Slices.png")]] # first index is ingredient, second is preparation
+var dropImages = [[load("res://art/Item/Apple_Slices.png"), load("res://art/Item/Dried_Apples.png")]] # first index is ingredient, second is preparation
 
 # things we need to respawn
 var plate = load("res://Scenes/Item/Plate.tscn")
@@ -16,7 +17,7 @@ var orderSeparation = 250
 
 # vars for generating orders
 var minOrderSteps = 1
-var maxOrderSteps = 3
+var maxOrderSteps = 1
 
 # global things to track
 var score = 0
@@ -99,14 +100,21 @@ func serve(order):
 			for each in get_children():
 				if each is Table:
 					var hasPlate = false
-					for body in each.get_overlapping_bodies():
+					for body in each.get_items():
 						if body is Plate:
 							hasPlate = true
 					if not hasPlate:
 						var plateNode = plate.instantiate()
-						plateNode.position = position
+						plateNode.position = each.position+Vector2(0,-20)
 						$"..".add_child(plateNode)
 						break
 					
 		
 		return true
+
+func get_drop_image(label: Array):
+	var x = ingredientsLabels.find(label[0])
+	var y = preparationsLabels.find(label[1])
+	if !x || !y:
+		print("invalid label: "+str(label))
+	return dropImages[x][y]

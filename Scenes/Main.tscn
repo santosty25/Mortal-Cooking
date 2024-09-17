@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=14 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
 [ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
 [ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
+[ext_resource type="PackedScene" uid="uid://hfylmwmpgduw" path="res://Scenes/Item/Flamethrower.tscn" id="10_bw7d8"]
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
+[ext_resource type="PackedScene" uid="uid://msin5chbtcnh" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -115,5 +117,13 @@ autoplay = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("11_vr6yn")]
 position = Vector2(961, 21)
+
+[node name="Flamethrower" parent="." instance=ExtResource("10_bw7d8")]
+position = Vector2(-925, 468)
+scale = Vector2(0.3, 0.3)
+
+[node name="Halberd" parent="." instance=ExtResource("11_wthf2")]
+position = Vector2(-971, 85)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

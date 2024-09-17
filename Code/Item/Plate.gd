@@ -7,12 +7,15 @@ var itemStackOffset = -20
 
 func _process(delta: float) -> void:
 	for i in range(len(itemNodes)):
-		itemNodes[i].position = position+Vector2(0, itemStackOffset*i)
+		itemNodes[i].global_position = global_position+Vector2(0, itemStackOffset*i)
 
 func add_item(node, itemLabel):
 	node.get_node("Hitbox").disabled = true
+	node.reparent(self)
+	node.global_position = position+Vector2(0, itemStackOffset*len(itemNodes))
 	itemLabels.append(itemLabel)
 	itemNodes.append(node)
+	node.z_index = z_index+len(itemNodes)
 
 func get_label():
 	return itemLabels

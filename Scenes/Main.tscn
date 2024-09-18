@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dwirvfmddfg78"]
 
-[ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
+[ext_resource type="Script" path="res://Code/Meta/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
 [ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="2_uti5l"]
 [ext_resource type="PackedScene" uid="uid://yi3ebkw6k8b0" path="res://Scenes/Terrain/Table.tscn" id="3_dryq0"]

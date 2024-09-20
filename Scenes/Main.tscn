@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
 [ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
 [ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
-[ext_resource type="PackedScene" uid="uid://hfylmwmpgduw" path="res://Scenes/Item/Flamethrower.tscn" id="10_bw7d8"]
+[ext_resource type="PackedScene" uid="uid://bmvkvlj77ae5j" path="res://Scenes/Item/Flamethrower.tscn" id="10_bw7d8"]
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
-[ext_resource type="PackedScene" uid="uid://msin5chbtcnh" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
+[ext_resource type="PackedScene" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hfylmwmpgduw"]
+[gd_scene load_steps=4 format=3 uid="uid://bmvkvlj77ae5j"]
 
 [ext_resource type="Texture2D" uid="uid://c6daxihnipeqs" path="res://art/Weapons/IMG_5154.PNG" id="1_dmpt6"]
 [ext_resource type="Script" path="res://Code/Item/Flamethrower.gd" id="2_humy3"]

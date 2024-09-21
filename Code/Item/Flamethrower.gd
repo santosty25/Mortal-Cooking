@@ -9,6 +9,9 @@ var flameCount = 5
 
 var isFiring = false
 
+func _ready() -> void:
+	label = "burned"
+
 func _process(delta: float) -> void:
 	if (isFiring):
 		if flameTimer >= flameTimerMax:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://tq3hr05vu4ux"]
+[gd_scene load_steps=16 format=3 uid="uid://tq3hr05vu4ux"]
 
 [ext_resource type="Script" path="res://Code/Character/Player.gd" id="1_okj7e"]
 [ext_resource type="Texture2D" uid="uid://d33bnrvu5njqo" path="res://art/Character/Player/Arm.PNG" id="3_bfx6l"]
@@ -17,30 +17,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
 radius = 210.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_djehj"]
-radius = 286.667
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_3w5p6"]
 radius = 753.363
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player")]
 scale = Vector2(0.3, 0.3)
-collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_okj7e")
+player = NodePath(".")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.747238, 0.93045)
 shape = SubResource("CircleShape2D_pd45i")
-
-[node name="Attack" type="Area2D" parent="."]
-position = Vector2(77.4139, -32.4029)
-collision_layer = 16
-collision_mask = 2
-
-[node name="Hurtbox" type="CollisionShape2D" parent="Attack"]
-position = Vector2(183.333, -73.3333)
-shape = SubResource("CircleShape2D_djehj")
 
 [node name="Interaction" type="Area2D" parent="."]
 position = Vector2(77.4139, -32.4029)
@@ -131,6 +119,5 @@ scale = Vector2(0.3, 0.3)
 position = Vector2(23, 0)
 scale = Vector2(0.3, 0.3)
 
-[connection signal="body_entered" from="Attack" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Interaction" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Helpers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]

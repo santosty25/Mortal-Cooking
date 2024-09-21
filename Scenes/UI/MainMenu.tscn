@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://b72chq1ahuqbg"]
 
-[ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_qdvwu"]
+[ext_resource type="Script" path="res://Code/UI/MainMenu.gd" id="1_qdvwu"]
 [ext_resource type="Texture2D" uid="uid://bqpsdd68s3lcc" path="res://art/Background/main_background.jpg" id="1_vqx33"]
 [ext_resource type="FontFile" uid="uid://bdkmmlc2t24bh" path="res://art/UI/PIXEL-LI.TTF" id="2_ctq2m"]
 [ext_resource type="AudioStream" uid="uid://bjbhcic8dbcdt" path="res://Audio/mainMenuMusic.mp3" id="4_pp71y"]
-[ext_resource type="PackedScene" uid="uid://bhs6a1f2564rt" path="res://Scenes/Options.tscn" id="5_qbn7d"]
+[ext_resource type="PackedScene" uid="uid://bhs6a1f2564rt" path="res://Scenes/UI/Options.tscn" id="5_qbn7d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ss5ir"]
 texture = ExtResource("1_vqx33")

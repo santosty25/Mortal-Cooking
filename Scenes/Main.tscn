@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=14 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Meta/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -6,13 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://yi3ebkw6k8b0" path="res://Scenes/Terrain/Table.tscn" id="3_dryq0"]
 [ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="4_7apyq"]
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="4_oynte"]
-[ext_resource type="PackedScene" uid="uid://by7wt3jib5pss" path="res://Scenes/Character/Apple.tscn" id="5_idls0"]
 [ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
-[ext_resource type="PackedScene" path="res://Scenes/Item/Flamethrower.tscn" id="10_bw7d8"]
+[ext_resource type="PackedScene" uid="uid://bmvkvlj77ae5j" path="res://Scenes/Item/Flamethrower.tscn" id="10_bw7d8"]
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
-[ext_resource type="PackedScene" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
-[ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="12_nvve6"]
-
+[ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
+[ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="12_nvve6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -76,13 +74,11 @@ shape = SubResource("RectangleShape2D_af8gu")
 position = Vector2(0, -1)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Player" parent="." instance=ExtResource("2_cqwo3")]
-position = Vector2(4, -6)
-collision_layer = 4
-
 [node name="OrderCooldown" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="Player" parent="." instance=ExtResource("2_cqwo3")]
 
 [node name="Plate" parent="." instance=ExtResource("4_oynte")]
 position = Vector2(481, 265)
@@ -95,12 +91,6 @@ position = Vector2(497, -195)
 
 [node name="Plate4" parent="." instance=ExtResource("4_oynte")]
 position = Vector2(-506, 269)
-
-[node name="Apple" parent="." instance=ExtResource("5_idls0")]
-position = Vector2(-102, 561)
-
-[node name="Apple2" parent="." instance=ExtResource("5_idls0")]
-position = Vector2(548, -3)
 
 [node name="Score" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)

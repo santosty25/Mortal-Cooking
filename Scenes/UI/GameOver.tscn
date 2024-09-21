@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chrtqmrlyqq0k"]
 
-[ext_resource type="Script" path="res://Code/GameOver.gd" id="1_fltgx"]
+[ext_resource type="Script" path="res://Code/UI/GameOver.gd" id="1_fltgx"]
 [ext_resource type="FontFile" uid="uid://bdkmmlc2t24bh" path="res://art/UI/PIXEL-LI.TTF" id="2_3xs3j"]
 
 [node name="GameOver" type="CanvasLayer"]

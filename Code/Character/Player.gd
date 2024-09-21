@@ -157,6 +157,7 @@ func remove_item(item: Node2D):
 	animator.drop_item(item)
 
 func take_damage(amount: float, damageLabel:String) -> void:
+	print("took damage")
 	health -= amount
 	healthChanged.emit()
 	if health <= 0:

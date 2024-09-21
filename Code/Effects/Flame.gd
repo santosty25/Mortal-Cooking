@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	if hasTarget && target is Entity:
 		position = target.position
 		if damageTimer > damageTimerMax:
-			target.take_damage(damage, "fire")
+			target.take_damage(damage, "burned")
 			damageTimer = 0
 		else:
 			damageTimer += delta

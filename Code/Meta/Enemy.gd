@@ -6,7 +6,6 @@ var drop = load("res://Scenes/Item/Enemy_Drop.tscn")
 @onready var main = get_tree().get_root()
 
 func take_damage(amount: float, damageLabel: String):
-	print("took damage"+str(amount))
 	health -= amount
 	if health < 0:
 		var drop_node = drop.instantiate()

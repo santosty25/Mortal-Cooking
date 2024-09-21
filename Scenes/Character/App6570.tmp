@@ -53,7 +53,6 @@ sprite_frames = SubResource("SpriteFrames_c40pp")
 animation = &"Windup"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_pd45i")
 
 [node name="Area2D" type="Area2D" parent="."]

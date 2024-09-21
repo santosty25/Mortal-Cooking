@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://msin5chbtcnh"]
+[gd_scene load_steps=5 format=3 uid="uid://cjbxkp5pbf5vs"]
 
 [ext_resource type="Texture2D" uid="uid://clattpd8i5fyw" path="res://art/Weapons/IMG_5153.PNG" id="1_7y8bv"]
 [ext_resource type="Script" path="res://Code/Item/Halberd.gd" id="2_vifbb"]

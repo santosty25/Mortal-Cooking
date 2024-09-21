@@ -1,6 +1,10 @@
 extends Entity
 class_name Player
 
+signal healthChanged 
+
+@export var player: Player
+
 #sound effects
 @onready var knifeSwing = $SFX/knifeSwing
 @onready var running = $SFX/running
@@ -151,3 +155,10 @@ func drop_item(item: Node2D):
 func remove_item(item: Node2D):
 	heldItem = null
 	animator.drop_item(item)
+
+func take_damage(amount: float, damageLabel:String) -> void:
+	health -= amount
+	healthChanged.emit()
+	if health <= 0:
+		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+	

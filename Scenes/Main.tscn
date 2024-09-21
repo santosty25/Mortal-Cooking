@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=15 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -10,7 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_kwsm0"]
 [ext_resource type="PackedScene" uid="uid://bmvkvlj77ae5j" path="res://Scenes/Item/Flamethrower.tscn" id="10_bw7d8"]
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
-[ext_resource type="PackedScene" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
+[ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
+[ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="12_nvve6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -125,5 +126,14 @@ scale = Vector2(0.3, 0.3)
 [node name="Halberd" parent="." instance=ExtResource("11_wthf2")]
 position = Vector2(-971, 85)
 scale = Vector2(0.3, 0.3)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -1093.0
+offset_top = 504.0
+offset_right = -480.0
+offset_bottom = 598.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("12_nvve6")
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

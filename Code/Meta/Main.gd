@@ -2,10 +2,39 @@ extends Node2D
 class_name Main
 
 # lists of possible order ingredients including strings, scenes, and images
-var ingredientsLabels = ["apple"] # list of all base ingredients
-var preparationsLabels = ["chopped", "fire"] # list of all ways of preparing ingredients
-var ingredients = [load("res://Scenes/Character/Apple.tscn")]
-var dropImages = [[load("res://art/Item/Apple_Slices.png"), load("res://art/Item/Dried_Apples.png")]] # first index is ingredient, second is preparation
+var ingredientsLabels = ["apple", "lettuce", "tomato", "cheese", "beef", "bread", "shrimp"] # list of all base ingredients
+var preparationsLabels = ["chopped", "burned"] # list of all ways of preparing ingredients
+var ingredients = [load("res://Scenes/Character/Apple.tscn"), null, null, null, null, null, null]
+var dropImages = [
+					[	
+						load("res://art/Item/Apple_Slices.png"), 
+						load("res://art/Item/Dried_Apples.png"),
+					],
+					[	
+						load("res://art/Item/Lettuce_Leaf.PNG"), 
+						load("res://art/Item/Slop.PNG"),
+					],
+					[	
+						load("res://art/Item/Tomato_Slice.PNG"), 
+						load("res://art/Item/Slop.PNG"),
+					],
+					[	
+						load("res://art/Item/Cheese_Slice.PNG"), 
+						load("res://art/Item/Melted_Cheese.PNG"),
+					],
+					[	
+						load("res://art/Item/Steak.PNG"), 
+						load("res://art/Item/Sliced_Beef.PNG"),
+					],
+					[	
+						load("res://art/Item/Bread.PNG"), 
+						load("res://art/Item/Toast.PNG"),
+					],
+					[	
+						load("res://art/Item/Slop.PNG"), 
+						load("res://art/Item/Fried_Shrimp.PNG"),
+					]
+				] # first index is ingredient, second is preparation
 
 # things we need to respawn
 var plate = load("res://Scenes/Item/Plate.tscn")

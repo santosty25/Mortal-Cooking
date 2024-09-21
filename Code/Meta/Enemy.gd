@@ -17,3 +17,6 @@ func take_damage(amount: float, damageLabel: String):
 		drop_node.set_image(main.get_drop_image(drop_node.label))
 		$"..".add_child(drop_node)
 		queue_free()
+
+func get_label():
+	return label

@@ -12,6 +12,9 @@ var windupPercent = 0
 
 var attackPressed = false
 
+func _ready():
+	label = "chopped"
+
 func _process(delta: float) -> void:
 	if (animator):
 		if (attackPressed && !swinging):
@@ -34,7 +37,7 @@ func _process(delta: float) -> void:
 						var r = (body.global_position-$Hurtbox.global_position).length()
 						var max_r = ($Radius.global_position-$Hurtbox/Area.global_position).length()
 						var distMult = max(0, 1-r/max_r)
-						body.take_damage(maxDamage*windupPercent*distMult, "chopped")
+						deal_damage(body, maxDamage*windupPercent*distMult)
 				swinging = false
 				animator.set_animation("attack_idle")
 				windupCounter = 0

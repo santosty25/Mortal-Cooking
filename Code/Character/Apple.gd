@@ -51,29 +51,20 @@ func _process(delta):
 				move_and_collide(direction * delta)
 		else:
 			$AnimatedSprite2D.rotation = 0
-	else:
-		# If the player is not available, fallback to random movement (optional)
-		if waitTimer <= 0:
-			target = getRandomWalk()
-			waitTimer = minWait + randf() * (maxWait - minWait)
-		else:
-			waitTimer -= delta
 
 func _physics_process(delta):
 	attack -= delta
 	if attack < 0.2:
 		$AnimatedSprite2D.play("Idle")
+		# player.take_damage(1, "attack")
 		$HitEffect.show()
 	if attack < 0.1:
 		$HitEffect.hide()
 
-func getRandomWalk():
-	var newTarget = Vector2(randf() * 2 - 1, randf() * 2 - 1)
-	newTarget = newTarget.normalized() * walkDist + position
-	return newTarget
-
 func _on_area_2d_body_entered(body):
 	$AnimatedSprite2D.play("Windup")
+	if body is Player:
+		body.take_damage(1, "attack")
 	attack = 0.3
 
 func get_label():

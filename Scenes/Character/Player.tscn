@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Character/Player.gd" id="1_okj7e"]
 [ext_resource type="Texture2D" uid="uid://d33bnrvu5njqo" path="res://art/Character/Player/Arm.PNG" id="3_bfx6l"]
-[ext_resource type="Script" path="res://Scenes/Character/Animator.gd" id="3_otf00"]
+[ext_resource type="Script" path="res://Code/Character/Animator.gd" id="3_otf00"]
 [ext_resource type="Texture2D" uid="uid://bdpeb0syy1e0j" path="res://art/Character/Player/Leg.PNG" id="4_fwnpt"]
 [ext_resource type="Texture2D" uid="uid://bqi4ek1l3pa8c" path="res://art/Character/Player/Head.PNG" id="5_li66a"]
 [ext_resource type="AudioStream" uid="uid://cjkunrgd32t27" path="res://Audio/knifeSwing.mp3" id="5_oh0av"]

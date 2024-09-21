@@ -70,7 +70,8 @@ func _process(delta: float) -> void:
 func hold_item(heldItem: Node2D):
 	heldItem.global_position = hand.global_position
 	heldItem.rotation = front_arm.rotation+PI/2
-	set_arm_rotation(true, 90)
+	if (holding_item):
+		set_arm_rotation(true, 90)
 			
 func aim(heldItem: Node2D):
 	var mouse = get_global_mouse_position()
@@ -198,16 +199,19 @@ func set_animation(keyword):
 		swing_attacking = true
 		aiming = false
 		arm_idle = false
+		holding_item = false
 		reset_head()
 	elif keyword == "attack_idle":
 		swing_attacking = true
 		aiming = false
 		arm_idle = true
+		holding_item = false
 		reset_head()
 	elif keyword == "attack_aim":
 		aiming = true
 		swing_attacking = false
 		arm_idle = false
+		holding_item = false
 	elif keyword == "hand_empty":
 		aiming = false
 		swing_attacking = false

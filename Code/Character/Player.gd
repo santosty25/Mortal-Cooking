@@ -35,6 +35,7 @@ func _ready() -> void:
 	health = maxHealth
 
 func _process(delta):
+		
 	var direction = Vector2.ZERO
 	var multiplier = 1.0
 		
@@ -161,5 +162,4 @@ func take_damage(amount: float, damageLabel:String) -> void:
 	health -= amount
 	healthChanged.emit()
 	if health <= 0:
-		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
-	
+		get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")

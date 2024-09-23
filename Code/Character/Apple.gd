@@ -52,7 +52,6 @@ func _process(delta):
 		else:
 			$AnimatedSprite2D.rotation = 0
 	var bodies = $Area2D.get_overlapping_bodies()
-	print(bodies)
 
 func _physics_process(delta):
 	attack -= delta

@@ -3,38 +3,54 @@ class_name Main
 
 # lists of possible order ingredients including strings, scenes, and images
 var ingredientsLabels = ["apple", "lettuce", "tomato", "cheese", "beef", "bread", "shrimp"] # list of all base ingredients
-var preparationsLabels = ["chopped", "burned"] # list of all ways of preparing ingredients
-var ingredients = [load("res://Scenes/Character/Apple.tscn"), null, null, null, null, null, null]
+var preparationsLabels = ["chopped", "burned", "diced", "flattened"] # list of all ways of preparing ingredients
+var ingredients = [load("res://Scenes/Character/Apple.tscn"), load("res://Scenes/Character/Tomato.tscn"), load("res://Scenes/Character/Beef.tscn"), load("res://Scenes/Character/Bread.tscn"), load("res://Scenes/Character/Cheese.tscn"), load("res://Scenes/Character/Lettuce.tscn"), load("res://Scenes/Character/Shrimp.tscn")]
+var slop = load("res://art/Item/Slop.PNG")
 var dropImages = [
 					[	
 						load("res://art/Item/Apple_Slices.png"), 
 						load("res://art/Item/Dried_Apples.png"),
+						load("res://art/Item/Cubed_Apple.png"), 
+						load("res://art/Item/Applesauce.png")
 					],
 					[	
 						load("res://art/Item/Lettuce_Leaf.PNG"), 
-						load("res://art/Item/Slop.PNG"),
+						slop,
+						load("res://art/Item/Diced_Lettuce.png"), 
+						slop
 					],
 					[	
 						load("res://art/Item/Tomato_Slice.PNG"), 
-						load("res://art/Item/Slop.PNG"),
+						slop,
+						load("res://art/Item/Diced_Tomato.png"), 
+						load("res://art/Item/Ketchup.png")
 					],
 					[	
 						load("res://art/Item/Cheese_Slice.PNG"), 
 						load("res://art/Item/Melted_Cheese.PNG"),
+						load("res://art/Item/String_Cheese.png"), 
+						slop,
 					],
 					[	
 						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Sliced_Beef.PNG"),
+						load("res://art/Item/Cubed_Beef.png"), 
+						load("res://art/Item/Ground_Beef.png")
 					],
 					[	
 						load("res://art/Item/Bread.PNG"), 
 						load("res://art/Item/Toast.PNG"),
+						load("res://art/Item/Crutons.png"), 
+						load("res://art/Item/Naan.png")
 					],
 					[	
-						load("res://art/Item/Slop.PNG"), 
+						slop,
 						load("res://art/Item/Fried_Shrimp.PNG"),
+						slop,
+						slop
 					]
 				] # first index is ingredient, second is preparation
+
 
 # things we need to respawn
 var plate = load("res://Scenes/Item/Plate.tscn")
@@ -57,6 +73,22 @@ func _ready() -> void:
 	generate_order()
 	generate_order()
 	
+	$Bin1.set_spawn(load("res://Scenes/Character/Apple.tscn"))
+	$Bin2.set_spawn(load("res://Scenes/Character/Beef.tscn"))
+	$Bin3.set_spawn(load("res://Scenes/Character/Bread.tscn"))
+	$Bin4.set_spawn(load("res://Scenes/Character/Cheese.tscn"))
+	$Bin5.set_spawn(load("res://Scenes/Character/Lettuce.tscn"))
+	$Bin6.set_spawn(load("res://Scenes/Character/Shrimp.tscn"))
+	$Bin7.set_spawn(load("res://Scenes/Character/Tomato.tscn"))
+	
+	$Bin1.set_sprite(load("res://art/Terrain/Apple_Crate.png"))
+	$Bin2.set_sprite(load("res://art/Terrain/Meat_Crate.png"))
+	$Bin3.set_sprite(load("res://art/Terrain/Bread_Crate.png"))
+	$Bin4.set_sprite(load("res://art/Terrain/Cheese_Crate.png"))
+	$Bin5.set_sprite(load("res://art/Terrain/Lettuce_Crate.png"))
+	$Bin6.set_sprite(load("res://art/Terrain/Shrimp_Crate.png"))
+	$Bin7.set_sprite(load("res://art/Terrain/Tomato_Crate.png"))
+	
 func _process(delta: float) -> void:
 	$Score.text = "$"+str(score)
 
@@ -69,10 +101,17 @@ func generate_order():
 	# decide what order is
 	var orderStack = []
 	for i in range(randi_range(minOrderSteps,maxOrderSteps)):
-		var ingredientIndex = randi_range(0, len(ingredientsLabels)-1)
-		var ingredient = ingredientsLabels[ingredientIndex]
-		var preparationIndex = randi_range(0, len(preparationsLabels)-1)
-		var preparation = preparationsLabels[preparationIndex]
+		var processed = slop
+		var ingredient = ""
+		var preparation = ""
+		var ingredientIndex = -1
+		var preparationIndex = -1
+		while processed == slop:
+			ingredientIndex = randi_range(0, len(ingredientsLabels)-1)
+			ingredient = ingredientsLabels[ingredientIndex]
+			preparationIndex = randi_range(0, len(preparationsLabels)-1)
+			preparation = preparationsLabels[preparationIndex]
+			processed = get_drop_image([ingredient, preparation])
 		orderStack.append([ingredient,preparation])
 		
 		# display item on order display
@@ -90,15 +129,18 @@ func generate_order():
 func _on_order_cooldown_timeout() -> void:
 	generate_order()
 
-func remove_order(order):
+func remove_order(order: Node2D):
 	var id = -1
 	# get order from list
 	for i in range(len(currentOrders)):
-		if currentOrders[i][0] == order[0]:
+		print(currentOrders[i][0])
+		print(order)
+		if currentOrders[i][0] == order:
 			id = i
+			break
 	if (id >= 0):
 		currentOrders.remove_at(id)
-		order[0].queue_free()
+		order.queue_free()
 		# iterate through subsequent orders and shift them over
 		for i in range(id, len(currentOrders)):
 			currentOrders[i][0].position.x = -570*2+150 + orderSeparation * i
@@ -107,8 +149,6 @@ func serve(order):
 	var id = -1
 	var label = order.get_label()
 	# get order from list
-	#print(currentOrders)
-	#print(label)
 	for i in range(len(currentOrders)):
 		if currentOrders[i][1] == label:
 			id = i
@@ -117,7 +157,7 @@ func serve(order):
 		return false # return failure, no orders matched the delivered item
 	else:
 		score += currentOrders[id][0].get_reward()
-		remove_order(currentOrders[id])
+		remove_order(currentOrders[id][0])
 		order.delete()
 		
 		var plateCount = 0

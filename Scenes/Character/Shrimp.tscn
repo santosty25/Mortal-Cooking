@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgmon21g1uqrb"]
+
+[ext_resource type="Script" path="res://Code/Character/Shrimp.gd" id="1_y71gf"]
+[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_6v700"]
+[ext_resource type="Texture2D" uid="uid://bj5uji7ystule" path="res://art/Character/Enemies/Apple/Apple.png" id="3_6tppa"]
+[ext_resource type="Texture2D" uid="uid://b6xxps3jcnwwd" path="res://art/Character/Enemies/Apple/Apple_Attack.png" id="4_s6v4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
+radius = 120.046
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db0wn"]
+atlas = ExtResource("3_6tppa")
+region = Rect2(0, 0, 380, 380)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db0wn")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_s6v4y")
+}],
+"loop": false,
+"name": &"Windup",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djehj"]
+radius = 120.0
+
+[node name="Shrimp" type="CharacterBody2D"]
+position = Vector2(577, 327)
+scale = Vector2(0.3, 0.3)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_y71gf")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pd45i")
+
+[node name="HitEffect" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-160, -6.66663)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_6v700")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.174533
+sprite_frames = SubResource("SpriteFrames_c40pp")
+animation = &"Windup"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.05176e-05, -3.67165e-05)
+shape = SubResource("CircleShape2D_djehj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bv2q2xsfi75k8"]
 
 [ext_resource type="Script" path="res://Code/Terrain/Apple_Bin.gd" id="1_wadha"]
-[ext_resource type="Texture2D" uid="uid://d2nnk0lf6v80k" path="res://art/Terrain/AppleBin.png" id="1_xgxv0"]
+[ext_resource type="Texture2D" uid="uid://4tgn6fcwnejq" path="res://art/Terrain/Apple_Crate.png" id="2_ifqt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iugxj"]
-size = Vector2(179.688, 156.938)
+size = Vector2(141, 176)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 12
@@ -13,9 +13,9 @@ script = ExtResource("1_wadha")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, 3)
-scale = Vector2(3.99219, 3.93555)
-texture = ExtResource("1_xgxv0")
+scale = Vector2(0.3, 0.296)
+texture = ExtResource("2_ifqt1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
+position = Vector2(3.5, -3)
 shape = SubResource("RectangleShape2D_iugxj")

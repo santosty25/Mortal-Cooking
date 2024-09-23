@@ -27,22 +27,22 @@ scale = Vector2(8.84375, 4.88281)
 texture = ExtResource("2_uti5l")
 
 [node name="Table" parent="." instance=ExtResource("3_dryq0")]
-position = Vector2(-502, -176)
+position = Vector2(-360, -118)
 scale = Vector2(0.7, 0.7)
 collision_mask = 4
 
 [node name="Table2" parent="." instance=ExtResource("3_dryq0")]
-position = Vector2(-508, 299)
+position = Vector2(-366, 202)
 scale = Vector2(0.7, 0.7)
 collision_mask = 4
 
 [node name="Table3" parent="." instance=ExtResource("3_dryq0")]
-position = Vector2(500, -168)
+position = Vector2(358, -114)
 scale = Vector2(0.7, 0.7)
 collision_mask = 4
 
 [node name="Table4" parent="." instance=ExtResource("3_dryq0")]
-position = Vector2(483, 291)
+position = Vector2(364, 199)
 scale = Vector2(0.7, 0.7)
 collision_mask = 4
 
@@ -81,16 +81,16 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource("2_cqwo3")]
 
 [node name="Plate" parent="." instance=ExtResource("4_oynte")]
-position = Vector2(481, 265)
+position = Vector2(362, 173)
 
 [node name="Plate2" parent="." instance=ExtResource("4_oynte")]
-position = Vector2(-509, -205)
+position = Vector2(-367, -147)
 
 [node name="Plate3" parent="." instance=ExtResource("4_oynte")]
-position = Vector2(497, -195)
+position = Vector2(355, -141)
 
 [node name="Plate4" parent="." instance=ExtResource("4_oynte")]
-position = Vector2(-506, 269)
+position = Vector2(-364, 172)
 
 [node name="Score" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -107,11 +107,8 @@ horizontal_alignment = 2
 stream = ExtResource("6_kwsm0")
 autoplay = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("11_vr6yn")]
-position = Vector2(961, 21)
-
 [node name="Flamethrower" parent="." instance=ExtResource("10_bw7d8")]
-position = Vector2(-857, 39)
+position = Vector2(-980, 214)
 scale = Vector2(0.3, 0.3)
 
 [node name="Halberd" parent="." instance=ExtResource("11_wthf2")]
@@ -126,5 +123,26 @@ offset_bottom = 598.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("12_nvve6")
+
+[node name="Bin1" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(1037, 530)
+
+[node name="Bin2" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(1043, 224)
+
+[node name="Bin3" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(218, 548)
+
+[node name="Bin4" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(1043, -91)
+
+[node name="Bin5" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(-217, 541)
+
+[node name="Bin6" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(1040, -392)
+
+[node name="Bin7" parent="." instance=ExtResource("11_vr6yn")]
+position = Vector2(634, 543)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

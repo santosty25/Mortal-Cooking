@@ -94,8 +94,8 @@ func interact():
 		for body in search:
 			if body == heldItem:
 				continue
-			elif body is Plate|| body is Weapon:
-				if target && (target.position-position).length() > (body.position-position).length():
+			elif body is Plate|| body is Weapon || body is Bin || body is Enemy_Drop:
+				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
 					target = body
 				elif !target:
 					target = body
@@ -115,6 +115,8 @@ func interact():
 			elif target is Weapon:
 				drop_item(heldItem)
 				equip_item(target)
+			elif target is Bin:
+				target.spawn_enemy()
 			else:
 				drop_item(heldItem)
 		else:
@@ -124,12 +126,12 @@ func interact():
 			if body == heldItem:
 				continue
 			elif body is Enemy_Drop || body is Plate || body is Weapon:
-				if target && (target.position-position).length() > (body.position-position).length():
+				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
 					target = body
 				elif !target:
 					target = body
 			elif body is Bin && (not target || not (target is Enemy_Drop || target is Plate)): # less important than plates or drops
-				if target && (target.position-position).length() > (body.position-position).length():
+				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
 					target = body
 				elif !target:
 					target = body
@@ -147,9 +149,9 @@ func get_held_item():
 
 func drop_item(item: Node2D):
 	if animator.get_direction():
-		heldItem.position = position+Vector2(-160,30)
+		heldItem.global_position = global_position
 	else:
-		heldItem.position = position+Vector2(160,30)
+		heldItem.global_position = global_position
 	heldItem = null
 	animator.drop_item(item)
 

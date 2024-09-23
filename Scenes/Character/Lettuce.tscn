@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://pokrdgsafsix"]
+
+[ext_resource type="Script" path="res://Code/Character/Lettuce.gd" id="1_ew4fo"]
+[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="1_iiv7j"]
+[ext_resource type="Texture2D" uid="uid://cqshwvc7no611" path="res://icon.svg" id="2_yhgad"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvm70"]
+radius = 27.074
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bc02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yhgad")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Lettuce" type="CharacterBody2D"]
+position = Vector2(272, 107)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_ew4fo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rvm70")
+
+[node name="HitEffect" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-21, -13)
+scale = Vector2(0.101316, 0.0842105)
+texture = ExtResource("1_iiv7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.93391e-06, 0)
+scale = Vector2(0.328125, 0.320313)
+sprite_frames = SubResource("SpriteFrames_3bc02")
+animation = &"Idle"

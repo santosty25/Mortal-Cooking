@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://da6o081751gsn"]
+
+[ext_resource type="Texture2D" uid="uid://cqshwvc7no611" path="res://icon.svg" id="1_bnd72"]
+[ext_resource type="Script" path="res://Code/Effects/LettuceProjectile.gd" id="1_lyixf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ytvn"]
+radius = 28.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syv0n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bnd72")
+}],
+"loop": true,
+"name": &"Projectile",
+"speed": 5.0
+}]
+
+[node name="LettuceProjectile" type="Area2D"]
+position = Vector2(228, 190)
+script = ExtResource("1_lyixf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ytvn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.999993, 0)
+scale = Vector2(0.34375, 0.289063)
+sprite_frames = SubResource("SpriteFrames_syv0n")
+animation = &"Projectile"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

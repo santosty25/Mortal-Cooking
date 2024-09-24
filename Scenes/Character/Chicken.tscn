@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://tqlkiogeboe7"]
+
+[ext_resource type="Script" path="res://Scenes/Character/Chicken.gd" id="1_sloy8"]
+[ext_resource type="Texture2D" uid="uid://d340lqpyx248l" path="res://art/Character/Enemies/Chicken/Chicken_Sprite_Sheet_Black.png" id="2_8g0bg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4d50"]
+radius = 29.0
+height = 62.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx3aq"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j375b"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj17y"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wrnf"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab8ea"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1evm"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6loy"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xq3b"]
+atlas = ExtResource("2_8g0bg")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_usq8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx3aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j375b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj17y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wrnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab8ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1evm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6loy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xq3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chicken" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_sloy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 4
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_q4d50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1.5)
+scale = Vector2(2.125, 2.21875)
+sprite_frames = SubResource("SpriteFrames_usq8o")

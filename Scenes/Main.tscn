@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=17 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Meta/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -11,14 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
 [ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
 [ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="12_nvve6"]
-[ext_resource type="PackedScene" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
-[ext_resource type="PackedScene" path="res://Scenes/Item/Tennis_Racket.tscn" id="13_08jg8"]
+[ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
+[ext_resource type="PackedScene" uid="uid://bjhhtm84bi61f" path="res://Scenes/Item/Tennis_Racket.tscn" id="13_08jg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af8gu"]
 size = Vector2(20, 667)
+
+[sub_resource type="Curve2D" id="Curve2D_upqdr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1130, 627, 0, 0, 0, 0, 1135, 639, 0, 0, 0, 0, 1135, -608, 0, 0, 0, 0, -1133, -621, 0, 0, 0, 0, -1133, 617)
+}
+point_count = 5
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_144we")
@@ -154,5 +160,13 @@ scale = Vector2(0.3, 0.3)
 [node name="Tennis_Racket" parent="." instance=ExtResource("13_08jg8")]
 position = Vector2(-614, -202)
 scale = Vector2(0.3, 0.3)
+
+[node name="Path2D" type="Path2D" parent="."]
+scale = Vector2(0.1, 0.1)
+curve = SubResource("Curve2D_upqdr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-1130, 627)
+rotation = 0.00529796
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

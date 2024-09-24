@@ -54,6 +54,8 @@ var dropImages = [
 
 # things we need to respawn
 var plate = load("res://Scenes/Item/Plate.tscn")
+var chicken = load("res://Scenes/Character/Chicken.tscn")
+var chickenSpawn
 
 # for creating order icons on screen
 var dropNode = load("res://Scenes/Item/Enemy_Drop.tscn")
@@ -72,6 +74,9 @@ var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingr
 func _ready() -> void:
 	generate_order()
 	generate_order()
+	
+	chickenSpawn = $Path2D/PathFollow2D
+	spawn_chicken()
 	
 	$Bin1.set_spawn(load("res://Scenes/Character/Apple.tscn"))
 	$Bin2.set_spawn(load("res://Scenes/Character/Beef.tscn"))
@@ -187,3 +192,12 @@ func get_drop_image(label: Array):
 	if !x || !y:
 		print("invalid label: "+str(label))
 	return dropImages[x][y]
+	
+func spawn_chicken():
+	var chick = chicken.instantiate()
+	chickenSpawn.progress_ratio = randf()
+	add_child(chick)
+	chick.position = chickenSpawn.position
+	
+	chickenSpawn.progress_ratio = randf()
+	chick.move(chickenSpawn.position)

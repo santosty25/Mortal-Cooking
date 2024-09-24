@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://da6o081751gsn"]
 
-[ext_resource type="Texture2D" uid="uid://cqshwvc7no611" path="res://icon.svg" id="1_bnd72"]
 [ext_resource type="Script" path="res://Code/Effects/LettuceProjectile.gd" id="1_lyixf"]
+[ext_resource type="Texture2D" uid="uid://blcur4gmbnf8k" path="res://art/Effects/LettuceLeaf.png" id="2_kgb70"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ytvn"]
 radius = 28.0
@@ -10,7 +10,7 @@ radius = 28.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bnd72")
+"texture": ExtResource("2_kgb70")
 }],
 "loop": true,
 "name": &"Projectile",
@@ -26,7 +26,7 @@ shape = SubResource("CircleShape2D_6ytvn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.999993, 0)
-scale = Vector2(0.34375, 0.289063)
+scale = Vector2(4, 3.36)
 sprite_frames = SubResource("SpriteFrames_syv0n")
 animation = &"Projectile"
 

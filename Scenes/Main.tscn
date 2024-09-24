@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=16 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Meta/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="11_vr6yn"]
 [ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
 [ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="12_nvve6"]
+[ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
+[ext_resource type="PackedScene" uid="uid://bjhhtm84bi61f" path="res://Scenes/Item/Tennis_Racket.tscn" id="13_08jg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -144,5 +146,13 @@ position = Vector2(1040, -392)
 
 [node name="Bin7" parent="." instance=ExtResource("11_vr6yn")]
 position = Vector2(634, 543)
+
+[node name="Squeaky_Hammer" parent="." instance=ExtResource("12_qoas2")]
+position = Vector2(-683, 447)
+scale = Vector2(0.3, 0.3)
+
+[node name="Tennis_Racket" parent="." instance=ExtResource("13_08jg8")]
+position = Vector2(-614, -202)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

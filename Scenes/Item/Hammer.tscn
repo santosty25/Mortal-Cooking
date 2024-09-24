@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc4hgmuxper8v"]
+
+[ext_resource type="Script" path="res://Code/Item/Hammer.gd" id="1_ielh3"]
+[ext_resource type="Texture2D" uid="uid://djtas857iyl2i" path="res://art/Weapons/squeaky_hammer.png" id="2_jahfm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40yj6"]
+size = Vector2(78, 461)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6j1f2"]
+radius = 500.0
+
+[node name="Squeaky_Hammer" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ielh3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-44, 80)
+texture = ExtResource("2_jahfm")
+offset = Vector2(57, -218.667)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -106.5)
+shape = SubResource("RectangleShape2D_40yj6")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(2, -381)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Area" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_6j1f2")
+
+[node name="Radius" type="Node2D" parent="."]
+position = Vector2(604, -447)

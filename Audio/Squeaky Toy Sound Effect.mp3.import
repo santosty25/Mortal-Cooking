@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://deqrgv4swa4io"
+path="res://.godot/imported/Squeaky Toy Sound Effect.mp3-f3a04332535e18e9f0dc476bfc58dbfb.mp3str"
+
+[deps]
+
+source_file="res://Audio/Squeaky Toy Sound Effect.mp3"
+dest_files=["res://.godot/imported/Squeaky Toy Sound Effect.mp3-f3a04332535e18e9f0dc476bfc58dbfb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

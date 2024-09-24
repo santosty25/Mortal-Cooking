@@ -9,6 +9,7 @@ var swingSpeed = 10
 var maxDamage = 3
 var knockback = 10
 var windupPercent = 0
+var playedSound = true
 
 var attackPressed = false
 
@@ -26,7 +27,11 @@ func _process(delta: float) -> void:
 			windupPercent = windupCounter/windupMax
 			animator.set_arm_rotation(true, windupAngle*sin(windupCounter/windupMax*PI/2))
 			attackPressed = false
+			playedSound = false
 		else:
+			if !playedSound:
+				$HitSound.play()
+				playedSound = true
 			if (windupCounter > 0):
 				swinging = true
 				windupCounter -= delta*swingSpeed

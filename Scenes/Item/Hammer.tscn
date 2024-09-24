@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc4hgmuxper8v"]
+[gd_scene load_steps=6 format=3 uid="uid://bc4hgmuxper8v"]
 
 [ext_resource type="Script" path="res://Code/Item/Hammer.gd" id="1_ielh3"]
 [ext_resource type="Texture2D" uid="uid://djtas857iyl2i" path="res://art/Weapons/squeaky_hammer.png" id="2_jahfm"]
+[ext_resource type="AudioStream" uid="uid://deqrgv4swa4io" path="res://Audio/Squeaky Toy Sound Effect.mp3" id="3_lyxd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40yj6"]
 size = Vector2(78, 461)
@@ -33,3 +34,6 @@ shape = SubResource("CircleShape2D_6j1f2")
 
 [node name="Radius" type="Node2D" parent="."]
 position = Vector2(604, -447)
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lyxd2")

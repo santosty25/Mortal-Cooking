@@ -45,9 +45,9 @@ func _process(delta):
 				$AnimatedSprite2D.rotation_degrees = 10
 
 			if direction.x < 0:
-				scale.x = 0.3
+				scale.x = abs(scale.x)
 			elif direction.x > 0:
-				scale.x = -0.3
+				scale.x = -abs(scale.x)
 
 			if (direction * delta).length() > (target - position).length():
 				move_and_collide(target - position)

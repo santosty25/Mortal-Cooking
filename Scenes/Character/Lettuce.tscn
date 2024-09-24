@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [node name="Lettuce" type="CharacterBody2D"]
-position = Vector2(272, 107)
+scale = Vector2(2.5, 2.5)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_ew4fo")

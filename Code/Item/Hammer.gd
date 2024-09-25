@@ -64,6 +64,7 @@ func swing():
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
+		$HitSound.play()
 		body.take_damage(damage, label)
 		if returning:
 			body.knockback(movement.normalized().rotated(PI)*knockback)

@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 						var max_r = ($Radius.global_position-$Hurtbox/Area.global_position).length()
 						var distMult = max(0, 1-r/max_r)
 						deal_damage(body, maxDamage*windupPercent*distMult)
+						body.knockback((body.position-$Hurtbox.global_position).normalized()*knockback)
 				swinging = false
 				animator.set_animation("attack_idle")
 				windupCounter = 0

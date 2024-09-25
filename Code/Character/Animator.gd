@@ -21,6 +21,7 @@ var arm_idle = true
 @onready var right_leg = $"Leg_R"
 @onready var body_group = $"Body"
 @onready var head_group = $"Body/Head"
+@onready var bgMusic : AudioStreamPlayer = $"../../jazzBackground"
 
 # animation vars
 var leg_rotation_max = 45
@@ -236,6 +237,14 @@ func equip_item(item: Node2D):
 	else:
 		item.scale.y = abs(item.scale.y)
 	item.reparent(player)
+	var mgMusic = load("res://Audio/MGR.mp3")
+	var regular = load("res://Audio/JazzBackground.mp3")
+	if item is Murasma && bgMusic.stream == regular:
+		bgMusic.stream = mgMusic
+		bgMusic.play()
+	elif bgMusic.stream == mgMusic:
+		bgMusic.stream = regular
+		bgMusic.play()
 	
 func drop_item(item: Node2D):
 	set_animation("hand_empty")
@@ -243,6 +252,10 @@ func drop_item(item: Node2D):
 	if item is Melee_Weapon:
 		item.animator = null
 	holding_item = false
+	var regMusic = load("res://Audio/JazzBackground.mp3")
+	if bgMusic.stream != regMusic:
+		bgMusic.stream = regMusic
+		bgMusic.play()
 
 # returns whether or not we're facing right
 func get_direction():

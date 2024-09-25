@@ -38,5 +38,6 @@ position = Vector2(604, -447)
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_lyxd2")
+max_polyphony = 20
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

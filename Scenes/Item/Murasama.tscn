@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://naskr7a4axx8"]
+
+[ext_resource type="Script" path="res://Code/Item/Murasama.gd" id="1_uihuu"]
+[ext_resource type="Texture2D" uid="uid://42l8pqsstpvu" path="res://art/Weapons/murasama_sheathed.png" id="2_hqbgq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40yj6"]
+size = Vector2(814, 106)
+
+[node name="Murasama" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_uihuu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-298, 252)
+texture = ExtResource("2_hqbgq")
+offset = Vector2(57, -218.667)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-216, 5)
+shape = SubResource("RectangleShape2D_40yj6")

@@ -25,6 +25,7 @@ var dashTime = 0.01
 var dashTimer = 0
 const speed = 300.0
 const attackSlowdown = 2
+var canMove = true
 
 # other important variables
 var heldItem = null
@@ -82,10 +83,17 @@ func _process(delta):
 	else:
 		animator.face(direction)
 		
-	move_and_collide(direction*speed*delta*multiplier)
+	if canMove:
+		move_and_collide(direction*speed*delta*multiplier)
 
 func _on_dash_cooldown_timeout():
 	canDash = true
+
+func freeze():
+	canMove = false
+
+func unfreeze():
+	canMove = true
 
 func interact():
 	var target = null

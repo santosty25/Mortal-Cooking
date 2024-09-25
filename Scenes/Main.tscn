@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_wthf2"]
 [ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="12_nvve6"]
 [ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
-[ext_resource type="PackedScene" uid="uid://bjhhtm84bi61f" path="res://Scenes/Item/Tennis_Racket.tscn" id="13_08jg8"]
+[ext_resource type="PackedScene" uid="uid://naskr7a4axx8" path="res://Scenes/Item/Murasama.tscn" id="13_co8ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -106,6 +106,7 @@ shape = SubResource("RectangleShape2D_af8gu")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -1)
+ignore_rotation = false
 zoom = Vector2(0.5, 0.5)
 
 [node name="OrderCooldown" type="Timer" parent="."]
@@ -187,10 +188,6 @@ position = Vector2(729, 543)
 position = Vector2(-645, -258)
 scale = Vector2(0.3, 0.3)
 
-[node name="Tennis_Racket" parent="." instance=ExtResource("13_08jg8")]
-position = Vector2(918, 132)
-scale = Vector2(0.3, 0.3)
-
 [node name="Path2D" type="Path2D" parent="."]
 scale = Vector2(0.1, 0.1)
 curve = SubResource("Curve2D_upqdr")
@@ -198,5 +195,9 @@ curve = SubResource("Curve2D_upqdr")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(-1130, 627)
 rotation = 0.00529796
+
+[node name="Murasama" parent="." instance=ExtResource("13_co8ud")]
+position = Vector2(873, 99)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

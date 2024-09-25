@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://tqlkiogeboe7"]
 
-[ext_resource type="Script" path="res://Scenes/Character/Chicken.gd" id="1_sloy8"]
+[ext_resource type="Script" path="res://Code/Character/Chicken.gd" id="1_sloy8"]
 [ext_resource type="Texture2D" uid="uid://d340lqpyx248l" path="res://art/Character/Enemies/Chicken/Chicken_Sprite_Sheet_Black.png" id="2_8g0bg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4d50"]

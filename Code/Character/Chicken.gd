@@ -1,4 +1,4 @@
-extends Enemy
+extends Entity
 class_name Chicken
 
 

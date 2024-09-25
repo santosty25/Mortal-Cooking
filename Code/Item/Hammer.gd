@@ -1,57 +1,71 @@
 extends Melee_Weapon
 class_name Hammer
 
-var windupAngle = 135
-var windupMax = 0.6
-var windupCounter = 0
-var swinging = false
-var swingSpeed = 10
-var maxDamage = 3
-var knockback = 10
-var windupPercent = 0
+var damage = 0.3
+var isThrown = false
+var throwPressed = false
 var playedSound = true
 
-var attackPressed = false
+var initial_velocity = Vector2(6000, 0)
+var movement = Vector2.ZERO
+var pos = Vector2.ZERO
+var pull = 140
+var spinSpeed = 20
+var distDelta = 0
+var returning = false
+var deadzone = 0.1
+var throwDelta = 0
+var rot = 0
+var knockback = 30
 
 func _ready():
 	label = "flattened"
 
 func _process(delta: float) -> void:
 	if (animator):
-		if (attackPressed && !swinging):
-			animator.set_animation("attack_charge")
-			if windupCounter < windupMax:
-				windupCounter += delta
+		if throwPressed && !isThrown:
+			animator.set_animation("hold_item")
+			var aim = animator.get_aim_direction()
+			if animator.flipped:
+				initial_velocity.x = -abs(initial_velocity.x)
 			else:
-				windupCounter = windupMax
-			windupPercent = windupCounter/windupMax
-			animator.set_arm_rotation(true, windupAngle*sin(windupCounter/windupMax*PI/2))
-			attackPressed = false
-			playedSound = false
+				initial_velocity.x = abs(initial_velocity.x)
+			movement = initial_velocity.rotated(aim.angle())
+			if(aim.x < 0):
+				movement = movement.rotated(PI)
+			throwPressed = false
+			isThrown = true
+			pos = global_position
+			distDelta = 0
+			returning = false
+			throwDelta = 0
+		elif isThrown:
+			animator.set_animation("hold_item")
+			global_rotation = rot
+			rot += PI*spinSpeed/180
+			global_position = pos
+			var playerVect = pos-animator.player.global_position
+			distDelta = playerVect.length()
+			movement -= pull*(playerVect).normalized()
+			pos += movement*delta
+			playerVect = pos-animator.player.global_position
+			distDelta = playerVect.length()-distDelta
+			if distDelta > 0 and returning:
+				isThrown = false
+				throwPressed = false
+			elif distDelta < 0 && throwDelta > deadzone:
+				returning = true
+			throwDelta += delta
 		else:
-			if !playedSound:
-				$HitSound.play()
-				playedSound = true
-			if (windupCounter > 0):
-				swinging = true
-				windupCounter -= delta*swingSpeed
-				animator.set_arm_rotation(true, windupAngle*sin(windupCounter/windupMax*PI/2))
-			elif windupPercent > 0:
-				for body in $Hurtbox.get_overlapping_bodies():
-					if body is Enemy:
-						var r = (body.global_position-$Hurtbox.global_position).length()
-						var max_r = ($Radius.global_position-$Hurtbox/Area.global_position).length()
-						var distMult = max(0, 1-r/max_r)
-						deal_damage(body, maxDamage*windupPercent*distMult)
-				swinging = false
-				animator.set_animation("attack_idle")
-				windupCounter = 0
-				windupPercent = 0
-			else:
-				swinging = false
-				animator.set_animation("attack_idle")
-				windupCounter = 0
-				windupPercent = 0
+			animator.set_animation("attack_idle")
 
 func swing():
-	attackPressed = true
+	throwPressed = true
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.take_damage(damage, label)
+		if returning:
+			body.knockback(movement.normalized().rotated(PI)*knockback)
+		else:
+			body.knockback(movement.normalized()*knockback)

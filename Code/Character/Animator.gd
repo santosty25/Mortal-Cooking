@@ -247,3 +247,8 @@ func drop_item(item: Node2D):
 # returns whether or not we're facing right
 func get_direction():
 	return flipped
+	
+func get_aim_direction() -> Vector2:
+	var mouse = get_global_mouse_position()
+	var pos = player.global_position
+	return mouse-pos

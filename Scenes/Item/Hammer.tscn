@@ -8,7 +8,7 @@
 size = Vector2(78, 461)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6j1f2"]
-radius = 500.0
+radius = 219.009
 
 [node name="Squeaky_Hammer" type="CharacterBody2D"]
 collision_layer = 8
@@ -30,6 +30,7 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="Area" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 210)
 shape = SubResource("CircleShape2D_6j1f2")
 
 [node name="Radius" type="Node2D" parent="."]
@@ -37,3 +38,5 @@ position = Vector2(604, -447)
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_lyxd2")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

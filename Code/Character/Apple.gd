@@ -18,12 +18,14 @@ var player
 func _ready():
 	player = get_parent().get_node("Player")
 	label = "apple"
+	sprite = $AnimatedSprite2D
 	
 	# overrides
 	maxHealth = 3
 	health = maxHealth
 
 func _process(delta):
+	super._process(delta)
 	if player:
 		# Set target to player's position
 		target = player.position
@@ -51,7 +53,6 @@ func _process(delta):
 				move_and_collide(direction * delta)
 		else:
 			$AnimatedSprite2D.rotation = 0
-	var bodies = $Area2D.get_overlapping_bodies()
 
 func _physics_process(delta):
 	attack -= delta

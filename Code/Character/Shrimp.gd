@@ -18,12 +18,14 @@ var player
 func _ready():
 	player = get_parent().get_node("Player")
 	label = "shrimp"
+	sprite = $AnimatedSprite2D
 	
 	# overrides
 	maxHealth = 3
 	health = maxHealth
 
 func _process(delta):
+	super._process(delta)
 	if player:
 		# Set target to player's position
 		target = player.position

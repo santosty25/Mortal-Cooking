@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buomsh55u40ur"
-path="res://.godot/imported/IMG_5152.PNG-cf5db2066a076567b74af764ce07d11f.ctex"
+uid="uid://2maxbi76hure"
+path="res://.godot/imported/murasama_slash.png-116e9234162dc0d5f3ad739d8e38b9eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Weapons/IMG_5152.PNG"
-dest_files=["res://.godot/imported/IMG_5152.PNG-cf5db2066a076567b74af764ce07d11f.ctex"]
+source_file="res://art/Effects/murasama_slash.png"
+dest_files=["res://.godot/imported/murasama_slash.png-116e9234162dc0d5f3ad739d8e38b9eb.ctex"]
 
 [params]
 

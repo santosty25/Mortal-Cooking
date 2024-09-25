@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6daxihnipeqs"
-path="res://.godot/imported/IMG_5154.PNG-3bb4dac4f31513d3a1b979023889d064.ctex"
+uid="uid://42l8pqsstpvu"
+path="res://.godot/imported/murasama_sheathed.png-2ed42ca2e9260df7160854c9f8b67633.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Weapons/IMG_5154.PNG"
-dest_files=["res://.godot/imported/IMG_5154.PNG-3bb4dac4f31513d3a1b979023889d064.ctex"]
+source_file="res://art/Weapons/murasama_sheathed.png"
+dest_files=["res://.godot/imported/murasama_sheathed.png-2ed42ca2e9260df7160854c9f8b67633.ctex"]
 
 [params]
 

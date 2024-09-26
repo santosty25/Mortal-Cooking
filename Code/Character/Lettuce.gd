@@ -15,9 +15,11 @@ var flipTimer = 0
 var attack = 0
 var shootTimer = SHOOT_TIME # timer for projectile
 
+@onready var gunShot = $AudioStreamPlayer2D
 # reference to the player
 var player
 var projectile_scene : PackedScene = preload("res://Scenes/Effects/LettuceProjectile.tscn")
+
 
 func _ready():
 	player = get_parent().get_node("Player")
@@ -80,6 +82,7 @@ func shoot_at_player():
 	if player:
 		# Ensure the projectile_scene is valid and create an instance
 		if projectile_scene:
+			gunShot.play()
 			var projectile = projectile_scene.instantiate()  # Use instantiate() instead of instance()
 			get_parent().add_child(projectile)
 			

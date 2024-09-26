@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://pokrdgsafsix"]
+[gd_scene load_steps=7 format=3 uid="uid://pokrdgsafsix"]
 
 [ext_resource type="Script" path="res://Code/Character/Lettuce.gd" id="1_ew4fo"]
 [ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="1_iiv7j"]
 [ext_resource type="Texture2D" uid="uid://cyw7bawefh3kl" path="res://art/Character/Enemies/Lettuce/Lettuce.png" id="4_mrg4j"]
+[ext_resource type="AudioStream" uid="uid://bpl723avg1yva" path="res://Audio/Heavy Sniper Sound Effect.mp3" id="4_yjbqt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvm70"]
 radius = 27.074
@@ -38,3 +39,7 @@ position = Vector2(6, 2.4)
 scale = Vector2(1.5, 1.464)
 sprite_frames = SubResource("SpriteFrames_3bc02")
 animation = &"Idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yjbqt")
+volume_db = 24.0

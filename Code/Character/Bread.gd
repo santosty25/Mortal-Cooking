@@ -15,6 +15,7 @@ var heal_amount = 0.5
 var heal_interval = 3.0
 var heal_timer = 0
 
+@onready var healSound = $AudioStreamPlayer2D 
 # reference to the player
 var player
 
@@ -74,6 +75,7 @@ func _physics_process(delta):
 
 func heal_nearby_enemies():
 	var bodies = $Area2D.get_overlapping_bodies()
+	healSound.play()
 	for body in bodies:
 		if body is Enemy and body != self:
 			body.heal(heal_amount)

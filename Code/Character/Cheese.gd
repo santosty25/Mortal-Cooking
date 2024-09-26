@@ -12,6 +12,8 @@ var flipTimerMax = 0.1
 var flipTimer = 0
 var attack = 0
 
+@onready var cheesin = $AudioStreamPlayer2D
+
 # reference to the player
 var player
 
@@ -88,6 +90,7 @@ func drop_melted_cheese():
 	
 	# add melted cheese to the scene
 	melted_cheese.position = position
+	cheesin.play()
 	get_parent().add_child(melted_cheese)
 	
 func get_label():

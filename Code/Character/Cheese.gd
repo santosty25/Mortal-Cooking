@@ -15,6 +15,12 @@ var attack = 0
 # reference to the player
 var player
 
+var meltedCheese = preload("res://Scenes/Effects/MeltedCheese.tscn")
+
+# timer for dropping melted cheese
+var drop_timer = 5.0
+var drop_interval = 5.0
+
 func _ready():
 	player = get_parent().get_node("Player")
 	label = "cheese"
@@ -53,6 +59,13 @@ func _process(delta):
 				move_and_collide(direction * delta)
 		else:
 			$AnimatedSprite2D.rotation = 0
+	
+	# Time for dropping cheese
+	drop_timer -= delta
+	if drop_timer <= 0:
+		drop_melted_cheese()
+		drop_timer = drop_interval # reset timer
+		
 	var bodies = $Area2D.get_overlapping_bodies()
 
 func _physics_process(delta):
@@ -70,5 +83,12 @@ func _on_area_2d_body_entered(body):
 		body.take_damage(1, "attack")
 	attack = 0.3
 
+func drop_melted_cheese():
+	var melted_cheese = meltedCheese.instantiate()
+	
+	# add melted cheese to the scene
+	melted_cheese.position = position
+	get_parent().add_child(melted_cheese)
+	
 func get_label():
 	return label

@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djehj"]
-radius = 120.0
+radius = 1126.69
 
 [node name="Bread" type="CharacterBody2D"]
 position = Vector2(577, 327)
@@ -57,9 +57,8 @@ animation = &"Windup"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
+collision_mask = 2
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3.05176e-05, -3.67165e-05)
 shape = SubResource("CircleShape2D_djehj")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

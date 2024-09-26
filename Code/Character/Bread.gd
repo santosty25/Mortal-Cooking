@@ -11,6 +11,9 @@ var minWait = 2
 var flipTimerMax = 0.1
 var flipTimer = 0
 var attack = 0
+var heal_amount = 0.5
+var heal_interval = 3.0
+var heal_timer = 0
 
 # reference to the player
 var player
@@ -53,7 +56,12 @@ func _process(delta):
 				move_and_collide(direction * delta)
 		else:
 			$AnimatedSprite2D.rotation = 0
-	var bodies = $Area2D.get_overlapping_bodies()
+	
+	# heal nearby enemies
+	heal_timer += delta
+	if heal_timer >= heal_interval:
+		heal_nearby_enemies()
+		heal_timer = 0
 
 func _physics_process(delta):
 	attack -= delta
@@ -64,11 +72,12 @@ func _physics_process(delta):
 	if attack < 0.1:
 		$HitEffect.hide()
 
-func _on_area_2d_body_entered(body):
-	$AnimatedSprite2D.play("Windup")
-	if body is Player:
-		body.take_damage(1, "attack")
-	attack = 0.3
-
+func heal_nearby_enemies():
+	var bodies = $Area2D.get_overlapping_bodies()
+	for body in bodies:
+		if body is Enemy and body != self:
+			body.heal(heal_amount)
+			print("Healing enemy:", body.name, "by", heal_amount, "Current health:", body.health)
+	
 func get_label():
 	return label

@@ -1,10 +1,10 @@
 extends Node2D
-class_name Order
+class_name OrderNux
 
 var order = null
 var timerPercent = 1
 var timerMax = 0
-var main: Main = null
+var main: Nux = null
 var tooltips = []
 var tooltipOffset = 100
 var tipsShown = false
@@ -36,7 +36,7 @@ func _on_timer_timeout() -> void:
 	player.take_damage(1, "Order Incomplete")
 	$"..".remove_order(self)
 
-func set_main(node: Main):
+func set_main(node: Nux):
 	main = node
 	
 

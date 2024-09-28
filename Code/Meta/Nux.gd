@@ -61,7 +61,7 @@ var chickenSpawn
 
 # for creating order icons on screen
 var dropNode = load("res://Scenes/Item/Enemy_Drop.tscn")
-var orderNode = load("res://Scenes/UI/Order.tscn")
+var orderNode = load("res://Scenes/UI/OrderNux.tscn")
 var orderSeparation = 250
 
 # vars for generating orders
@@ -133,7 +133,7 @@ func generate_order():
 			orderStack = [["beef","sliced"],["tomato", "flattened"]]
 	
 	# create order display
-	var orderDisplay: Order = orderNode.instantiate()
+	var orderDisplay: OrderNux = orderNode.instantiate()
 	orderDisplay.set_main(self)
 	orderDisplay.position = Vector2(-570*2+150 + orderSeparation * len(currentOrders),-320*2)
 	add_child(orderDisplay)

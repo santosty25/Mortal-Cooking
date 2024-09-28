@@ -61,7 +61,7 @@ var chickenSpawn
 
 # for creating order icons on screen
 var dropNode = load("res://Scenes/Item/Enemy_Drop.tscn")
-var orderNode = load("res://Scenes/UI/OrderNux.tscn")
+var orderNode = load("res://Scenes/UI/Order.tscn")
 var orderSeparation = 250
 
 # vars for generating orders

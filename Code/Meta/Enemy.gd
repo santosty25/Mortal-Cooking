@@ -28,6 +28,10 @@ func get_label():
 func knockback(direction: Vector2):
 	motion = direction
 	
+func heal(amount):
+	if health < maxHealth:
+		health += amount
+
 func _process(delta: float) -> void:
 	super._process(delta)
 	var collision_info = move_and_collide(motion)

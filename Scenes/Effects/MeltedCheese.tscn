@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgivh6wwrwbs"]
+[gd_scene load_steps=6 format=3 uid="uid://bch2bv4umcohq"]
 
 [ext_resource type="Script" path="res://Code/Effects/MeltedCheese.gd" id="1_3i1k6"]
 [ext_resource type="Texture2D" uid="uid://cqshwvc7no611" path="res://icon.svg" id="2_t7ahp"]

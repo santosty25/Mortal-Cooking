@@ -56,6 +56,7 @@ point_count = 5
 script = ExtResource("1_144we")
 
 [node name="KitchenFloor" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(9.42051e-05, 1.99995)
 scale = Vector2(8.84375, 4.88281)
 texture = ExtResource("2_uti5l")

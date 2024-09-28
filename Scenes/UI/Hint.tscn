@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://brdd4gelxuvrs"]
 
-[ext_resource type="Script" path="res://Scenes/UI/Hint.gd" id="1_sg5nf"]
+[ext_resource type="Script" path="res://Code/UI/Hint.gd" id="1_sg5nf"]
 [ext_resource type="Texture2D" uid="uid://d3chq603vgx" path="res://art/UI/description_box.png" id="1_viel5"]
 [ext_resource type="Texture2D" uid="uid://d3xwe2e8i7nix" path="res://art/Item/Apple_Slices.png" id="2_odrnq"]
 [ext_resource type="Texture2D" uid="uid://ddfoftyyl2ueh" path="res://art/UI/apple_icon.png" id="3_c6ya1"]

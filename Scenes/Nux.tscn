@@ -1,0 +1,181 @@
+[gd_scene load_steps=18 format=3 uid="uid://w4so3s5p0ysi"]
+
+[ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="1_mqxr2"]
+[ext_resource type="Script" path="res://Code/Meta/Nux.gd" id="1_p8me3"]
+[ext_resource type="PackedScene" uid="uid://yi3ebkw6k8b0" path="res://Scenes/Terrain/Table.tscn" id="2_py20j"]
+[ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="3_eooyq"]
+[ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="4_aov8p"]
+[ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="5_aj3tn"]
+[ext_resource type="AudioStream" uid="uid://c2u258shbqccu" path="res://Audio/JazzBackground.mp3" id="6_4hayu"]
+[ext_resource type="PackedScene" uid="uid://bmvkvlj77ae5j" path="res://Scenes/Item/Flamethrower.tscn" id="7_68rcv"]
+[ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="8_6m176"]
+[ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="9_gloju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ckv"]
+size = Vector2(1174.38, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mka7o"]
+size = Vector2(20, 667)
+
+[sub_resource type="SystemFont" id="SystemFont_ewjsb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw75h"]
+bg_color = Color(0.6, 0.6, 0.6, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thiao"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_nvqhe"]
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = SubResource("SystemFont_ewjsb")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_pw75h")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_thiao")
+
+[sub_resource type="Curve2D" id="Curve2D_siiof"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1130, 627, 0, 0, 0, 0, 1135, 639, 0, 0, 0, 0, 1135, -608, 0, 0, 0, 0, -1133, -621, 0, 0, 0, 0, -1133, 617)
+}
+point_count = 5
+
+[node name="Nux" type="Node2D"]
+script = ExtResource("1_p8me3")
+
+[node name="KitchenFloor" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(9.42051e-05, 1.99995)
+scale = Vector2(8.84375, 4.88281)
+texture = ExtResource("1_mqxr2")
+
+[node name="Table" parent="." instance=ExtResource("2_py20j")]
+position = Vector2(-360, -118)
+scale = Vector2(0.7, 0.7)
+collision_mask = 4
+
+[node name="Table2" parent="." instance=ExtResource("2_py20j")]
+position = Vector2(-366, 202)
+scale = Vector2(0.7, 0.7)
+collision_mask = 4
+
+[node name="Table3" parent="." instance=ExtResource("2_py20j")]
+position = Vector2(358, -114)
+scale = Vector2(0.7, 0.7)
+collision_mask = 4
+
+[node name="Table4" parent="." instance=ExtResource("2_py20j")]
+position = Vector2(364, 199)
+scale = Vector2(0.7, 0.7)
+collision_mask = 4
+
+[node name="Serving_Location" parent="." instance=ExtResource("3_eooyq")]
+position = Vector2(0, -475)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1.5, -322)
+shape = SubResource("RectangleShape2D_f8ckv")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1.375, 324)
+shape = SubResource("RectangleShape2D_f8ckv")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(577, -1)
+shape = SubResource("RectangleShape2D_mka7o")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-576, 0.5)
+shape = SubResource("RectangleShape2D_mka7o")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+ignore_rotation = false
+zoom = Vector2(0.5, 0.5)
+
+[node name="OrderCooldown" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("4_aov8p")]
+
+[node name="Plate" parent="." instance=ExtResource("5_aj3tn")]
+position = Vector2(362, 173)
+
+[node name="Plate2" parent="." instance=ExtResource("5_aj3tn")]
+position = Vector2(-367, -147)
+
+[node name="Plate3" parent="." instance=ExtResource("5_aj3tn")]
+position = Vector2(355, -141)
+
+[node name="Plate4" parent="." instance=ExtResource("5_aj3tn")]
+position = Vector2(-364, 172)
+
+[node name="Score" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 793.0
+offset_top = -618.0
+offset_right = 1128.0
+offset_bottom = -526.0
+theme_override_font_sizes/font_size = 80
+text = "$0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="jazzBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4hayu")
+autoplay = true
+
+[node name="Flamethrower" parent="." instance=ExtResource("7_68rcv")]
+position = Vector2(-971, 65)
+scale = Vector2(0.3, 0.3)
+
+[node name="Bin6" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(1040, 26)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 360.0
+offset_top = -607.0
+offset_right = 973.0
+offset_bottom = -513.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_nvqhe")
+show_percentage = false
+script = ExtResource("9_gloju")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 793.0
+offset_top = -618.0
+offset_right = 1128.0
+offset_bottom = -526.0
+theme_override_font_sizes/font_size = 80
+text = "$0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Path2D" type="Path2D" parent="."]
+scale = Vector2(0.1, 0.1)
+curve = SubResource("Curve2D_siiof")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-1130, 627)
+rotation = 0.00529796

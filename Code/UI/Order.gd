@@ -8,12 +8,14 @@ var main: Main = null
 var tooltips = []
 var tooltipOffset = 100
 var tipsShown = false
+var player
 @onready var hint = load("res://Scenes/UI/Hint.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Plate/Hitbox.disabled = true
 	timerMax = $Timer.time_left
+	player = get_parent().get_node("Player")
 	
 func _process(delta: float) -> void:
 	timerPercent = $Timer.time_left/timerMax
@@ -31,6 +33,7 @@ func get_reward():
 	return round(len($Plate.itemLabels)*10*timerPercent)
 
 func _on_timer_timeout() -> void:
+	player.take_damage(1, "Order Incomplete")
 	$"..".remove_order(self)
 
 func set_main(node: Main):

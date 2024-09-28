@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://w4so3s5p0ysi"]
+[gd_scene load_steps=21 format=3 uid="uid://w4so3s5p0ysi"]
 
 [ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="1_mqxr2"]
 [ext_resource type="Script" path="res://Code/Meta/Nux.gd" id="1_p8me3"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bmvkvlj77ae5j" path="res://Scenes/Item/Flamethrower.tscn" id="7_68rcv"]
 [ext_resource type="PackedScene" uid="uid://bv2q2xsfi75k8" path="res://Scenes/Terrain/AppleBin.tscn" id="8_6m176"]
 [ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="9_gloju"]
+[ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_hgdwq"]
+[ext_resource type="PackedScene" uid="uid://naskr7a4axx8" path="res://Scenes/Item/Murasama.tscn" id="12_nsics"]
+[ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="13_ejuei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ckv"]
 size = Vector2(1174.38, 20)
@@ -145,9 +148,6 @@ autoplay = true
 position = Vector2(-971, 65)
 scale = Vector2(0.3, 0.3)
 
-[node name="Bin6" parent="." instance=ExtResource("8_6m176")]
-position = Vector2(1040, 26)
-
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 360.0
 offset_top = -607.0
@@ -179,3 +179,36 @@ curve = SubResource("Curve2D_siiof")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(-1130, 627)
 rotation = 0.00529796
+
+[node name="Bin1" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(1051, 544)
+
+[node name="Bin2" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(-530, 544)
+
+[node name="Bin3" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(99, 541)
+
+[node name="Bin4" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(-837, 544)
+
+[node name="Bin5" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(-212, 539)
+
+[node name="Bin6" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(414, 547)
+
+[node name="Bin7" parent="." instance=ExtResource("8_6m176")]
+position = Vector2(729, 543)
+
+[node name="Halberd" parent="." instance=ExtResource("11_hgdwq")]
+position = Vector2(714, -189)
+scale = Vector2(0.3, 0.3)
+
+[node name="Murasama" parent="." instance=ExtResource("12_nsics")]
+position = Vector2(873, 99)
+scale = Vector2(0.3, 0.3)
+
+[node name="Squeaky_Hammer" parent="." instance=ExtResource("13_ejuei")]
+position = Vector2(-645, -258)
+scale = Vector2(0.3, 0.3)

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5x8so1xegxrg"]
+[gd_scene load_steps=5 format=3 uid="uid://c5x8so1xegxrg"]
 
 [ext_resource type="Script" path="res://Code/UI/Order.gd" id="1_a71vg"]
 [ext_resource type="Texture2D" uid="uid://devfs5fg3tm3x" path="res://art/UI/banner.png" id="2_2ictp"]
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="3_0nirp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lctl"]
+size = Vector2(169, 175)
 
 [node name="Order" type="Node2D"]
 script = ExtResource("1_a71vg")
@@ -21,4 +24,12 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, 87.5)
+shape = SubResource("RectangleShape2D_4lctl")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

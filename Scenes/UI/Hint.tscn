@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://brdd4gelxuvrs"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Hint.gd" id="1_sg5nf"]
+[ext_resource type="Texture2D" uid="uid://d3chq603vgx" path="res://art/UI/description_box.png" id="1_viel5"]
+[ext_resource type="Texture2D" uid="uid://d3xwe2e8i7nix" path="res://art/Item/Apple_Slices.png" id="2_odrnq"]
+[ext_resource type="Texture2D" uid="uid://ddfoftyyl2ueh" path="res://art/UI/apple_icon.png" id="3_c6ya1"]
+[ext_resource type="Texture2D" uid="uid://dah5qvcgfmbcb" path="res://art/UI/Halberd_Icon.png" id="4_0ojhh"]
+
+[node name="Hint" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_sg5nf")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+position = Vector2(105.333, 41.6667)
+
+[node name="BG" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(0, 14)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_viel5")
+
+[node name="Product" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(71, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_odrnq")
+
+[node name="Enemy" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(-67, -31)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_c6ya1")
+
+[node name="Weapon" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(-21, 6)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_0ojhh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 112.333
+offset_top = -1.33333
+offset_right = 152.333
+offset_bottom = 94.6667
+theme_override_font_sizes/font_size = 60
+text = "="

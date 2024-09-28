@@ -21,9 +21,9 @@ signal healthChanged
 # input handling
 var canAttack = true
 var canDash = true
-var dashTime = 0.01
+var dashTime = 0.06
 var dashTimer = 0
-const speed = 300.0
+const speed = 500.0
 const attackSlowdown = 2
 var canMove = true
 
@@ -36,6 +36,7 @@ func _ready() -> void:
 	health = maxHealth
 
 func _process(delta):
+	queue_redraw()
 		
 	var direction = Vector2.ZERO
 	var multiplier = 1.0
@@ -67,7 +68,8 @@ func _process(delta):
 	#	heldItem.position = position+Vector2(0,-200)
 		
 	if (dashTimer > 0):
-		multiplier = 80
+		animator.spawn_afterimage()
+		multiplier = 20
 		dashTimer -= delta
 		
 	if direction.length() > 1:
@@ -84,7 +86,18 @@ func _process(delta):
 		animator.face(direction)
 		
 	if canMove:
-		move_and_collide(direction*speed*delta*multiplier)
+		velocity = direction*speed*multiplier
+		move_and_slide()
+		#move_and_collide(direction*speed*delta*multiplier)
+
+#func _draw() -> void:
+	#for each in animator.afterimage_list:
+	#	#var t: Transform2D = each[1]
+	#	print("drawing at: "+str(each[1]))
+	#	var img = Image.new()
+	#	img.load(each[0])
+	#	var texture = ImageTexture.create_from_image(img)
+	#	draw_texture(texture, to_global(each[1]), Color(1,1,1))
 
 func _on_dash_cooldown_timeout():
 	canDash = true

@@ -48,10 +48,22 @@ var moustache_twitch_count = 0
 var moustache_rotation_max = 5
 var moustache_twitch_speed = 100
 
+var afterimage_list = []
+var afterimage_fade_rate = 1
+
 func _ready() -> void:
 	body_anchor = body_group.position
 
 func _process(delta: float) -> void:
+	var i = 0
+	while i < len(afterimage_list):
+		if afterimage_list[i][2] > 0:
+			afterimage_list[i][2] -= afterimage_fade_rate*delta
+		else:
+			afterimage_list.remove_at(i)
+			i -= 1
+		i += 1
+	queue_redraw()
 	animate_moustache(delta)
 	animate_body(delta)
 	if (arm_idle):
@@ -67,7 +79,7 @@ func _process(delta: float) -> void:
 			aim(heldItem)
 		else:
 			hold_item(heldItem)
-			
+	
 func hold_item(heldItem: Node2D):
 	heldItem.global_position = hand.global_position
 	heldItem.rotation = front_arm.rotation+PI/2
@@ -265,3 +277,13 @@ func get_aim_direction() -> Vector2:
 	var mouse = get_global_mouse_position()
 	var pos = player.global_position
 	return mouse-pos
+
+func spawn_afterimage():
+	afterimage_list.append_array(get_all_textures([],player))
+	
+func get_all_textures(list: Array, node: Node) -> Array:
+	if node is Sprite2D:
+		list.append([node.texture.resource_path,Vector2(0,0),1])
+	for each in node.get_children(false):
+		list = get_all_textures(list, each)
+	return list

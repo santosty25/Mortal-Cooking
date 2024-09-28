@@ -4,6 +4,8 @@ class_name Main
 # lists of possible order ingredients including strings, scenes, and images
 var ingredientsLabels = ["apple", "lettuce", "tomato", "cheese", "beef", "bread", "shrimp"] # list of all base ingredients
 var preparationsLabels = ["chopped", "burned", "diced", "flattened"] # list of all ways of preparing ingredients
+var weaponIcons = [load("res://art/UI/Halberd_Icon.png"),load("res://art/Effects/Flame_Large.PNG"),load("res://art/UI/Murasama_Icon.png"),load("res://art/UI/Hammer_Icon.png")]
+var enemyIcons = [load("res://art/UI/apple_icon.png"),load("res://art/UI/lettuce_icon.png"),load("res://art/UI/tomato_icon.png"),load("res://art/UI/cheese_icon.png"),load("res://art/UI/meat_icon.png"),load("res://art/UI/bread_icon.png"),load("res://art/UI/shrimp_icon.png")]
 var ingredients = [load("res://Scenes/Character/Apple.tscn"), load("res://Scenes/Character/Tomato.tscn"), load("res://Scenes/Character/Beef.tscn"), load("res://Scenes/Character/Bread.tscn"), load("res://Scenes/Character/Cheese.tscn"), load("res://Scenes/Character/Lettuce.tscn"), load("res://Scenes/Character/Shrimp.tscn")]
 var slop = load("res://art/Item/Slop.PNG")
 var dropImages = [
@@ -98,13 +100,56 @@ func _process(delta: float) -> void:
 	$Score.text = "$"+str(score)
 
 func generate_order():
+	var orderStack = []
+	match randi_range(1,10):
+		1:
+			orderStack = [["apple", "chopped"]]
+		2:
+			orderStack = [["apple", "burned"]]
+		3:
+			orderStack = [["apple", "flattened"]]
+		4:
+			orderStack = [["cheese", "diced"]]
+		5:
+			orderStack = [["beef", "burned"]]
+		6:
+			#burger
+			orderStack = choose_n([["bread", "chopped"]],1,true)
+			orderStack.append(["beef", "flattened"])
+			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
+		7:
+			#charcuterie board
+			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
+		8:
+			#grilled cheese
+			orderStack = [["bread", "burned"],["cheese", "burned"]]
+		9:
+			#salad
+			orderStack = [["lettuce","chopped"]]
+			orderStack.append_array(choose_n([["apple", "diced"],["tomato","diced"]],1,true))
+			orderStack.append(["bread","diced"])
+		10:
+			#KBBQ
+			orderStack = [["beef","sliced"],["tomato", "flattened"]]
+	
 	# create order display
-	var orderDisplay = orderNode.instantiate()
+	var orderDisplay: Order = orderNode.instantiate()
+	orderDisplay.set_main(self)
 	orderDisplay.position = Vector2(-570*2+150 + orderSeparation * len(currentOrders),-320*2)
 	add_child(orderDisplay)
 	
+	for each in orderStack:
+		var orderStep = dropNode.instantiate()
+		var ingredientIndex = ingredientsLabels.find(each[0])
+		var preparationIndex = preparationsLabels.find(each[1])
+		orderStep.set_image(dropImages[ingredientIndex][preparationIndex])
+		orderDisplay.get_node("Plate").add_item(orderStep, each)
+		orderDisplay.add_child(orderStep)
+		
+	orderDisplay.get_node("Timer").wait_time = 20+10*len(orderStack)
+	
 	# decide what order is
-	var orderStack = []
+	'''var orderStack = []
 	for i in range(randi_range(minOrderSteps,maxOrderSteps)):
 		var processed = slop
 		var ingredient = ""
@@ -124,12 +169,14 @@ func generate_order():
 		orderStep.set_image(dropImages[ingredientIndex][preparationIndex])
 		orderDisplay.get_node("Plate").add_item(orderStep, [ingredient,preparation])
 		orderDisplay.add_child(orderStep)
+	'''
 		
 	# track current orders
 	currentOrders.append([orderDisplay, orderStack])
 	
-	# tell display node what order it's tracking
+	# tell display node what order its tracking
 	orderDisplay.set_order(orderStack)
+	
 
 func _on_order_cooldown_timeout() -> void:
 	generate_order()
@@ -193,6 +240,12 @@ func get_drop_image(label: Array):
 		print("invalid label: "+str(label))
 	return dropImages[x][y]
 	
+# returns enemy, weapon, and result
+func get_tooltip_icons(ing, prep):
+	var ing_idx = ingredientsLabels.find(ing)
+	var prep_idx = preparationsLabels.find(prep)
+	return [enemyIcons[ing_idx],weaponIcons[prep_idx],dropImages[ing_idx][prep_idx]]
+	
 func spawn_chicken():
 	var chick = chicken.instantiate()
 	chickenSpawn.progress_ratio = randf()
@@ -201,3 +254,12 @@ func spawn_chicken():
 	
 	chickenSpawn.progress_ratio = randf()
 	chick.move(chickenSpawn.position)
+
+func choose_n(list: Array, amount: int, replace: bool):
+	var rval = []
+	for i in range(amount):
+		if replace:
+			rval.append(list[randi_range(0,len(list)-1)])
+		else:
+			rval.append(list.pop_at(randi_range(0,len(list)-1)))
+	return rval

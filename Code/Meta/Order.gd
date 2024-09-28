@@ -1,5 +1,5 @@
 extends Node
-class_name Order
+class_name Order_Stack
 
 var order_steps: Array[Order_Step] = []
 

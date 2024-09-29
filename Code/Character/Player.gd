@@ -42,7 +42,7 @@ func _ready() -> void:
 func _process(delta):
 	super._process(delta)
 	queue_redraw()
-		
+	
 	var direction = Vector2.ZERO
 	var multiplier = 1.0
 		

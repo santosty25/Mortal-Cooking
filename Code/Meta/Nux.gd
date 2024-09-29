@@ -72,6 +72,8 @@ var maxOrderSteps = 1
 var score = 0
 var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingredient, preparation] strings
 
+var player: Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_order()
@@ -79,6 +81,10 @@ func _ready() -> void:
 	
 	chickenSpawn = $Path2D/PathFollow2D
 	spawn_chicken()
+	
+	# set player's health
+	player = get_node("Player")
+	update_player_health(10000)
 	
 	$Bin1.set_spawn(load("res://Scenes/Character/Apple.tscn"))
 	$Bin2.set_spawn(load("res://Scenes/Character/Beef.tscn"))
@@ -263,3 +269,9 @@ func choose_n(list: Array, amount: int, replace: bool):
 		else:
 			rval.append(list.pop_at(randi_range(0,len(list)-1)))
 	return rval
+
+func update_player_health(new_health : int) -> void:
+	if player:
+		player.maxHealth = new_health
+		player.health = new_health
+		print("Players health set to ", player.health)

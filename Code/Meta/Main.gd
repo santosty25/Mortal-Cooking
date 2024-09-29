@@ -101,7 +101,7 @@ func _process(delta: float) -> void:
 
 func generate_order():
 	var orderStack = []
-	match randi_range(1,10):
+	match randi_range(1,11):
 		1:
 			orderStack = [["apple", "chopped"]]
 		2:
@@ -131,6 +131,8 @@ func generate_order():
 		10:
 			#KBBQ
 			orderStack = [["beef","sliced"],["tomato", "flattened"]]
+		11:
+			orderStack = [["shrimp", "burned"]]
 	
 	# create order display
 	var orderDisplay: Order = orderNode.instantiate()

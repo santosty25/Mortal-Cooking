@@ -21,7 +21,7 @@ var immuneEnemies: Array[RID] = []
 var damage = 0.3
 
 func _ready():
-	label = "chopped"
+	label = "diced"
 	camera = get_viewport().get_camera_2d()
 	cameraAnchor = camera.position
 	cameraZoom = camera.zoom.x

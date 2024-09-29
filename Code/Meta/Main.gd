@@ -148,7 +148,7 @@ func generate_order():
 		orderDisplay.get_node("Plate").add_item(orderStep, each)
 		orderDisplay.add_child(orderStep)
 		
-	orderDisplay.get_node("Timer").wait_time = 20+10*len(orderStack)
+	orderDisplay.get_node("Timer").wait_time = 30*len(orderStack)
 	
 	# decide what order is
 	'''var orderStack = []

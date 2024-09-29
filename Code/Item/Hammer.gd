@@ -1,7 +1,7 @@
 extends Melee_Weapon
 class_name Hammer
 
-var damage = 0.3
+var damage = 0.6
 var isThrown = false
 var throwPressed = false
 var playedSound = true

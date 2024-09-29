@@ -1,60 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://g6xiw8fa86op"]
+[gd_scene load_steps=7 format=3 uid="uid://g6xiw8fa86op"]
 
 [ext_resource type="Script" path="res://Code/Character/Bread.gd" id="1_1x2pa"]
-[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_6v700"]
-[ext_resource type="Texture2D" uid="uid://bj5uji7ystule" path="res://art/Character/Enemies/Apple/Apple.png" id="3_6tppa"]
-[ext_resource type="Texture2D" uid="uid://b6xxps3jcnwwd" path="res://art/Character/Enemies/Apple/Apple_Attack.png" id="4_s6v4y"]
+[ext_resource type="Texture2D" uid="uid://rkac8003andv" path="res://art/Character/Enemies/Bread/Bread_1.png" id="2_tccai"]
+[ext_resource type="Texture2D" uid="uid://etehupgvjsjt" path="res://art/Character/Enemies/Bread/Bread_2.png" id="3_pw6q5"]
 [ext_resource type="AudioStream" uid="uid://dvfts8h5vrbxj" path="res://Audio/Bell_Ding.mp3" id="5_s6t25"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
-radius = 120.046
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_db0wn"]
-atlas = ExtResource("3_6tppa")
-region = Rect2(0, 0, 380, 380)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_db0wn")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_s6v4y")
-}],
-"loop": false,
-"name": &"Windup",
-"speed": 5.0
-}]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kth3s"]
+radius = 93.3333
+height = 393.333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djehj"]
 radius = 1126.69
 
 [node name="Bread" type="CharacterBody2D"]
-position = Vector2(577, 327)
+position = Vector2(0, 1)
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_1x2pa")
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pd45i")
+[node name="Sprites" type="CanvasGroup" parent="."]
 
-[node name="HitEffect" type="Sprite2D" parent="."]
+[node name="Flat" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_tccai")
+
+[node name="Squish" type="Sprite2D" parent="Sprites"]
 visible = false
-position = Vector2(-160, -6.66663)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_6v700")
+texture = ExtResource("3_pw6q5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 0.174533
-sprite_frames = SubResource("SpriteFrames_c40pp")
-animation = &"Windup"
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(7.10543e-14, 16.6667)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kth3s")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16

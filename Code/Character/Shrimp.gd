@@ -7,12 +7,11 @@ const CHANGE_DIRECTION_TIME = 1
 
 var stepSide = false
 var direction = Vector2(0, -1) 
-var walkDist = 200
-var waitTimer = 3
-var maxWait = 5
-var minWait = 2
-var flipTimerMax = 0.1
-var flipTimer = 0
+var bounceTimerMax = 0.1
+var bounceTimer = 0
+var bounceHeight = 50
+var spriteAnchor = Vector2.ZERO
+var bounce = false
 var changeDirectionTimer = CHANGE_DIRECTION_TIME
 var initialMoveTimer = INITIAL_MOVE_TIME
 var hasSwitchedDirection = false
@@ -23,7 +22,8 @@ var player
 func _ready():
 	player = get_parent().get_node("Player")
 	label = "shrimp"
-	sprite = $AnimatedSprite2D
+	sprite = $Sprite
+	spriteAnchor = sprite.position
 	
 	# overrides
 	maxHealth = 3
@@ -46,16 +46,23 @@ func _process(delta):
 
 		# update the shrimp's position based on the current direction
 		move_and_collide(direction * SPEED * delta)
+		
+		if (bounceTimer < bounceTimerMax) && direction.length() > 0:
+			bounceTimer += delta
+			bounce = !bounce
+			if bounce:
+				sprite.position = spriteAnchor+Vector2(0,-bounceHeight)
+			else:
+				sprite.position = spriteAnchor
+		else:
+			bounceTimer = 0
 
 		if direction.x < 0:
-			scale.x = 0.3
-			$AnimatedSprite2D.rotation_degrees = -10
+			scale.x = abs(scale.x)
+			sprite.rotation_degrees = -10
 		else:
-			scale.x = -0.3
-			$AnimatedSprite2D.rotation_degrees = 10
-		
-		$AnimatedSprite2D.play("Idle")  
-	var bodies = $Area2D.get_overlapping_bodies()
+			scale.x = -abs(scale.x)
+			sprite.rotation_degrees = 10
 	
 func get_label():
 	return label

@@ -2,15 +2,22 @@ extends Enemy
 class_name Beef
 
 const SPEED = 100
-var stepSide = false
-var target = Vector2.ZERO
-var walkDist = 200
-var waitTimer = 3
-var maxWait = 5
-var minWait = 2
-var flipTimerMax = 0.1
-var flipTimer = 0
-var attack = 0
+
+var jumpDelay = 2
+var jumpTimer = 0
+var jumpDist = 400
+var jumpTime = 1
+var jumpTracker = 0
+var jumpHeight = 300
+var isJumping = false
+var jumpStart = Vector2.ZERO
+var jumpEnd = Vector2.ZERO
+var squishTime = 0.2
+
+@onready var idle = $Sprites/Idle
+@onready var squish = $Sprites/Squish
+@onready var jump = $Sprites/Jump
+@onready var shadow = $Sprites/Shadow
 
 # reference to the player
 var player
@@ -18,7 +25,7 @@ var player
 func _ready():
 	player = get_parent().get_node("Player")
 	label = "beef"
-	sprite = $AnimatedSprite2D
+	sprite = $Sprites
 	
 	# overrides
 	maxHealth = 3
@@ -27,48 +34,51 @@ func _ready():
 func _process(delta):
 	super._process(delta)
 	if player:
-		# Set target to player's position
-		target = player.position
-		var direction = (target - position).normalized() * SPEED
-
-		flipTimer -= delta
-		if flipTimer <= 0:
-			stepSide = !stepSide
-			flipTimer = flipTimerMax
-
-		if (position - target).length() > 0.1:
-			if stepSide:
-				$AnimatedSprite2D.rotation_degrees = -10
+		if (jumpTimer > 0) && !isJumping:
+			jumpTimer -= delta
+			shadow.visible = false
+			if jumpTimer < squishTime || jumpDelay-jumpTimer < squishTime:
+				squish.visible = true
+				idle.visible = false
 			else:
-				$AnimatedSprite2D.rotation_degrees = 10
-
-			if direction.x < 0:
-				scale.x = 0.3
-			elif direction.x > 0:
-				scale.x = -0.3
-
-			if (direction * delta).length() > (target - position).length():
-				move_and_collide(target - position)
+				squish.visible = false
+				idle.visible = true
+		elif isJumping:
+			if jumpTracker < jumpTime:
+				jumpTracker += delta
+				var frac = (jumpTracker/jumpTime)
+				var y_pos = sin(frac*PI)*jumpHeight
+				var x_pos = frac*(jumpEnd-jumpStart)+jumpStart
+				position = x_pos+Vector2(0,-y_pos)
+				var scl = 1-sin(frac*PI)*0.3
+				shadow.scale = Vector2(scl,scl)
+				shadow.global_position = x_pos
 			else:
-				move_and_collide(direction * delta)
+				check_damage()
+				isJumping = false
+				jump.visible = false
+				position = jumpEnd
 		else:
-			$AnimatedSprite2D.rotation = 0
-	var bodies = $Area2D.get_overlapping_bodies()
-
-func _physics_process(delta):
-	attack -= delta
-	if attack < 0.2:
-		$AnimatedSprite2D.play("Idle")
-		# player.take_damage(1, "attack")
-		$HitEffect.show()
-	if attack < 0.1:
-		$HitEffect.hide()
-
-func _on_area_2d_body_entered(body):
-	$AnimatedSprite2D.play("Windup")
-	if body is Player:
-		body.take_damage(1, "attack")
-	attack = 0.3
+			shadow.visible = true
+			squish.visible = false
+			idle.visible = false
+			jump.visible = true
+			jumpTimer = jumpDelay
+			isJumping = true
+			run_jump()
 
 func get_label():
 	return label
+
+func run_jump():
+	jumpStart = position
+	var targetPos = (player.global_position-global_position)
+	if targetPos.length() > jumpDist:
+		targetPos = targetPos.normalized()*jumpDist
+	jumpEnd = position+targetPos
+	jumpTracker = 0
+
+func check_damage():
+	for body in $Area2D.get_overlapping_bodies():
+		if body is Player:
+			body.take_damage(2,"true")

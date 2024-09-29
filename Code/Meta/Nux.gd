@@ -272,5 +272,6 @@ func choose_n(list: Array, amount: int, replace: bool):
 
 func update_player_health(new_health : int) -> void:
 	if player:
+		player.maxHealth = new_health
 		player.health = new_health
 		print("Players health set to ", player.health)

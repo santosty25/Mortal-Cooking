@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1727640287
+::res://::1727641004
 icon.svg::CompressedTexture2D::5933487079134923978::1725514838::1727639504::1::::<><>::
 README.md::TextFile::-1::1725595967::0::1::::<><>::
 ::res://art/::1726546329
@@ -103,7 +103,7 @@ sheath.png::CompressedTexture2D::8578534186739459437::1727325237::1727639504::1:
 shotgun.PNG::CompressedTexture2D::3819860008612613637::1727325237::1727639504::1::::<><>::
 squeaky_hammer.png::CompressedTexture2D::7830218746519286922::1727139837::1727639504::1::::<><>::
 tennis_racket.png::CompressedTexture2D::2392116090281723214::1727139837::1727639504::1::::<><>::
-::res://Audio/::1727640287
+::res://Audio/::1727640303
 Bell_Ding.mp3::AudioStreamMP3::8644737168877114611::1727584913::1727639503::1::::<><>::
 cashRegister.mp3::AudioStreamMP3::5349795497658328108::1725948827::1727639503::1::::<><>::
 cheesin.mp3::AudioStreamMP3::2624046603310331071::1727331921::1727639503::1::::<><>::
@@ -199,8 +199,8 @@ Tennis_Racket.tscn::PackedScene::3033030552325431461::1727139837::0::1::::<><>::
 AppleBin.tscn::PackedScene::3917145523853784077::1727639410::0::1::::<><>::res://Code/Terrain/Apple_Bin.gd<>uid://4tgn6fcwnejq::::res://art/Terrain/Apple_Crate.png
 Serving_Location.tscn::PackedScene::3981346093233052121::1726546329::0::1::::<><>::uid://bt7ynkvafdsk1::::res://art/Terrain/serving_station.png<>res://Code/Terrain/Serving_Location.gd
 Table.tscn::PackedScene::1702754557331167295::1726808452::0::1::::<><>::res://Code/Terrain/Table.gd<>uid://b74i251p18tms::::res://art/Terrain/table.png
-::res://Scenes/UI/::1727640287
-GameOver.tscn::PackedScene::5300440547310872892::1727639829::0::1::::<><>::res://Code/UI/GameOver.gd<>uid://bdkmmlc2t24bh::::res://art/UI/PIXEL-LI.TTF
+::res://Scenes/UI/::1727640332
+GameOver.tscn::PackedScene::5300440547310872892::1727640332::0::1::::<><>::res://Code/UI/GameOver.gd<>uid://bdkmmlc2t24bh::::res://art/UI/PIXEL-LI.TTF<>uid://bbv6sysg5542x::::res://Audio/Game Over.mp3
 Hint.tscn::PackedScene::3586058419654027160::1727552033::0::1::::<><>::res://Code/UI/Hint.gd<>uid://d3chq603vgx::::res://art/UI/description_box.png<>uid://d3xwe2e8i7nix::::res://art/Item/Apple_Slices.png<>uid://ddfoftyyl2ueh::::res://art/UI/apple_icon.png<>uid://dah5qvcgfmbcb::::res://art/UI/Halberd_Icon.png
 MainMenu.tscn::PackedScene::4688336694561294584::1727639287::0::1::::<><>::res://Code/UI/MainMenu.gd<>uid://bqpsdd68s3lcc::::res://art/Background/main_background.jpg<>uid://bdkmmlc2t24bh::::res://art/UI/PIXEL-LI.TTF<>uid://bjbhcic8dbcdt::::res://Audio/mainMenuMusic.mp3<>uid://bhs6a1f2564rt::::res://Scenes/UI/Options.tscn
 Options.tscn::PackedScene::2916784990107388993::1726977525::0::1::::<><>::res://Code/UI/Options.gd

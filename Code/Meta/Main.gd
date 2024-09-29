@@ -1,6 +1,9 @@
 extends Node2D
 class_name Main
 
+@onready var pause_menu = $"Pause Menu"
+var paused = false
+
 # lists of possible order ingredients including strings, scenes, and images
 var ingredientsLabels = ["apple", "lettuce", "tomato", "cheese", "beef", "bread", "shrimp"] # list of all base ingredients
 var preparationsLabels = ["chopped", "burned", "diced", "flattened"] # list of all ways of preparing ingredients
@@ -98,7 +101,19 @@ func _ready() -> void:
 	$Bin7.set_sprite(load("res://art/Terrain/Tomato_Crate.png"))
 	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu()
 	$Score.text = "$"+str(score)
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0 
+	
+	paused = !paused
 
 func generate_order():
 	var orderStack = []

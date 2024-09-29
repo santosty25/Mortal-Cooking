@@ -19,7 +19,7 @@
 radius = 210.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3w5p6"]
-radius = 753.363
+radius = 485.925
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player")]
 scale = Vector2(0.3, 0.3)

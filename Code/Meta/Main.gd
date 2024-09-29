@@ -1,6 +1,9 @@
 extends Node2D
 class_name Main
 
+@onready var pause_menu = $"Pause Menu"
+var paused = false
+
 # lists of possible order ingredients including strings, scenes, and images
 var ingredientsLabels = ["apple", "lettuce", "tomato", "cheese", "beef", "bread", "shrimp"] # list of all base ingredients
 var preparationsLabels = ["chopped", "burned", "diced", "flattened"] # list of all ways of preparing ingredients
@@ -34,8 +37,8 @@ var dropImages = [
 						slop,
 					],
 					[	
-						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Sliced_Beef.PNG"),
+						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Cubed_Beef.png"), 
 						load("res://art/Item/Ground_Beef.png")
 					],
@@ -71,6 +74,7 @@ var maxOrderSteps = 1
 # global things to track
 var score = 0
 var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingredient, preparation] strings
+var ordersServed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -81,7 +85,7 @@ func _ready() -> void:
 	spawn_chicken()
 	
 	$Bin1.set_spawn(load("res://Scenes/Character/Apple.tscn"))
-	$Bin2.set_spawn(load("res://Scenes/Character/Beef.tscn"))
+	$Bin2.set_spawn(load("res://Scenes/Character/Cow.tscn"))
 	$Bin3.set_spawn(load("res://Scenes/Character/Bread.tscn"))
 	$Bin4.set_spawn(load("res://Scenes/Character/Cheese.tscn"))
 	$Bin5.set_spawn(load("res://Scenes/Character/Lettuce.tscn"))
@@ -97,11 +101,32 @@ func _ready() -> void:
 	$Bin7.set_sprite(load("res://art/Terrain/Tomato_Crate.png"))
 	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu()
 	$Score.text = "$"+str(score)
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0 
+	
+	paused = !paused
 
 func generate_order():
 	var orderStack = []
-	match randi_range(1,11):
+	var selection = 0
+	if ordersServed < 5:
+		selection = randi_range(1,6)
+	elif ordersServed < 10:
+		selection = randi_range(4,8)
+	elif ordersServed < 15:
+		selection = randi_range(5,10)
+	else:
+		selection = randi_range(7,11)
+	match selection:
 		1:
 			orderStack = [["apple", "chopped"]]
 		2:
@@ -113,26 +138,26 @@ func generate_order():
 		5:
 			orderStack = [["beef", "burned"]]
 		6:
-			#burger
-			orderStack = choose_n([["bread", "chopped"]],1,true)
-			orderStack.append(["beef", "flattened"])
-			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
+			orderStack = [["shrimp", "burned"]]
 		7:
-			#charcuterie board
-			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
+			#KBBQ
+			orderStack = [["beef","chopped"],["tomato", "flattened"]]
 		8:
 			#grilled cheese
 			orderStack = [["bread", "burned"],["cheese", "burned"]]
 		9:
+			#charcuterie board
+			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
+		10:
 			#salad
 			orderStack = [["lettuce","chopped"]]
 			orderStack.append_array(choose_n([["apple", "diced"],["tomato","diced"]],1,true))
 			orderStack.append(["bread","diced"])
-		10:
-			#KBBQ
-			orderStack = [["beef","sliced"],["tomato", "flattened"]]
 		11:
-			orderStack = [["shrimp", "burned"]]
+			#burger
+			orderStack = choose_n([["bread", "chopped"]],1,true)
+			orderStack.append(["beef", "flattened"])
+			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
 	
 	# create order display
 	var orderDisplay: Order = orderNode.instantiate()
@@ -181,7 +206,6 @@ func generate_order():
 	
 
 func _on_order_cooldown_timeout() -> void:
-	print("Generating new order")
 	generate_order()
 
 func remove_order(order: Node2D):
@@ -205,13 +229,18 @@ func serve(order):
 	var label = order.get_label()
 	# get order from list
 	for i in range(len(currentOrders)):
-		if currentOrders[i][1] == label:
+		var found = true
+		for each in currentOrders[i][1]:
+			if not each in label:
+				found = false
+				continue
+		if found:
 			id = i
-			break
 	if id == -1:
 		return false # return failure, no orders matched the delivered item
 	else:
 		score += currentOrders[id][0].get_reward()
+		$Player.heal(len(currentOrders[id][1]))
 		remove_order(currentOrders[id][0])
 		order.delete()
 		

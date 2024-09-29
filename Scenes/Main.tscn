@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=22 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Meta/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="12_nvve6"]
 [ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
 [ext_resource type="PackedScene" uid="uid://naskr7a4axx8" path="res://Scenes/Item/Murasama.tscn" id="13_co8ud"]
+[ext_resource type="PackedScene" uid="uid://de57x7ai61han" path="res://Scenes/UI/PauseMenu.tscn" id="14_udiqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -111,7 +112,7 @@ ignore_rotation = false
 zoom = Vector2(0.5, 0.5)
 
 [node name="OrderCooldown" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 60.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_cqwo3")]
@@ -174,7 +175,7 @@ position = Vector2(-530, 544)
 position = Vector2(99, 541)
 
 [node name="Bin4" parent="." instance=ExtResource("11_vr6yn")]
-position = Vector2(-837, 544)
+position = Vector2(-916, 543)
 
 [node name="Bin5" parent="." instance=ExtResource("11_vr6yn")]
 position = Vector2(-212, 539)
@@ -200,5 +201,18 @@ rotation = 0.00529796
 [node name="Murasama" parent="." instance=ExtResource("13_co8ud")]
 position = Vector2(873, 99)
 scale = Vector2(0.3, 0.3)
+
+[node name="Pause Menu" parent="." instance=ExtResource("14_udiqr")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -127.0
+offset_right = -137.0
+offset_bottom = -127.0
+scale = Vector2(4, 4)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

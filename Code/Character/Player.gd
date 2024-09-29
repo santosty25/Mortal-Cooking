@@ -31,7 +31,7 @@ var canMove = true
 
 # other important variables
 var heldItem = null
-var healRate = 2
+var healRate = 0
 
 func _ready() -> void:
 	# overrides
@@ -200,4 +200,9 @@ func take_damage(amount: float, damageLabel:String) -> void:
 	takeDamage.play()
 	healCooldown.start(healCooldown.wait_time)
 	if health <= 0:
+		queue_free()
 		get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")
+
+func heal(amount):
+	super.heal(amount)
+	healthChanged.emit()

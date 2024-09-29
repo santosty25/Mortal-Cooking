@@ -4,6 +4,8 @@ class_name Beef
 const SPEED = 100
 
 var jumpDelay = 2
+var jumpDelayMin = 1.5
+var jumpDelayMax = 2.5
 var jumpTimer = 0
 var jumpDist = 400
 var jumpTime = 1
@@ -26,6 +28,9 @@ func _ready():
 	player = get_parent().get_node("Player")
 	label = "beef"
 	sprite = $Sprites
+	
+	jumpDelay = randf_range(0.5,1.5)
+	jumpTimer = jumpDelay
 	
 	# overrides
 	maxHealth = 3
@@ -63,6 +68,7 @@ func _process(delta):
 			squish.visible = false
 			idle.visible = false
 			jump.visible = true
+			jumpDelay = randf_range(jumpDelayMin, jumpDelayMax)
 			jumpTimer = jumpDelay
 			isJumping = true
 			run_jump()

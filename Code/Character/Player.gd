@@ -202,3 +202,7 @@ func take_damage(amount: float, damageLabel:String) -> void:
 	if health <= 0:
 		queue_free()
 		get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")
+
+func heal(amount):
+	super.heal(amount)
+	healthChanged.emit()

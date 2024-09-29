@@ -30,7 +30,9 @@ func set_order(order):
 	self.order = order
 
 func get_reward():
-	return round(len($Plate.itemLabels)*10*timerPercent)
+	var steps = len($Plate.itemLabels)
+	var money = steps*5+round(steps*5*timerPercent)
+	return money
 
 func _on_timer_timeout() -> void:
 	player.take_damage(1, "Order Incomplete")

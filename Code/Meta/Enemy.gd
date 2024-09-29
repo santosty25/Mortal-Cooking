@@ -9,9 +9,16 @@ var motionMin = 10
 var friction = 0.9
 var motion = Vector2.ZERO
 
+var damageSound = load("res://Scenes/Effects/Enemy_Damage_Sound.tscn")
+var soundPlayer = null
+
 func take_damage(amount: float, damageLabel: String):
 	health -= amount
 	super.indicate_damage()
+	if !soundPlayer:
+		soundPlayer = damageSound.instantiate()
+		add_child(soundPlayer)
+	soundPlayer.play()
 	if health < 0:
 		var drop_node = drop.instantiate()
 		drop_node.position = position

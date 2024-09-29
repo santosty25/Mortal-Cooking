@@ -9,6 +9,7 @@ signal healthChanged
 @onready var knifeSwing = $SFX/knifeSwing
 @onready var running = $SFX/running
 @onready var cashGained = $SFX/cashGained
+@onready var takeDamage = $SFX/takeDamage
 
 # Node references, reduces work if scene heirarchy changed
 @onready var animator = $Animator
@@ -17,6 +18,7 @@ signal healthChanged
 @onready var attack = $Attack
 @onready var main = $".."
 @onready var dashCooldown = $Helpers/DashCooldown
+@onready var healCooldown = $Helpers/HealCooldown
 
 # input handling
 var canAttack = true
@@ -29,13 +31,16 @@ var canMove = true
 
 # other important variables
 var heldItem = null
+var healRate = 2
 
 func _ready() -> void:
 	# overrides
 	maxHealth = 10
 	health = maxHealth
+	sprite = $Animator
 
 func _process(delta):
+	super._process(delta)
 	queue_redraw()
 		
 	var direction = Vector2.ZERO
@@ -89,6 +94,12 @@ func _process(delta):
 		velocity = direction*speed*multiplier
 		move_and_slide()
 		#move_and_collide(direction*speed*delta*multiplier)
+		
+	if healCooldown.time_left == 0 && health < maxHealth:
+		health += healRate*delta
+		if health > maxHealth:
+			health = maxHealth
+		healthChanged.emit()
 
 #func _draw() -> void:
 	#for each in animator.afterimage_list:
@@ -181,8 +192,12 @@ func remove_item(item: Node2D):
 	animator.drop_item(item)
 
 func take_damage(amount: float, damageLabel:String) -> void:
-	print("took damage")
+	if dashTimer > 0:
+		return
 	health -= amount
 	healthChanged.emit()
+	indicate_damage()
+	takeDamage.play()
+	healCooldown.start(healCooldown.wait_time)
 	if health <= 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")

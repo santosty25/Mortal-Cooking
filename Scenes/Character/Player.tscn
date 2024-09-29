@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tq3hr05vu4ux"]
+[gd_scene load_steps=17 format=3 uid="uid://tq3hr05vu4ux"]
 
 [ext_resource type="Script" path="res://Code/Character/Player.gd" id="1_okj7e"]
 [ext_resource type="Texture2D" uid="uid://d33bnrvu5njqo" path="res://art/Character/Player/Arm.PNG" id="3_bfx6l"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bk4ung7vlgcwk" path="res://art/Character/Player/Node.PNG" id="8_xrton"]
 [ext_resource type="Texture2D" uid="uid://bgfo6hqoi6cee" path="res://art/Character/Player/Body.PNG" id="9_i0ju1"]
 [ext_resource type="Texture2D" uid="uid://d3r0a5begsfoi" path="res://art/Character/Player/Tie.PNG" id="10_dwekm"]
+[ext_resource type="AudioStream" uid="uid://cswfj7fmkllhx" path="res://Audio/player_hit.mp3" id="14_ouf4k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
 radius = 210.0
@@ -106,10 +107,17 @@ stream = ExtResource("6_ixig7")
 [node name="cashGained" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("7_lywr1")
 
+[node name="takeDamage" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_ouf4k")
+
 [node name="Helpers" type="Node" parent="."]
 
 [node name="DashCooldown" type="Timer" parent="Helpers"]
 wait_time = 2.0
+
+[node name="HealCooldown" type="Timer" parent="Helpers"]
+wait_time = 5.0
+one_shot = true
 
 [node name="SetDownPosition" type="Node2D" parent="Helpers"]
 position = Vector2(85.3499, 33)

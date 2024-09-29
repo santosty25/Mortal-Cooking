@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://g848454j4vrt"]
+
+[ext_resource type="Script" path="res://Code/UI/GameRule3.gd" id="1_0yra5"]
+[ext_resource type="Texture2D" uid="uid://b8qhbrhddr6r2" path="res://art/Background/GameInfoPG3.jpg" id="1_gacbr"]
+[ext_resource type="AudioStream" uid="uid://bjbhcic8dbcdt" path="res://Audio/mainMenuMusic.mp3" id="3_46847"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8wsy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbjvq"]
+bg_color = Color(0.325441, 0.325441, 0.325441, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vofy3"]
+bg_color = Color(0.226707, 0.226707, 0.226707, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nagtn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_offset = Vector2(0, 3)
+
+[node name="GameRule3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0yra5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="GameInfoPg3" type="Sprite2D" parent="Panel"]
+position = Vector2(577, 321.5)
+scale = Vector2(0.963211, 0.967213)
+texture = ExtResource("1_gacbr")
+
+[node name="Next" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 962.0
+offset_top = 566.0
+offset_right = -29.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d8wsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gbjvq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vofy3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nagtn")
+text = "Start"
+
+[node name="Back" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 565.0
+offset_right = 205.0
+offset_bottom = 607.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d8wsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gbjvq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vofy3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nagtn")
+text = "Back
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_46847")
+autoplay = true
+
+[connection signal="pressed" from="Panel/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]

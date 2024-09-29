@@ -160,18 +160,6 @@ show_percentage = false
 script = ExtResource("9_gloju")
 metadata/_edit_use_anchors_ = true
 
-[node name="Score2" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 793.0
-offset_top = -618.0
-offset_right = 1128.0
-offset_bottom = -526.0
-theme_override_font_sizes/font_size = 80
-text = "$0"
-horizontal_alignment = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Path2D" type="Path2D" parent="."]
 scale = Vector2(0.1, 0.1)
 curve = SubResource("Curve2D_siiof")
@@ -212,3 +200,5 @@ scale = Vector2(0.3, 0.3)
 [node name="Squeaky_Hammer" parent="." instance=ExtResource("13_ejuei")]
 position = Vector2(-645, -258)
 scale = Vector2(0.3, 0.3)
+
+[connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

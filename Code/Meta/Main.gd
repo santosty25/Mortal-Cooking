@@ -104,14 +104,14 @@ func generate_order():
 	var orderStack = []
 	var selection = 0
 	if ordersServed < 5:
-		randi_range(1,6)
+		selection = randi_range(1,6)
 	elif ordersServed < 10:
-		randi_range(4,8)
+		selection = randi_range(4,8)
 	elif ordersServed < 15:
-		randi_range(5,10)
-	elif ordersServed < 20:
-		randi_range(7,11)
-	match randi_range(1,11):
+		selection = randi_range(5,10)
+	else:
+		selection = randi_range(7,11)
+	match selection:
 		1:
 			orderStack = [["apple", "chopped"]]
 		2:
@@ -221,13 +221,11 @@ func serve(order):
 				continue
 		if found:
 			id = i
-		#if currentOrders[i][1] == label:
-		#	id = i
-		#	break
 	if id == -1:
 		return false # return failure, no orders matched the delivered item
 	else:
 		score += currentOrders[id][0].get_reward()
+		$Player.heal(len(currentOrders[id][1]))
 		remove_order(currentOrders[id][0])
 		order.delete()
 		

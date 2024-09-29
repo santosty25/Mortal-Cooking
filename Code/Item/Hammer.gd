@@ -63,7 +63,7 @@ func swing():
 	throwPressed = true
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
+	if body is Enemy && isThrown:
 		$HitSound.play()
 		body.take_damage(damage, label)
 		if returning:

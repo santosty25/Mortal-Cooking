@@ -5,7 +5,7 @@ var spawn = load("res://Scenes/Character/Apple.tscn")
 var sprite = load("res://art/Terrain/AppleBin.png")
 
 # vary from 0 to 0.025 to increase difficulty
-var spawnChance = 0.01
+var spawnChance = 0.005
 
 func spawn_enemy():
 	var spawnNode = spawn.instantiate()

@@ -82,7 +82,7 @@ func _ready() -> void:
 	spawn_chicken()
 	
 	$Bin1.set_spawn(load("res://Scenes/Character/Apple.tscn"))
-	$Bin2.set_spawn(load("res://Scenes/Character/Beef.tscn"))
+	$Bin2.set_spawn(load("res://Scenes/Character/Cow.tscn"))
 	$Bin3.set_spawn(load("res://Scenes/Character/Bread.tscn"))
 	$Bin4.set_spawn(load("res://Scenes/Character/Cheese.tscn"))
 	$Bin5.set_spawn(load("res://Scenes/Character/Lettuce.tscn"))

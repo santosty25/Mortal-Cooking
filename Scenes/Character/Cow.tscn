@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://de7nr0ltl1ekv"]
+
+[ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="1_a8mce"]
+[ext_resource type="Script" path="res://Code/Character/Cow.gd" id="1_ys7fg"]
+[ext_resource type="Texture2D" uid="uid://bn3ttbacr05xe" path="res://art/Character/Enemies/Cow/Cow.png" id="2_liivd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lei4t"]
+radius = 107.912
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eslqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_liivd")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_liivd")
+}],
+"loop": false,
+"name": &"Windup",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xprr2"]
+radius = 107.787
+
+[node name="Cow" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_ys7fg")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lei4t")
+
+[node name="HitEffect" type="Sprite2D" parent="."]
+position = Vector2(6.49999, -8)
+scale = Vector2(0.492105, 0.452632)
+texture = ExtResource("1_a8mce")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.174533
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_eslqu")
+animation = &"Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.05176e-05, -3.67165e-05)
+shape = SubResource("CircleShape2D_xprr2")

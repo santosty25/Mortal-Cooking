@@ -107,7 +107,7 @@ func _process(delta: float) -> void:
 
 func generate_order():
 	var orderStack = []
-	match randi_range(1,10):
+	match randi_range(1,7):
 		1:
 			orderStack = [["apple", "chopped"]]
 		2:
@@ -119,22 +119,9 @@ func generate_order():
 		5:
 			orderStack = [["beef", "burned"]]
 		6:
-			#burger
-			orderStack = choose_n([["bread", "chopped"]],1,true)
-			orderStack.append(["beef", "flattened"])
-			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
-		7:
-			#charcuterie board
-			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
-		8:
 			#grilled cheese
 			orderStack = [["bread", "burned"],["cheese", "burned"]]
-		9:
-			#salad
-			orderStack = [["lettuce","chopped"]]
-			orderStack.append_array(choose_n([["apple", "diced"],["tomato","diced"]],1,true))
-			orderStack.append(["bread","diced"])
-		10:
+		7:
 			#KBBQ
 			orderStack = [["beef","sliced"],["tomato", "flattened"]]
 	
@@ -182,10 +169,6 @@ func generate_order():
 	
 	# tell display node what order its tracking
 	orderDisplay.set_order(orderStack)
-	
-
-func _on_order_cooldown_timeout() -> void:
-	generate_order()
 
 func remove_order(order: Node2D):
 	var id = -1
@@ -275,3 +258,8 @@ func update_player_health(new_health : int) -> void:
 		player.maxHealth = new_health
 		player.health = new_health
 		print("Players health set to ", player.health)
+
+
+func _on_order_cooldown_timeout() -> void:
+	print("Generating new order")
+	generate_order()

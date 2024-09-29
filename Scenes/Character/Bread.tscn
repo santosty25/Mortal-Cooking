@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_6v700"]
 [ext_resource type="Texture2D" uid="uid://bj5uji7ystule" path="res://art/Character/Enemies/Apple/Apple.png" id="3_6tppa"]
 [ext_resource type="Texture2D" uid="uid://b6xxps3jcnwwd" path="res://art/Character/Enemies/Apple/Apple_Attack.png" id="4_s6v4y"]
-[ext_resource type="AudioStream" uid="uid://cfji7dukas1am" path="res://Audio/healing.mp3" id="5_c0bf5"]
+[ext_resource type="AudioStream" uid="uid://dvfts8h5vrbxj" path="res://Audio/Bell_Ding.mp3" id="5_s6t25"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
 radius = 120.046
@@ -65,5 +65,6 @@ position = Vector2(3.05176e-05, -3.67165e-05)
 shape = SubResource("CircleShape2D_djehj")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_c0bf5")
-volume_db = 12.0
+stream = ExtResource("5_s6t25")
+volume_db = 1.0
+max_polyphony = 10

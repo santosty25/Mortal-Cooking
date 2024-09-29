@@ -15,6 +15,10 @@ var heal_amount = 0.5
 var heal_interval = 3.0
 var heal_timer = 0
 
+var healLines = []
+var healLineFadeRate = 10
+var healLineWidth = 20
+
 @onready var healSound = $AudioStreamPlayer2D 
 # reference to the player
 var player
@@ -30,6 +34,11 @@ func _ready():
 
 func _process(delta):
 	super._process(delta)
+	
+	queue_redraw()
+	for each in healLines:
+		each[1] -= healLineFadeRate*delta
+	
 	if player:
 		# Set target to player's position
 		target = player.position
@@ -64,6 +73,16 @@ func _process(delta):
 		heal_nearby_enemies()
 		heal_timer = 0
 
+func _draw() -> void:
+	var i = 0
+	while i < len(healLines):
+		if healLines[i][1] > 0:
+			draw_line(Vector2.ZERO, to_local(healLines[i][0].global_position), Color(0,1,0,healLines[i][1]), healLineWidth)
+		else:
+			healLines.remove_at(i)
+			i -= 1
+		i += 1
+
 func _physics_process(delta):
 	attack -= delta
 	if attack < 0.2:
@@ -79,7 +98,8 @@ func heal_nearby_enemies():
 	for body in bodies:
 		if body is Enemy and body != self:
 			body.heal(heal_amount)
-			print("Healing enemy:", body.name, "by", heal_amount, "Current health:", body.health)
+			healLines.append([body,1])
+			#print("Healing enemy:", body.name, "by", heal_amount, "Current health:", body.health)
 	
 func get_label():
 	return label

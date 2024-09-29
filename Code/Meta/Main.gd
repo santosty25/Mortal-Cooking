@@ -34,8 +34,8 @@ var dropImages = [
 						slop,
 					],
 					[	
-						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Sliced_Beef.PNG"),
+						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Cubed_Beef.png"), 
 						load("res://art/Item/Ground_Beef.png")
 					],
@@ -71,6 +71,7 @@ var maxOrderSteps = 1
 # global things to track
 var score = 0
 var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingredient, preparation] strings
+var ordersServed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -101,6 +102,15 @@ func _process(delta: float) -> void:
 
 func generate_order():
 	var orderStack = []
+	var selection = 0
+	if ordersServed < 5:
+		randi_range(1,6)
+	elif ordersServed < 10:
+		randi_range(4,8)
+	elif ordersServed < 15:
+		randi_range(5,10)
+	elif ordersServed < 20:
+		randi_range(7,11)
 	match randi_range(1,11):
 		1:
 			orderStack = [["apple", "chopped"]]
@@ -113,26 +123,26 @@ func generate_order():
 		5:
 			orderStack = [["beef", "burned"]]
 		6:
-			#burger
-			orderStack = choose_n([["bread", "chopped"]],1,true)
-			orderStack.append(["beef", "flattened"])
-			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
+			orderStack = [["shrimp", "burned"]]
 		7:
-			#charcuterie board
-			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
+			#KBBQ
+			orderStack = [["beef","chopped"],["tomato", "flattened"]]
 		8:
 			#grilled cheese
 			orderStack = [["bread", "burned"],["cheese", "burned"]]
 		9:
+			#charcuterie board
+			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
+		10:
 			#salad
 			orderStack = [["lettuce","chopped"]]
 			orderStack.append_array(choose_n([["apple", "diced"],["tomato","diced"]],1,true))
 			orderStack.append(["bread","diced"])
-		10:
-			#KBBQ
-			orderStack = [["beef","sliced"],["tomato", "flattened"]]
 		11:
-			orderStack = [["shrimp", "burned"]]
+			#burger
+			orderStack = choose_n([["bread", "chopped"]],1,true)
+			orderStack.append(["beef", "flattened"])
+			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
 	
 	# create order display
 	var orderDisplay: Order = orderNode.instantiate()
@@ -181,7 +191,6 @@ func generate_order():
 	
 
 func _on_order_cooldown_timeout() -> void:
-	print("Generating new order")
 	generate_order()
 
 func remove_order(order: Node2D):
@@ -205,9 +214,16 @@ func serve(order):
 	var label = order.get_label()
 	# get order from list
 	for i in range(len(currentOrders)):
-		if currentOrders[i][1] == label:
+		var found = true
+		for each in currentOrders[i][1]:
+			if not each in label:
+				found = false
+				continue
+		if found:
 			id = i
-			break
+		#if currentOrders[i][1] == label:
+		#	id = i
+		#	break
 	if id == -1:
 		return false # return failure, no orders matched the delivered item
 	else:

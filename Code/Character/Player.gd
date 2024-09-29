@@ -31,7 +31,7 @@ var canMove = true
 
 # other important variables
 var heldItem = null
-var healRate = 2
+var healRate = 0
 
 func _ready() -> void:
 	# overrides

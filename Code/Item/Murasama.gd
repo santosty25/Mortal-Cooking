@@ -45,7 +45,6 @@ func _process(delta: float) -> void:
 		animator.set_arm_rotation(true, 0)
 		rotation = rotation-PI/2
 		if attackPressed && !isZoomed:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			camera.position = animator.player.position
 			camera.global_position += animator.get_aim_direction().normalized()*offset
 			attackPressed = false
@@ -70,7 +69,6 @@ func _process(delta: float) -> void:
 					lastMousPos = get_local_mouse_position()
 			attackPressed = false
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			animator.player.unfreeze()
 			camera.zoom = Vector2(cameraZoom, cameraZoom)
 			camera.position = cameraAnchor

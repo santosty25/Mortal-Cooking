@@ -181,6 +181,7 @@ func generate_order():
 	
 
 func _on_order_cooldown_timeout() -> void:
+	print("Generating new order")
 	generate_order()
 
 func remove_order(order: Node2D):

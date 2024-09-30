@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://w4so3s5p0ysi"]
+[gd_scene load_steps=22 format=3 uid="uid://w4so3s5p0ysi"]
 
 [ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="1_mqxr2"]
 [ext_resource type="Script" path="res://Code/Meta/Nux.gd" id="1_p8me3"]
 [ext_resource type="PackedScene" uid="uid://yi3ebkw6k8b0" path="res://Scenes/Terrain/Table.tscn" id="2_py20j"]
+[ext_resource type="PackedScene" uid="uid://de57x7ai61han" path="res://Scenes/UI/PauseMenu.tscn" id="2_sm6jl"]
 [ext_resource type="PackedScene" uid="uid://bwyugn41cemsf" path="res://Scenes/Terrain/Serving_Location.tscn" id="3_eooyq"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="4_aov8p"]
 [ext_resource type="PackedScene" uid="uid://caunl41eul6nm" path="res://Scenes/Item/Plate.tscn" id="5_aj3tn"]
@@ -54,6 +55,9 @@ point_count = 5
 
 [node name="Nux" type="Node2D"]
 script = ExtResource("1_p8me3")
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_sm6jl")]
+visible = false
 
 [node name="KitchenFloor" type="Sprite2D" parent="."]
 z_index = -100

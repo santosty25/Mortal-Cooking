@@ -243,6 +243,7 @@ func serve(order):
 		$Player.heal(len(currentOrders[id][1]))
 		remove_order(currentOrders[id][0])
 		order.delete()
+		ordersServed += 1
 		
 		var plateCount = 0
 		for each in get_children():

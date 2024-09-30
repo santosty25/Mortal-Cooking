@@ -124,11 +124,11 @@ func pauseMenu():
 func generate_order():
 	var orderStack = []
 	var selection = 0
-	if ordersServed < 15:
+	if ordersServed < 10:
 		selection = randi_range(1,6)
-	elif ordersServed < 40:
+	elif ordersServed < 25:
 		selection = randi_range(4,8)
-	elif ordersServed < 70:
+	elif ordersServed < 50:
 		selection = randi_range(5,10)
 	else:
 		selection = randi_range(7,11)

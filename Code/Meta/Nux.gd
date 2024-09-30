@@ -1,6 +1,10 @@
 extends Node2D
 class_name Nux
 
+@onready var pause_menu = $"Pause Menu"
+var paused = false
+var player: Node2D
+
 # lists of possible order ingredients including strings, scenes, and images
 var ingredientsLabels = ["apple", "lettuce", "tomato", "cheese", "beef", "bread", "shrimp"] # list of all base ingredients
 var preparationsLabels = ["chopped", "burned", "diced", "flattened"] # list of all ways of preparing ingredients
@@ -34,8 +38,8 @@ var dropImages = [
 						slop,
 					],
 					[	
-						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Sliced_Beef.PNG"),
+						load("res://art/Item/Steak.PNG"), 
 						load("res://art/Item/Cubed_Beef.png"), 
 						load("res://art/Item/Ground_Beef.png")
 					],
@@ -71,23 +75,22 @@ var maxOrderSteps = 1
 # global things to track
 var score = 0
 var currentOrders = [] # list of [node, orderStack], orderstack is list of [ingredient, preparation] strings
-
-var player: Node2D
+var ordersServed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_order()
 	generate_order()
 	
-	chickenSpawn = $Path2D/PathFollow2D
-	spawn_chicken()
-	
 	# set player's health
 	player = get_node("Player")
 	update_player_health(10000)
 	
+	chickenSpawn = $Path2D/PathFollow2D
+	spawn_chicken()
+	
 	$Bin1.set_spawn(load("res://Scenes/Character/Apple.tscn"))
-	$Bin2.set_spawn(load("res://Scenes/Character/Beef.tscn"))
+	$Bin2.set_spawn(load("res://Scenes/Character/Cow.tscn"))
 	$Bin3.set_spawn(load("res://Scenes/Character/Bread.tscn"))
 	$Bin4.set_spawn(load("res://Scenes/Character/Cheese.tscn"))
 	$Bin5.set_spawn(load("res://Scenes/Character/Lettuce.tscn"))
@@ -103,11 +106,33 @@ func _ready() -> void:
 	$Bin7.set_sprite(load("res://art/Terrain/Tomato_Crate.png"))
 	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu()
 	$Score.text = "$"+str(score)
+	Global.end_score = score
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0 
+	
+	paused = !paused
 
 func generate_order():
 	var orderStack = []
-	match randi_range(1,7):
+	var selection = 0
+	if ordersServed < 5:
+		selection = randi_range(1,6)
+	elif ordersServed < 10:
+		selection = randi_range(4,8)
+	elif ordersServed < 15:
+		selection = randi_range(5,10)
+	else:
+		selection = randi_range(7,11)
+	match selection:
 		1:
 			orderStack = [["apple", "chopped"]]
 		2:
@@ -119,15 +144,30 @@ func generate_order():
 		5:
 			orderStack = [["beef", "burned"]]
 		6:
-			#grilled cheese
-			orderStack = [["bread", "burned"],["cheese", "burned"]]
+			orderStack = [["shrimp", "burned"]]
 		7:
 			#KBBQ
-			orderStack = [["beef","sliced"],["tomato", "flattened"]]
+			orderStack = [["beef","chopped"],["tomato", "flattened"]]
+		8:
+			#grilled cheese
+			orderStack = [["bread", "burned"],["cheese", "burned"]]
+		9:
+			#charcuterie board
+			orderStack = choose_n([["bread", "flattened"],["cheese", "diced"],["apple", "diced"],["beef", "diced"]], randi_range(2,3),false)
+		10:
+			#salad
+			orderStack = [["lettuce","chopped"]]
+			orderStack.append_array(choose_n([["apple", "diced"],["tomato","diced"]],1,true))
+			orderStack.append(["bread","diced"])
+		11:
+			#burger
+			orderStack = choose_n([["bread", "chopped"]],1,true)
+			orderStack.append(["beef", "flattened"])
+			orderStack.append_array(choose_n([["lettuce","chopped"],["tomato","chopped"],["cheese","chopped"],["tomato","flattened"]],randi_range(0,4),false))
 	
 	# create order display
 	var orderDisplay: OrderNux = orderNode.instantiate()
-	orderDisplay.set_main(self)
+	orderDisplay.set_order(self)
 	orderDisplay.position = Vector2(-570*2+150 + orderSeparation * len(currentOrders),-320*2)
 	add_child(orderDisplay)
 	
@@ -139,7 +179,7 @@ func generate_order():
 		orderDisplay.get_node("Plate").add_item(orderStep, each)
 		orderDisplay.add_child(orderStep)
 		
-	orderDisplay.get_node("Timer").wait_time = 20+10*len(orderStack)
+	orderDisplay.get_node("Timer").wait_time = 30*len(orderStack)
 	
 	# decide what order is
 	'''var orderStack = []
@@ -169,6 +209,10 @@ func generate_order():
 	
 	# tell display node what order its tracking
 	orderDisplay.set_order(orderStack)
+	
+
+func _on_order_cooldown_timeout() -> void:
+	generate_order()
 
 func remove_order(order: Node2D):
 	var id = -1
@@ -190,16 +234,22 @@ func serve(order):
 	var id = -1
 	var label = order.get_label()
 	# get order from list
-	for i in range(len(currentOrders)):
-		if currentOrders[i][1] == label:
+	for i in range(len(currentOrders)-1,-1,-1):
+		var found = true
+		for each in currentOrders[i][1]:
+			if not each in label:
+				found = false
+				continue
+		if found:
 			id = i
-			break
 	if id == -1:
 		return false # return failure, no orders matched the delivered item
 	else:
 		score += currentOrders[id][0].get_reward()
+		$Player.heal(len(currentOrders[id][1]))
 		remove_order(currentOrders[id][0])
 		order.delete()
+		ordersServed += 1
 		
 		var plateCount = 0
 		for each in get_children():
@@ -216,7 +266,7 @@ func serve(order):
 					if not hasPlate:
 						var plateNode = plate.instantiate()
 						plateNode.position = each.position+Vector2(0,-20)
-						$"..".add_child(plateNode)
+						add_child(plateNode)
 						break
 					
 		
@@ -225,10 +275,15 @@ func serve(order):
 func get_drop_image(label: Array):
 	var x = ingredientsLabels.find(label[0])
 	var y = preparationsLabels.find(label[1])
-	if !x || !y:
-		print("invalid label: "+str(label))
+	if dropImages[x][y] == slop:
+		return null
 	return dropImages[x][y]
 	
+func update_player_health(new_health : int) -> void:
+	if player:
+		player.maxHealth = new_health
+		player.health = new_health
+		
 # returns enemy, weapon, and result
 func get_tooltip_icons(ing, prep):
 	var ing_idx = ingredientsLabels.find(ing)
@@ -252,14 +307,3 @@ func choose_n(list: Array, amount: int, replace: bool):
 		else:
 			rval.append(list.pop_at(randi_range(0,len(list)-1)))
 	return rval
-
-func update_player_health(new_health : int) -> void:
-	if player:
-		player.maxHealth = new_health
-		player.health = new_health
-		print("Players health set to ", player.health)
-
-
-func _on_order_cooldown_timeout() -> void:
-	print("Generating new order")
-	generate_order()

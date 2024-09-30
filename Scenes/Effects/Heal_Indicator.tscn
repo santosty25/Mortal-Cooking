@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tradwbmvbbg5"]
 
-[ext_resource type="Script" path="res://Scenes/Effects/Heal_Indicator.gd" id="1_nvrg3"]
+[ext_resource type="Script" path="res://Code/Effects/Heal_Indicator.gd" id="1_nvrg3"]
 [ext_resource type="Texture2D" uid="uid://c56db0pomogmy" path="res://art/Effects/Heal_indicator.png" id="1_u0xor"]
 
 [node name="Heal_Indicator" type="Sprite2D"]

@@ -22,6 +22,7 @@ var arm_idle = true
 @onready var body_group = $"Body"
 @onready var head_group = $"Body/Head"
 @onready var bgMusic : AudioStreamPlayer = $"../../jazzBackground"
+var afterImage = load("res://Scenes/Effects/Afterimage.tscn")
 
 # animation vars
 var leg_rotation_max = 45
@@ -278,8 +279,16 @@ func get_aim_direction() -> Vector2:
 	var pos = player.global_position
 	return mouse-pos
 
-func spawn_afterimage():
-	afterimage_list.append_array(get_all_textures([],player))
+func spawn_afterimage(dashPercent, isAttack):
+	var newNode = afterImage.instantiate()
+	newNode.position = player.global_position
+	newNode.scale = player.scale
+	newNode.rotation = player.rotation
+	newNode.hue = dashPercent*dashPercent
+	if isAttack:
+		newNode.attack = true
+	
+	add_child(newNode)
 	
 func get_all_textures(list: Array, node: Node) -> Array:
 	if node is Sprite2D:

@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxn858b0l4vrm"]
+
+[ext_resource type="Script" path="res://Code/Effects/Afterimage.gd" id="1_ku18v"]
+[ext_resource type="Texture2D" uid="uid://d33bnrvu5njqo" path="res://art/Character/Player/Arm.PNG" id="2_byvrt"]
+[ext_resource type="Texture2D" uid="uid://bdpeb0syy1e0j" path="res://art/Character/Player/Leg.PNG" id="3_s2psw"]
+[ext_resource type="Texture2D" uid="uid://bqi4ek1l3pa8c" path="res://art/Character/Player/Head.PNG" id="4_s3a3q"]
+[ext_resource type="Texture2D" uid="uid://oulexxw7jvv0" path="res://art/Character/Player/Hat.PNG" id="5_lgcn3"]
+[ext_resource type="Texture2D" uid="uid://cxkso0b360wx2" path="res://art/Character/Player/Moustache.PNG" id="6_fjqha"]
+[ext_resource type="Texture2D" uid="uid://bk4ung7vlgcwk" path="res://art/Character/Player/Node.PNG" id="7_x5hgc"]
+[ext_resource type="Texture2D" uid="uid://bgfo6hqoi6cee" path="res://art/Character/Player/Body.PNG" id="8_m6ahy"]
+[ext_resource type="Texture2D" uid="uid://d3r0a5begsfoi" path="res://art/Character/Player/Tie.PNG" id="9_ate73"]
+
+[node name="Afterimage" type="CanvasGroup"]
+script = ExtResource("1_ku18v")
+
+[node name="Delta" type="Node2D" parent="."]
+position = Vector2(63, -162)
+
+[node name="Arm_Back" type="Sprite2D" parent="Delta"]
+position = Vector2(70, 153.333)
+texture = ExtResource("2_byvrt")
+offset = Vector2(166.667, -166.667)
+
+[node name="Leg_R" type="Sprite2D" parent="Delta"]
+position = Vector2(30, 313.333)
+texture = ExtResource("3_s2psw")
+centered = false
+offset = Vector2(-283.273, -703.333)
+
+[node name="Leg_L" type="Sprite2D" parent="Delta"]
+position = Vector2(-166.667, 313.333)
+texture = ExtResource("3_s2psw")
+centered = false
+offset = Vector2(-283.273, -703.333)
+
+[node name="Body" type="Node2D" parent="Delta"]
+
+[node name="Head" type="Node2D" parent="Delta/Body"]
+position = Vector2(-76.6666, 80)
+
+[node name="Head" type="Sprite2D" parent="Delta/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("4_s3a3q")
+
+[node name="Hat" type="Sprite2D" parent="Delta/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("5_lgcn3")
+
+[node name="Moustache" type="Sprite2D" parent="Delta/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("6_fjqha")
+
+[node name="Nose" type="Sprite2D" parent="Delta/Body/Head"]
+position = Vector2(77.8334, -96.6667)
+texture = ExtResource("7_x5hgc")
+
+[node name="Body" type="Sprite2D" parent="Delta/Body"]
+texture = ExtResource("8_m6ahy")
+
+[node name="Tie" type="Sprite2D" parent="Delta/Body"]
+texture = ExtResource("9_ate73")
+
+[node name="Arm_Front" type="Sprite2D" parent="Delta"]
+position = Vector2(-153.333, 170)
+texture = ExtResource("2_byvrt")
+offset = Vector2(166.667, -166.667)
+
+[node name="Hand" type="Node2D" parent="Delta/Arm_Front"]
+position = Vector2(-0.000298818, 96.6666)

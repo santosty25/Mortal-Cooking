@@ -110,7 +110,7 @@ func _process(delta):
 	#	heldItem.position = position+Vector2(0,-200)
 		
 	if (dashTimer > 0):
-		animator.spawn_afterimage()
+		animator.spawn_afterimage(1-dashTimer/dashTime, heldItem is Murasma)
 		multiplier = 20
 		dashTimer -= delta
 	else:

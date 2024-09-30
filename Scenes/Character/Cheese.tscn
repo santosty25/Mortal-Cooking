@@ -1,42 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3wlmruj3bhmg"]
+[gd_scene load_steps=8 format=3 uid="uid://b3wlmruj3bhmg"]
 
 [ext_resource type="Script" path="res://Code/Character/Cheese.gd" id="1_crxs2"]
 [ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_6v700"]
-[ext_resource type="Texture2D" uid="uid://bj5uji7ystule" path="res://art/Character/Enemies/Apple/Apple.png" id="3_6tppa"]
-[ext_resource type="Texture2D" uid="uid://b6xxps3jcnwwd" path="res://art/Character/Enemies/Apple/Apple_Attack.png" id="4_s6v4y"]
+[ext_resource type="Texture2D" uid="uid://daeawnu1du1ii" path="res://art/Character/Enemies/Cheese/Untitled_Artwork 3.png" id="4_7phnc"]
+[ext_resource type="Texture2D" uid="uid://fsp1pyrspo3v" path="res://art/Character/Enemies/Cheese/wheel_textured.png" id="5_povic"]
 [ext_resource type="AudioStream" uid="uid://b0wlotfuxxg14" path="res://Audio/splat.mp3" id="5_xjs2y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
 radius = 120.046
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_db0wn"]
-atlas = ExtResource("3_6tppa")
-region = Rect2(0, 0, 380, 380)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_db0wn")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_s6v4y")
-}],
-"loop": false,
-"name": &"Windup",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_djehj"]
 radius = 120.0
 
 [node name="Cheese" type="CharacterBody2D"]
-position = Vector2(577, 327)
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 4
@@ -51,11 +27,6 @@ position = Vector2(-160, -6.66663)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_6v700")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 0.174533
-sprite_frames = SubResource("SpriteFrames_c40pp")
-animation = &"Windup"
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 
@@ -66,5 +37,49 @@ shape = SubResource("CircleShape2D_djehj")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xjs2y")
 volume_db = 6.0
+
+[node name="Sprite" type="CanvasGroup" parent="."]
+scale = Vector2(0.8, 1)
+
+[node name="Back" type="Sprite2D" parent="Sprite"]
+z_index = -1
+position = Vector2(-29.1667, 0)
+texture = ExtResource("4_7phnc")
+offset = Vector2(-13.3333, 0)
+
+[node name="L_Anchor" type="Node2D" parent="Sprite/Back"]
+position = Vector2(-66.743, -161.923)
+
+[node name="R_Anchor" type="Node2D" parent="Sprite/Back"]
+position = Vector2(67.5, -160)
+
+[node name="Center" type="Node2D" parent="Sprite/Back"]
+position = Vector2(0, 8.103)
+
+[node name="L_Inner" type="Node2D" parent="Sprite/Back"]
+position = Vector2(-68.863, -155.893)
+
+[node name="R_Inner" type="Node2D" parent="Sprite/Back"]
+position = Vector2(67.67, -154.12)
+
+[node name="Front" type="Sprite2D" parent="Sprite"]
+position = Vector2(30, 0)
+texture = ExtResource("5_povic")
+offset = Vector2(-13.3333, 0)
+
+[node name="L_Anchor" type="Node2D" parent="Sprite/Front"]
+position = Vector2(-67.403, -161.923)
+
+[node name="R_Anchor" type="Node2D" parent="Sprite/Front"]
+position = Vector2(67.5, -160)
+
+[node name="Center" type="Node2D" parent="Sprite/Front"]
+position = Vector2(-0.833, 8.103)
+
+[node name="L_Inner" type="Node2D" parent="Sprite/Front"]
+position = Vector2(-68.863, -155.893)
+
+[node name="R_Inner" type="Node2D" parent="Sprite/Front"]
+position = Vector2(67.67, -154.12)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

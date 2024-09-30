@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Code/UI/HealthBar.gd" id="12_nvve6"]
 [ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
 [ext_resource type="PackedScene" uid="uid://naskr7a4axx8" path="res://Scenes/Item/Murasama.tscn" id="13_co8ud"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/PauseMenu.tscn" id="14_udiqr"]
+[ext_resource type="PackedScene" uid="uid://de57x7ai61han" path="res://Scenes/UI/PauseMenu.tscn" id="14_udiqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)

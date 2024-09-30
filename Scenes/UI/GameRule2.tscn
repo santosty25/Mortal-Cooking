@@ -56,6 +56,7 @@ scale = Vector2(0.955943, 0.978884)
 texture = ExtResource("2_2cq48")
 
 [node name="Next" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 958.0
 offset_top = 585.0
 offset_right = 1121.0
@@ -72,6 +73,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4dpmr")
 text = "Next"
 
 [node name="Back" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 25.0
 offset_top = 586.0
 offset_right = 188.0

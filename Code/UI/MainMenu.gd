@@ -16,7 +16,7 @@ func _on_start_pressed():
 
 
 func _on_nux_pressed():
-	get_tree().change_scene_to_file("res://Scenes/GameRule1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/GameRule1Nux.tscn")
 
 
 func _on_options_pressed():

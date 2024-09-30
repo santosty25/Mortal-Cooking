@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d3r0a5begsfoi" path="res://art/Character/Player/Tie.PNG" id="9_ate73"]
 
 [node name="Afterimage" type="CanvasGroup"]
+z_index = -1
 script = ExtResource("1_ku18v")
 
 [node name="Delta" type="Node2D" parent="."]

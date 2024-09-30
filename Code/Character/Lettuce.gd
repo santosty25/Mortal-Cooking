@@ -27,7 +27,7 @@ func _ready():
 	sprite = $AnimatedSprite2D
 	
 	# overrides
-	maxHealth = 1
+	maxHealth = 2
 	health = maxHealth
 
 func _process(delta):

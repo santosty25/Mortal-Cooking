@@ -7,6 +7,7 @@
 radius = 39.0512
 
 [node name="MeltedCheese" type="Area2D"]
+z_index = -10
 collision_layer = 16
 script = ExtResource("1_3i1k6")
 

@@ -228,7 +228,7 @@ func serve(order):
 	var id = -1
 	var label = order.get_label()
 	# get order from list
-	for i in range(len(currentOrders)):
+	for i in range(len(currentOrders)-1,-1,-1):
 		var found = true
 		for each in currentOrders[i][1]:
 			if not each in label:
@@ -260,7 +260,7 @@ func serve(order):
 					if not hasPlate:
 						var plateNode = plate.instantiate()
 						plateNode.position = each.position+Vector2(0,-20)
-						$"..".add_child(plateNode)
+						add_child(plateNode)
 						break
 					
 		

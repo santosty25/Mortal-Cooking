@@ -33,7 +33,7 @@ func _ready():
 	jumpTimer = jumpDelay
 	
 	# overrides
-	maxHealth = 3
+	maxHealth = 2
 	health = maxHealth
 
 func _process(delta):

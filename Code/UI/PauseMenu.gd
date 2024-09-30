@@ -1,6 +1,6 @@
-extends Control
+extends CanvasLayer
 
-@onready var main = $"../../"
+@onready var main = get_tree().root.get_node("Main")
 
 func _on_resume_pressed():
 	main.pauseMenu()

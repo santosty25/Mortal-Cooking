@@ -57,6 +57,9 @@ point_count = 5
 [node name="Main" type="Node2D"]
 script = ExtResource("1_144we")
 
+[node name="Pause Menu" parent="." instance=ExtResource("14_udiqr")]
+visible = false
+
 [node name="KitchenFloor" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(9.42051e-05, 1.99995)
@@ -208,18 +211,5 @@ rotation = 0.00529796
 [node name="Murasama" parent="." instance=ExtResource("13_co8ud")]
 position = Vector2(873, 99)
 scale = Vector2(0.3, 0.3)
-
-[node name="Pause Menu" parent="." instance=ExtResource("14_udiqr")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.0
-offset_top = -127.0
-offset_right = -137.0
-offset_bottom = -127.0
-scale = Vector2(4, 4)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

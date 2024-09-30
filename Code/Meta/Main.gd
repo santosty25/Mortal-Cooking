@@ -269,8 +269,8 @@ func serve(order):
 func get_drop_image(label: Array):
 	var x = ingredientsLabels.find(label[0])
 	var y = preparationsLabels.find(label[1])
-	if !x || !y:
-		print("invalid label: "+str(label))
+	if dropImages[x][y] == slop:
+		return null
 	return dropImages[x][y]
 	
 # returns enemy, weapon, and result

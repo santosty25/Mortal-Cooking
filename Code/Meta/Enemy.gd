@@ -25,7 +25,11 @@ func take_damage(amount: float, damageLabel: String):
 		drop_node.label = [label, damageLabel]
 		if !(main is Main):
 			main = Main.new()
-		drop_node.set_image(main.get_drop_image(drop_node.label))
+		var dropImg = main.get_drop_image(drop_node.label)
+		if dropImg:
+			drop_node.set_image(dropImg)
+		else:
+			drop_node.set_slop()
 		$"..".add_child(drop_node)
 		queue_free()
 

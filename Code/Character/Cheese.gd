@@ -34,7 +34,7 @@ var drop_interval = 5.0
 func _ready():
 	player = get_parent().get_node("Player")
 	label = "cheese"
-	sprite = $AnimatedSprite2D
+	sprite = $Sprite
 	
 	# overrides
 	maxHealth = 5

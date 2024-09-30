@@ -104,6 +104,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		pauseMenu()
 	$Score.text = "$"+str(score)
+	Global.end_score = score
 
 func pauseMenu():
 	if paused:

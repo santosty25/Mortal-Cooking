@@ -107,3 +107,7 @@ func _draw() -> void:
 
 func swing():
 	attackPressed = true
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if animator.player.isDashing && body is Enemy:
+		body.take_damage(damage*3, label)

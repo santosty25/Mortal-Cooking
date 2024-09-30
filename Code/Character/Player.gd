@@ -29,6 +29,8 @@ var dashTimer = 0
 const speed = 500.0
 const attackSlowdown = 2
 var canMove = true
+var isDashing = false
+var dashCooldownMax = 2
 
 # other important variables
 var heldItem = null
@@ -42,6 +44,8 @@ func _ready() -> void:
 	maxHealth = 10
 	health = maxHealth
 	sprite = $Animator
+	
+	dashCooldownMax = dashCooldown.wait_time
 	
 	interactIcon = interactScene.instantiate()
 	add_child(interactIcon)
@@ -87,7 +91,12 @@ func _process(delta):
 	if Input.is_action_pressed("Dash") && canDash:
 		canDash = false
 		dashTimer = dashTime
+		if heldItem is Murasma:
+			dashCooldown.wait_time = 0.6
+		else:
+			dashCooldown.wait_time = dashCooldownMax
 		dashCooldown.start()
+		isDashing = true
 	if Input.is_action_pressed("Attack_Main"):
 		if (heldItem is Ranged_Weapon):
 			heldItem.fire()
@@ -104,6 +113,8 @@ func _process(delta):
 		animator.spawn_afterimage()
 		multiplier = 20
 		dashTimer -= delta
+	else:
+		isDashing = false
 		
 	if direction.length() > 1:
 		direction = direction.normalized()
@@ -190,7 +201,7 @@ func interact():
 					remove_item(heldItem)
 					cashGained.play()
 				else:
-					drop_item(heldItem)
+					pass # play incorrect buzzer
 			elif target is Weapon:
 				drop_item(heldItem)
 				equip_item(target)

@@ -39,7 +39,6 @@ func _on_timer_timeout() -> void:
 func set_main(node: Nux):
 	main = node
 	
-
 func _on_area_2d_mouse_entered() -> void:
 	for each in $Plate.get_label():
 		var hint_node = hint.instantiate()

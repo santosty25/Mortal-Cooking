@@ -167,7 +167,7 @@ func generate_order():
 	
 	# create order display
 	var orderDisplay: OrderNux = orderNode.instantiate()
-	orderDisplay.set_order(self)
+	orderDisplay.set_main(self)
 	orderDisplay.position = Vector2(-570*2+150 + orderSeparation * len(currentOrders),-320*2)
 	add_child(orderDisplay)
 	

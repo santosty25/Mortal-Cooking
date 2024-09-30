@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://grci1jq7knqx"]
+
+[ext_resource type="Texture2D" uid="uid://d3q5fb1vuvtkq" path="res://art/Terrain/Trash.png" id="1_owqpu"]
+[ext_resource type="Script" path="res://Code/Terrain/Trash.gd" id="1_suem3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvdbj"]
+size = Vector2(111, 129)
+
+[node name="Trash_Can" type="CharacterBody2D"]
+position = Vector2(635, 301)
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_suem3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_owqpu")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 22.5)
+shape = SubResource("RectangleShape2D_vvdbj")

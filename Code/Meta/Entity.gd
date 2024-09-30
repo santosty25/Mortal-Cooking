@@ -12,6 +12,8 @@ var isColored = false
 var colorTimeMax = 0.2
 var colorTimer = 0
 
+var healIndicator = load("res://Scenes/Effects/Heal_Indicator.tscn")
+
 func _process(delta: float) -> void:
 	if burnDelay > 0:
 		burnDelay -= delta
@@ -44,6 +46,10 @@ func indicate_damage():
 	
 func indicate_healing():
 	sprite.modulate = Color(0,1,0)
+	for i in range(3):
+		var heal_node = healIndicator.instantiate()
+		heal_node.global_position = global_position + Vector2(randf()-0.5,randf()-0.5).normalized()*randf()*100
+		$"..".add_child(heal_node)
 	isColored = true
 	colorTimer = 0
 

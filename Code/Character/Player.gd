@@ -131,7 +131,7 @@ func interact():
 					target = body
 				elif !target:
 					target = body
-			elif body is Serving_Location && heldItem is Plate:
+			elif body is Serving_Location || body is Trash && heldItem is Plate:
 				target = body
 				break; # terrain interactions take precedence and there is only one serving location
 		if target:
@@ -149,6 +149,8 @@ func interact():
 				equip_item(target)
 			elif target is Bin:
 				target.spawn_enemy()
+			elif target is Trash:
+				heldItem.clear()
 			else:
 				drop_item(heldItem)
 		else:

@@ -8,6 +8,7 @@
 size = Vector2(169, 175)
 
 [node name="Order" type="Node2D"]
+z_index = 1000
 script = ExtResource("1_a71vg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

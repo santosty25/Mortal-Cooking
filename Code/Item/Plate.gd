@@ -24,3 +24,8 @@ func delete():
 	for each in itemNodes:
 		each.queue_free()
 	queue_free()
+
+func clear():
+	for each in itemNodes:
+		each.queue_free()
+	itemNodes = []

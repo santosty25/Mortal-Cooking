@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwirvfmddfg78"]
+[gd_scene load_steps=23 format=3 uid="uid://dwirvfmddfg78"]
 
 [ext_resource type="Script" path="res://Code/Meta/Main.gd" id="1_144we"]
 [ext_resource type="PackedScene" uid="uid://tq3hr05vu4ux" path="res://Scenes/Character/Player.tscn" id="2_cqwo3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="12_qoas2"]
 [ext_resource type="PackedScene" uid="uid://naskr7a4axx8" path="res://Scenes/Item/Murasama.tscn" id="13_co8ud"]
 [ext_resource type="PackedScene" uid="uid://de57x7ai61han" path="res://Scenes/UI/PauseMenu.tscn" id="14_udiqr"]
+[ext_resource type="PackedScene" uid="uid://grci1jq7knqx" path="res://Scenes/Terrain/Trash_Can.tscn" id="15_ieks1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jntcb"]
 size = Vector2(1174.38, 20)
@@ -117,6 +118,10 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_cqwo3")]
 
+[node name="Trash" parent="." instance=ExtResource("15_ieks1")]
+top_level = true
+position = Vector2(-1014, -264)
+
 [node name="Plate" parent="." instance=ExtResource("4_oynte")]
 position = Vector2(362, 173)
 
@@ -132,6 +137,7 @@ position = Vector2(-364, 172)
 [node name="Score" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
+z_index = 1000
 offset_left = 793.0
 offset_top = -618.0
 offset_right = 1128.0
@@ -154,6 +160,7 @@ position = Vector2(714, -189)
 scale = Vector2(0.3, 0.3)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 1000
 offset_left = 360.0
 offset_top = -607.0
 offset_right = 973.0

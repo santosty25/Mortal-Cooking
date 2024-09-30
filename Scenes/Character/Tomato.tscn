@@ -1,17 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://bctxhotb06ulq"]
+[gd_scene load_steps=14 format=3 uid="uid://bctxhotb06ulq"]
 
 [ext_resource type="Script" path="res://Code/Character/Tomato.gd" id="1_e1022"]
 [ext_resource type="Texture2D" uid="uid://bkax38twpboyd" path="res://art/Effects/Hit.png" id="2_6v700"]
-[ext_resource type="Texture2D" uid="uid://cbf4dv0gau3yh" path="res://art/Character/Enemies/Tomato/Tomato.png" id="4_48jc1"]
+[ext_resource type="Texture2D" uid="uid://cpolg8a6wmlj4" path="res://art/Character/Enemies/Tomato/tomato4.png" id="3_air3l"]
+[ext_resource type="Texture2D" uid="uid://dbyqr7xjsytvf" path="res://art/Character/Enemies/Tomato/tomato3.png" id="4_0t7eh"]
+[ext_resource type="Texture2D" uid="uid://dpbdpc5lsu8hk" path="res://art/Character/Enemies/Tomato/tomato6.png" id="5_weeh7"]
+[ext_resource type="Texture2D" uid="uid://dwuwe7vi3e8gb" path="res://art/Character/Enemies/Tomato/tomato2.png" id="6_iuoss"]
+[ext_resource type="Texture2D" uid="uid://bsde2ejdbdj3j" path="res://art/Character/Enemies/Tomato/tomato1.png" id="7_wx3ql"]
+[ext_resource type="Texture2D" uid="uid://xvkrukyihr52" path="res://art/Character/Enemies/Tomato/tomato5.png" id="8_rmvfc"]
+[ext_resource type="AudioStream" uid="uid://d3frsfowa4jin" path="res://Audio/creeper.mp3" id="9_kkhw8"]
+[ext_resource type="AudioStream" uid="uid://c3syk8p17md6y" path="res://Audio/explosion.mp3" id="10_jvi57"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd45i"]
-radius = 180.0
+radius = 197.371
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c40pp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_48jc1")
+"texture": ExtResource("3_air3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0t7eh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weeh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iuoss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wx3ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rmvfc")
 }],
 "loop": false,
 "name": &"Idle",
@@ -19,7 +41,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_48jc1")
+"texture": ExtResource("3_air3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0t7eh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weeh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iuoss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wx3ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rmvfc")
 }],
 "loop": false,
 "name": &"Windup",
@@ -27,7 +64,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djehj"]
-radius = 186.934
+radius = 198.942
 
 [node name="Tomato" type="CharacterBody2D"]
 position = Vector2(577, 327)
@@ -42,14 +79,14 @@ shape = SubResource("CircleShape2D_pd45i")
 
 [node name="HitEffect" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-160, -6.66663)
+position = Vector2(6.66666, 3.33337)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_6v700")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8.01086e-05, 58.3332)
+position = Vector2(3.33325, 20)
 rotation = 0.174533
-scale = Vector2(10.872, 10.5354)
+scale = Vector2(0.7, 0.678)
 sprite_frames = SubResource("SpriteFrames_c40pp")
 animation = &"Idle"
 
@@ -59,5 +96,13 @@ collision_layer = 16
 [node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -6.6667)
 shape = SubResource("CircleShape2D_djehj")
+
+[node name="CreeperSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kkhw8")
+volume_db = 20.8
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_jvi57")
+volume_db = 12.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

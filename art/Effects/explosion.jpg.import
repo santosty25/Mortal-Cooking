@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbf4dv0gau3yh"
-path="res://.godot/imported/Tomato.png-c36fcfe9b9a45e4f158a6c8c3a932273.ctex"
+uid="uid://d118iamwgaywm"
+path="res://.godot/imported/explosion.jpg-c2864e250fe40f85070277939500e9c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Character/Enemies/Tomato/Tomato.png"
-dest_files=["res://.godot/imported/Tomato.png-c36fcfe9b9a45e4f158a6c8c3a932273.ctex"]
+source_file="res://art/Effects/explosion.jpg"
+dest_files=["res://.godot/imported/explosion.jpg-c2864e250fe40f85070277939500e9c1.ctex"]
 
 [params]
 

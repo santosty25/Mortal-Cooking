@@ -70,6 +70,8 @@ func _process(delta):
 			var x_pos = (hBoxRect.position.x+hBoxRect.size.x/2)*target.scale.x
 			var y_pos = hBoxRect.position.y
 			interactIcon.position = target.global_position+Vector2(x_pos,y_pos)
+			if target is Enemy_Drop:
+				interactIcon.position.y += 120
 		
 		if target is Terrain:
 			interactIcon.setTerrainText()
@@ -170,7 +172,7 @@ func getInteractTarget():
 					target = body
 				elif !target:
 					target = body
-			elif body is Serving_Location || body is Trash && heldItem is Plate:
+			elif (body is Serving_Location || body is Trash) && heldItem is Plate:
 				target = body
 				break; # terrain interactions take precedence and there is only one serving location
 	else:
@@ -202,7 +204,7 @@ func interact():
 					cashGained.play()
 				else:
 					pass # play incorrect buzzer
-			elif target is Weapon:
+			elif target is Weapon || target is Enemy_Drop || target is Plate:
 				drop_item(heldItem)
 				equip_item(target)
 			elif target is Bin:
@@ -236,16 +238,15 @@ func remove_item(item: Node2D):
 	animator.drop_item(item)
 
 func take_damage(amount: float, damageLabel:String) -> void:
-	if dashTimer > 0:
-		return
-	health -= amount
-	healthChanged.emit()
-	indicate_damage()
-	takeDamage.play()
-	healCooldown.start(healCooldown.wait_time)
-	if health <= 0:
-		queue_free()
-		get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")
+	if !isDashing:
+		health -= amount
+		healthChanged.emit()
+		indicate_damage()
+		takeDamage.play()
+		healCooldown.start(healCooldown.wait_time)
+		if health <= 0:
+			queue_free()
+			get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")
 
 func heal(amount):
 	super.heal(amount)

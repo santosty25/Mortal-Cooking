@@ -6,7 +6,7 @@ var windupMax = 1
 var windupCounter = 0
 var swinging = false
 var swingSpeed = 7
-var maxDamage = 5
+var maxDamage = 4
 var knockback = 50
 var windupPercent = 0
 
@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 						var r = (body.global_position-$Hurtbox.global_position).length()
 						var max_r = ($Radius.global_position-$Hurtbox/Area.global_position).length()
 						var distMult = max(0, 1-r/max_r)
-						deal_damage(body, maxDamage*windupPercent*distMult)
+						deal_damage(body, maxDamage*sqrt(windupPercent)*sqrt(distMult))
 						body.knockback((body.position-$Hurtbox.global_position).normalized()*knockback)
 				swinging = false
 				animator.set_animation("attack_idle")

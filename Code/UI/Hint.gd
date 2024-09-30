@@ -3,7 +3,7 @@ class_name Hint
 
 func _ready() -> void:
 	top_level = true
-	z_index = 100
+	z_index = 1001
 
 func set_icons(enemy, weapon, product):
 	$CanvasGroup/Enemy.texture = enemy

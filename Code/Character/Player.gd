@@ -19,6 +19,7 @@ signal healthChanged
 @onready var main = $".."
 @onready var dashCooldown = $Helpers/DashCooldown
 @onready var healCooldown = $Helpers/HealCooldown
+@onready var dropItemPos = $Helpers/SetDownPosition
 
 # input handling
 var canAttack = true
@@ -63,7 +64,7 @@ func _process(delta):
 		else:
 			var hBoxRect: Rect2 = target.get_node("Hitbox").shape.get_rect()
 			var x_pos = (hBoxRect.position.x+hBoxRect.size.x/2)*target.scale.x
-			var y_pos = hBoxRect.position.y*target.scale.y
+			var y_pos = hBoxRect.position.y
 			interactIcon.position = target.global_position+Vector2(x_pos,y_pos)
 		
 		if target is Terrain:
@@ -215,10 +216,7 @@ func get_held_item():
 	return heldItem
 
 func drop_item(item: Node2D):
-	if animator.get_direction():
-		heldItem.global_position = global_position
-	else:
-		heldItem.global_position = global_position
+	heldItem.global_position = dropItemPos.global_position
 	heldItem = null
 	animator.drop_item(item)
 

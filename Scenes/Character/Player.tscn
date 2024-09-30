@@ -96,7 +96,7 @@ offset = Vector2(166.667, -166.667)
 [node name="Hand" type="Node2D" parent="Animator/Arm_Front"]
 position = Vector2(-0.000298818, 96.6666)
 
-[node name="SFX" type="Node" parent="."]
+[node name="SFX" type="Node2D" parent="."]
 
 [node name="knifeSwing" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_oh0av")
@@ -110,7 +110,8 @@ stream = ExtResource("7_lywr1")
 [node name="takeDamage" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("14_ouf4k")
 
-[node name="Helpers" type="Node" parent="."]
+[node name="Helpers" type="Node2D" parent="."]
+scale = Vector2(3.33333, 3.33333)
 
 [node name="DashCooldown" type="Timer" parent="Helpers"]
 wait_time = 2.0
@@ -120,7 +121,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="SetDownPosition" type="Node2D" parent="Helpers"]
-position = Vector2(85.3499, 33)
+position = Vector2(106, 38)
 scale = Vector2(0.3, 0.3)
 
 [node name="HeldItemPosition" type="Node2D" parent="Helpers"]

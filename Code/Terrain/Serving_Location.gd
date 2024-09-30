@@ -1,2 +1,2 @@
-extends CharacterBody2D
+extends Terrain
 class_name Serving_Location

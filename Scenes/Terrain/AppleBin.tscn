@@ -16,7 +16,7 @@ position = Vector2(-1.90735e-06, 3)
 scale = Vector2(0.3, 0.296)
 texture = ExtResource("2_ifqt1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -3)
 shape = SubResource("RectangleShape2D_iugxj")
 

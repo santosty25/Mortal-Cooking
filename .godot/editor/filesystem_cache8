@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1727666219
+::res://::1727668339
 icon.svg::CompressedTexture2D::5933487079134923978::1726455721::1727643618::1::::<><>::
 README.md::TextFile::-1::1726455721::0::1::::<><>::
 ::res://art/::1726778425
@@ -134,7 +134,7 @@ splat.mp3::AudioStreamMP3::4187251979876356241::1727647967::1727647971::1::::<><
 Squeaky Toy Sound Effect.mp3::AudioStreamMP3::7474091521973800306::1727139267::1727643617::1::::<><>::
 Whoosh.mp3::AudioStreamMP3::8232700948755181679::1727568194::1727643617::1::::<><>::
 ::res://Code/::1727665521
-::res://Code/Character/::1727665468
+::res://Code/Character/::1727667190
 Animator.gd::GDScript::-1::1727648014::0::1::::Animator<>CanvasGroup<>::
 Apple.gd::GDScript::-1::1727648014::0::1::::Apple<>Enemy<>::
 Beef.gd::GDScript::-1::1727648429::0::1::::Beef<>Enemy<>::
@@ -143,7 +143,7 @@ Cheese.gd::GDScript::-1::1727663497::0::1::::Cheese<>Enemy<>::
 Chicken.gd::GDScript::-1::1727648015::0::1::::Chicken<>Entity<>::
 Cow.gd::GDScript::-1::1727648128::0::1::::Cow<>Enemy<>::
 Lettuce.gd::GDScript::-1::1727648015::0::1::::Lettuce<>Enemy<>::
-Player.gd::GDScript::-1::1727665468::0::1::::Player<>Entity<>::
+Player.gd::GDScript::-1::1727667190::0::1::::Player<>Entity<>::
 Shrimp.gd::GDScript::-1::1727648016::0::1::::Shrimp<>Enemy<>::
 Tomato.gd::GDScript::-1::1727648017::0::1::::Tomato<>Enemy<>::
 ::res://Code/Effects/::1727662409
@@ -158,9 +158,10 @@ Hammer.gd::GDScript::-1::1727648015::0::1::::Hammer<>Melee_Weapon<>::
 Murasama.gd::GDScript::-1::1727648016::0::1::::Murasma<>Melee_Weapon<>::
 Plate.gd::GDScript::-1::1727665487::0::1::::Plate<>CharacterBody2D<>::
 Tennis_Racket.gd::GDScript::-1::1727648016::0::1::::Tennis_Racket<>Melee_Weapon<>::
-::res://Code/Meta/::1727664270
+::res://Code/Meta/::1727667023
 Enemy.gd::GDScript::-1::1727663426::0::1::::Enemy<>Entity<>::
 Entity.gd::GDScript::-1::1727664270::0::1::::Entity<>CharacterBody2D<>::
+Interact_Indicator.gd::GDScript::-1::1727667023::0::1::::Interact_Icon<>Node2D<>::
 Main.gd::GDScript::-1::1727663366::0::1::::Main<>Node2D<>::
 Melee_Weapon.gd::GDScript::-1::1727648016::0::1::::Melee_Weapon<>Weapon<>::
 Nux.gd::GDScript::-1::1727647962::0::1::::Nux<>Node2D<>::
@@ -189,25 +190,25 @@ Options.gd::GDScript::-1::1726955928::0::1::::OptionsMenu<>Control<>::
 Order.gd::GDScript::-1::1727648016::0::1::::Order<>Node2D<>::
 OrderNux.gd::GDScript::-1::1727566248::0::1::::OrderNux<>Node2D<>::
 PauseMenu.gd::GDScript::-1::1727658292::0::1::::<>Control<>::
-::res://Scenes/::1727666173
-Main.tscn::PackedScene::8721001604992450097::1727666172::0::1::::<><>::res://Code/Meta/Main.gd<>uid://tq3hr05vu4ux::::res://Scenes/Character/Player.tscn<>uid://yt82fh5e344w::::res://art/Background/KitchenFloor.png<>uid://yi3ebkw6k8b0::::res://Scenes/Terrain/Table.tscn<>uid://bwyugn41cemsf::::res://Scenes/Terrain/Serving_Location.tscn<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn<>uid://c2u258shbqccu::::res://Audio/JazzBackground.mp3<>uid://bmvkvlj77ae5j::::res://Scenes/Item/Flamethrower.tscn<>uid://bv2q2xsfi75k8::::res://Scenes/Terrain/AppleBin.tscn<>uid://cjbxkp5pbf5vs::::res://Scenes/Item/Halberd.tscn<>res://Code/UI/HealthBar.gd<>uid://bc4hgmuxper8v::::res://Scenes/Item/Hammer.tscn<>uid://naskr7a4axx8::::res://Scenes/Item/Murasama.tscn<>uid://de57x7ai61han::::res://Scenes/UI/PauseMenu.tscn<>uid://grci1jq7knqx::::res://Scenes/Terrain/Trash_Can.tscn
-Nux.tscn::PackedScene::1605140921733313092::1727666173::0::1::::<><>::uid://yt82fh5e344w::::res://art/Background/KitchenFloor.png<>res://Code/Meta/Nux.gd<>uid://yi3ebkw6k8b0::::res://Scenes/Terrain/Table.tscn<>uid://bwyugn41cemsf::::res://Scenes/Terrain/Serving_Location.tscn<>uid://tq3hr05vu4ux::::res://Scenes/Character/Player.tscn<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn<>uid://c2u258shbqccu::::res://Audio/JazzBackground.mp3<>uid://bmvkvlj77ae5j::::res://Scenes/Item/Flamethrower.tscn<>uid://bv2q2xsfi75k8::::res://Scenes/Terrain/AppleBin.tscn<>res://Code/UI/HealthBar.gd<>uid://cjbxkp5pbf5vs::::res://Scenes/Item/Halberd.tscn<>uid://naskr7a4axx8::::res://Scenes/Item/Murasama.tscn<>uid://bc4hgmuxper8v::::res://Scenes/Item/Hammer.tscn
-::res://Scenes/Character/::1727666172
+::res://Scenes/::1727667197
+Main.tscn::PackedScene::8721001604992450097::1727667196::0::1::::<><>::res://Code/Meta/Main.gd<>uid://tq3hr05vu4ux::::res://Scenes/Character/Player.tscn<>uid://yt82fh5e344w::::res://art/Background/KitchenFloor.png<>uid://yi3ebkw6k8b0::::res://Scenes/Terrain/Table.tscn<>uid://bwyugn41cemsf::::res://Scenes/Terrain/Serving_Location.tscn<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn<>uid://c2u258shbqccu::::res://Audio/JazzBackground.mp3<>uid://bmvkvlj77ae5j::::res://Scenes/Item/Flamethrower.tscn<>uid://bv2q2xsfi75k8::::res://Scenes/Terrain/AppleBin.tscn<>uid://cjbxkp5pbf5vs::::res://Scenes/Item/Halberd.tscn<>res://Code/UI/HealthBar.gd<>uid://bc4hgmuxper8v::::res://Scenes/Item/Hammer.tscn<>uid://naskr7a4axx8::::res://Scenes/Item/Murasama.tscn<>uid://de57x7ai61han::::res://Scenes/UI/PauseMenu.tscn<>uid://grci1jq7knqx::::res://Scenes/Terrain/Trash_Can.tscn
+Nux.tscn::PackedScene::1605140921733313092::1727667197::0::1::::<><>::uid://yt82fh5e344w::::res://art/Background/KitchenFloor.png<>res://Code/Meta/Nux.gd<>uid://yi3ebkw6k8b0::::res://Scenes/Terrain/Table.tscn<>uid://bwyugn41cemsf::::res://Scenes/Terrain/Serving_Location.tscn<>uid://tq3hr05vu4ux::::res://Scenes/Character/Player.tscn<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn<>uid://c2u258shbqccu::::res://Audio/JazzBackground.mp3<>uid://bmvkvlj77ae5j::::res://Scenes/Item/Flamethrower.tscn<>uid://bv2q2xsfi75k8::::res://Scenes/Terrain/AppleBin.tscn<>res://Code/UI/HealthBar.gd<>uid://cjbxkp5pbf5vs::::res://Scenes/Item/Halberd.tscn<>uid://naskr7a4axx8::::res://Scenes/Item/Murasama.tscn<>uid://bc4hgmuxper8v::::res://Scenes/Item/Hammer.tscn
+::res://Scenes/Character/::1727667197
 Apple.tscn::PackedScene::4138384207983906930::1727504496::0::1::::<><>::res://Code/Character/Apple.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://bj5uji7ystule::::res://art/Character/Enemies/Apple/Apple.png<>uid://b6xxps3jcnwwd::::res://art/Character/Enemies/Apple/Apple_Attack.png
-Beef.tscn::PackedScene::6187885298091221322::1727666172::0::1::::<><>::res://Code/Character/Beef.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://ba6al62cn8i6l::::res://art/Character/Enemies/Meat/meat_idle.png<>uid://kucj7napdpb1::::res://art/Character/Enemies/Meat/meat_squish.png<>uid://dccovmtdl0xqj::::res://art/Character/Enemies/Meat/meat_jump.png<>uid://lgyweuo3k56m::::res://art/Character/Enemies/Meat/meat_shadow.png
-Bread.tscn::PackedScene::486540756109674575::1727666172::0::1::::<><>::res://Code/Character/Bread.gd<>uid://rkac8003andv::::res://art/Character/Enemies/Bread/Bread_1.png<>uid://etehupgvjsjt::::res://art/Character/Enemies/Bread/Bread_2.png<>uid://dvfts8h5vrbxj::::res://Audio/Bell_Ding.mp3
-Cheese.tscn::PackedScene::4397814856834037538::1727666172::0::1::::<><>::res://Code/Character/Cheese.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://daeawnu1du1ii::::res://art/Character/Enemies/Cheese/Untitled_Artwork 3.png<>uid://fsp1pyrspo3v::::res://art/Character/Enemies/Cheese/wheel_textured.png<>uid://b0wlotfuxxg14::::res://Audio/splat.mp3
+Beef.tscn::PackedScene::6187885298091221322::1727667196::0::1::::<><>::res://Code/Character/Beef.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://ba6al62cn8i6l::::res://art/Character/Enemies/Meat/meat_idle.png<>uid://kucj7napdpb1::::res://art/Character/Enemies/Meat/meat_squish.png<>uid://dccovmtdl0xqj::::res://art/Character/Enemies/Meat/meat_jump.png<>uid://lgyweuo3k56m::::res://art/Character/Enemies/Meat/meat_shadow.png
+Bread.tscn::PackedScene::486540756109674575::1727667196::0::1::::<><>::res://Code/Character/Bread.gd<>uid://rkac8003andv::::res://art/Character/Enemies/Bread/Bread_1.png<>uid://etehupgvjsjt::::res://art/Character/Enemies/Bread/Bread_2.png<>uid://dvfts8h5vrbxj::::res://Audio/Bell_Ding.mp3
+Cheese.tscn::PackedScene::4397814856834037538::1727667196::0::1::::<><>::res://Code/Character/Cheese.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://daeawnu1du1ii::::res://art/Character/Enemies/Cheese/Untitled_Artwork 3.png<>uid://fsp1pyrspo3v::::res://art/Character/Enemies/Cheese/wheel_textured.png<>uid://b0wlotfuxxg14::::res://Audio/splat.mp3
 Chicken.tscn::PackedScene::1367304260139128296::1727570457::0::1::::<><>::res://Code/Character/Chicken.gd<>uid://d340lqpyx248l::::res://art/Character/Enemies/Chicken/Chicken_Sprite_Sheet_Black.png
 Cow.tscn::PackedScene::-1::1727648128::0::1::::<><>::
 Lettuce.tscn::PackedScene::1082371639208302679::1727570457::0::1::::<><>::res://Code/Character/Lettuce.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://dpj8m8m152tud::::res://Audio/Whoosh.mp3<>uid://cyw7bawefh3kl::::res://art/Character/Enemies/Lettuce/Lettuce.png
-Player.tscn::PackedScene::1368331582451375907::1727666172::0::1::::<><>::res://Code/Character/Player.gd<>uid://d33bnrvu5njqo::::res://art/Character/Player/Arm.PNG<>res://Code/Character/Animator.gd<>uid://bdpeb0syy1e0j::::res://art/Character/Player/Leg.PNG<>uid://bqi4ek1l3pa8c::::res://art/Character/Player/Head.PNG<>uid://cjkunrgd32t27::::res://Audio/knifeSwing.mp3<>uid://oulexxw7jvv0::::res://art/Character/Player/Hat.PNG<>uid://cdevfceoiejec::::res://Audio/running.mp3<>uid://cxkso0b360wx2::::res://art/Character/Player/Moustache.PNG<>uid://cihql54q886cu::::res://Audio/cashRegister.mp3<>uid://bk4ung7vlgcwk::::res://art/Character/Player/Node.PNG<>uid://bgfo6hqoi6cee::::res://art/Character/Player/Body.PNG<>uid://d3r0a5begsfoi::::res://art/Character/Player/Tie.PNG<>uid://cswfj7fmkllhx::::res://Audio/player_hit.mp3
-Shrimp.tscn::PackedScene::2833200990393037955::1727666172::0::1::::<><>::res://Code/Character/Shrimp.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://r3ugmav18o84::::res://art/UI/shrimp_icon.png
+Player.tscn::PackedScene::1368331582451375907::1727667196::0::1::::<><>::res://Code/Character/Player.gd<>uid://d33bnrvu5njqo::::res://art/Character/Player/Arm.PNG<>res://Code/Character/Animator.gd<>uid://bdpeb0syy1e0j::::res://art/Character/Player/Leg.PNG<>uid://bqi4ek1l3pa8c::::res://art/Character/Player/Head.PNG<>uid://cjkunrgd32t27::::res://Audio/knifeSwing.mp3<>uid://oulexxw7jvv0::::res://art/Character/Player/Hat.PNG<>uid://cdevfceoiejec::::res://Audio/running.mp3<>uid://cxkso0b360wx2::::res://art/Character/Player/Moustache.PNG<>uid://cihql54q886cu::::res://Audio/cashRegister.mp3<>uid://bk4ung7vlgcwk::::res://art/Character/Player/Node.PNG<>uid://bgfo6hqoi6cee::::res://art/Character/Player/Body.PNG<>uid://d3r0a5begsfoi::::res://art/Character/Player/Tie.PNG<>uid://cswfj7fmkllhx::::res://Audio/player_hit.mp3
+Shrimp.tscn::PackedScene::2833200990393037955::1727667197::0::1::::<><>::res://Code/Character/Shrimp.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://r3ugmav18o84::::res://art/UI/shrimp_icon.png
 Tomato.tscn::PackedScene::2567431304445536190::1727570457::0::1::::<><>::res://Code/Character/Tomato.gd<>uid://bkax38twpboyd::::res://art/Effects/Hit.png<>uid://cbf4dv0gau3yh::::res://art/Character/Enemies/Tomato/Tomato.png
-::res://Scenes/Effects/::1727666172
+::res://Scenes/Effects/::1727667197
 Enemy_Damage_Sound.tscn::PackedScene::7312651190144582711::1727592273::0::1::::<><>::uid://ivfxkv0ubrr8::::res://Audio/Enemy_hit.mp3
 Flame.tscn::PackedScene::7168107861511060111::1727142289::0::1::::<><>::uid://b45g2q3lmfk6i::::res://art/Effects/Flame_Large.PNG<>res://Code/Effects/Flame.gd
 Heal_Indicator.gd::GDScript::-1::1727664335::0::1::::Heal_Indicator<>Sprite2D<>::
-Heal_Indicator.tscn::PackedScene::1368688965955182598::1727666172::0::1::::<><>::res://Scenes/Effects/Heal_Indicator.gd<>uid://c56db0pomogmy::::res://art/Effects/Heal_indicator.png
+Heal_Indicator.tscn::PackedScene::1368688965955182598::1727667197::0::1::::<><>::res://Scenes/Effects/Heal_Indicator.gd<>uid://c56db0pomogmy::::res://art/Effects/Heal_indicator.png
 LettuceProjectile.tscn::PackedScene::7224154219132031801::1727503834::0::1::::<><>::res://Code/Effects/LettuceProjectile.gd<>uid://blcur4gmbnf8k::::res://art/Effects/LettuceLeaf.png
 MeltedCheese.tscn::PackedScene::2542891308560704326::1727664665::0::1::::<><>::res://Code/Effects/MeltedCheese.gd<>uid://bvqi8gnu83xt7::::res://art/Character/Enemies/Cheese/melted_cheese.png
 ::res://Scenes/Item/::1727664665
@@ -218,19 +219,20 @@ Hammer.tscn::PackedScene::2587101721791221803::1727664665::0::1::::<><>::res://C
 Murasama.tscn::PackedScene::913566673472741211::1727664665::0::1::::<><>::res://Code/Item/Murasama.gd<>uid://42l8pqsstpvu::::res://art/Weapons/murasama_sheathed.png
 Plate.tscn::PackedScene::4814939450657321562::1726455721::0::1::::<><>::uid://q7kk0ghfdee::::res://art/Item/plate.png<>res://Code/Item/Plate.gd
 Tennis_Racket.tscn::PackedScene::3033030552325431461::1727142290::0::1::::<><>::res://Code/Item/Tennis_Racket.gd<>uid://bac02jya5jgxa::::res://art/Weapons/tennis_racket.png
-::res://Scenes/Terrain/::1727666173
-AppleBin.tscn::PackedScene::3917145523853784077::1727666172::0::1::::<><>::res://Code/Terrain/Apple_Bin.gd<>uid://4tgn6fcwnejq::::res://art/Terrain/Apple_Crate.png
+::res://Scenes/Terrain/::1727667197
+AppleBin.tscn::PackedScene::3917145523853784077::1727667197::0::1::::<><>::res://Code/Terrain/Apple_Bin.gd<>uid://4tgn6fcwnejq::::res://art/Terrain/Apple_Crate.png
 Serving_Location.tscn::PackedScene::3981346093233052121::1726455721::0::1::::<><>::uid://bt7ynkvafdsk1::::res://art/Terrain/serving_station.png<>res://Code/Terrain/Serving_Location.gd
 Table.tscn::PackedScene::1702754557331167295::1726957663::0::1::::<><>::res://Code/Terrain/Table.gd<>uid://b74i251p18tms::::res://art/Terrain/table.png
-Trash_Can.tscn::PackedScene::456364584264464251::1727666173::0::1::::<><>::uid://d3q5fb1vuvtkq::::res://art/Terrain/Trash.png
-::res://Scenes/UI/::1727666172
+Trash_Can.tscn::PackedScene::456364584264464251::1727667197::0::1::::<><>::uid://d3q5fb1vuvtkq::::res://art/Terrain/Trash.png<>res://Code/Terrain/Trash.gd
+::res://Scenes/UI/::1727667197
 GameOver.tscn::PackedScene::5300440547310872892::1727643572::0::1::::<><>::res://Code/UI/GameOver.gd<>uid://bdkmmlc2t24bh::::res://art/UI/PIXEL-LI.TTF<>uid://bbv6sysg5542x::::res://Audio/Game Over.mp3
 GameRule1.tscn::PackedScene::-1::1727658292::0::1::::<><>::
 GameRule2.tscn::PackedScene::-1::1727658292::0::1::::<><>::
 GameRule3.tscn::PackedScene::-1::1727658292::0::1::::<><>::
 Hint.tscn::PackedScene::3586058419654027160::1727504536::0::1::::<><>::res://Code/UI/Hint.gd<>uid://d3chq603vgx::::res://art/UI/description_box.png<>uid://d3xwe2e8i7nix::::res://art/Item/Apple_Slices.png<>uid://ddfoftyyl2ueh::::res://art/UI/apple_icon.png<>uid://dah5qvcgfmbcb::::res://art/UI/Halberd_Icon.png
+Interact_Icon.tscn::PackedScene::6037733445060229275::1727667197::0::1::::<><>::res://Code/Meta/Interact_Indicator.gd
 MainMenu.tscn::PackedScene::4688336694561294584::1726960460::0::1::::<><>::res://Code/UI/MainMenu.gd<>uid://bqpsdd68s3lcc::::res://art/Background/main_background.jpg<>uid://bdkmmlc2t24bh::::res://art/UI/PIXEL-LI.TTF<>uid://bjbhcic8dbcdt::::res://Audio/mainMenuMusic.mp3<>uid://bhs6a1f2564rt::::res://Scenes/UI/Options.tscn
 Options.tscn::PackedScene::2916784990107388993::1726960437::0::1::::<><>::res://Code/UI/Options.gd
-Order.tscn::PackedScene::6928023946464569844::1727666172::0::1::::<><>::res://Code/UI/Order.gd<>uid://devfs5fg3tm3x::::res://art/UI/banner.png<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn
+Order.tscn::PackedScene::6928023946464569844::1727667196::0::1::::<><>::res://Code/UI/Order.gd<>uid://devfs5fg3tm3x::::res://art/UI/banner.png<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn
 OrderNux.tscn::PackedScene::2242819594258499996::1727566248::0::1::::<><>::res://Code/UI/OrderNux.gd<>uid://devfs5fg3tm3x::::res://art/UI/banner.png<>uid://caunl41eul6nm::::res://Scenes/Item/Plate.tscn
 PauseMenu.tscn::PackedScene::7503934456434709865::1727658292::0::1::::<><>::res://Code/UI/PauseMenu.gd

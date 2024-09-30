@@ -11,9 +11,13 @@ size = Vector2(78, 461)
 radius = 219.009
 
 [node name="Squeaky_Hammer" type="CharacterBody2D"]
+rotation = 0.698132
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_ielh3")
+
+[node name="InteractAnchor" type="Node2D" parent="."]
+position = Vector2(0, -132)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-44, 80)

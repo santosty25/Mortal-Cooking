@@ -15,6 +15,6 @@ script = ExtResource("1_rb5nb")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_jco0q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.75, 57)
 shape = SubResource("RectangleShape2D_x4yuq")

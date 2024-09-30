@@ -32,12 +32,19 @@ var canMove = true
 # other important variables
 var heldItem = null
 var healRate = 0
+var interactScene = load("res://Scenes/UI/Interact_Icon.tscn")
+var interactIcon: Interact_Icon = null
+var iconOffset = 100
 
 func _ready() -> void:
 	# overrides
 	maxHealth = 10
 	health = maxHealth
 	sprite = $Animator
+	
+	interactIcon = interactScene.instantiate()
+	add_child(interactIcon)
+	interactIcon.disable()
 
 func _process(delta):
 	super._process(delta)
@@ -45,7 +52,27 @@ func _process(delta):
 	
 	var direction = Vector2.ZERO
 	var multiplier = 1.0
+	
+	# manage interaction prompt
+	var target = getInteractTarget()
+	if target:
+		interactIcon.enable()
 		
+		if target is Weapon:
+			interactIcon.position = target.to_global(target.interactIconLocation)
+		else:
+			var hBoxRect: Rect2 = target.get_node("Hitbox").shape.get_rect()
+			var x_pos = (hBoxRect.position.x+hBoxRect.size.x/2)*target.scale.x
+			var y_pos = hBoxRect.position.y*target.scale.y
+			interactIcon.position = target.global_position+Vector2(x_pos,y_pos)
+		
+		if target is Terrain:
+			interactIcon.setTerrainText()
+		else:
+			interactIcon.setItemText()
+	else:
+		interactIcon.disable()
+	
 	if Input.is_action_pressed("Move_Up"):
 		direction.y -= 1
 	if Input.is_action_pressed("Move_Down"):
@@ -119,7 +146,7 @@ func freeze():
 func unfreeze():
 	canMove = true
 
-func interact():
+func getInteractTarget():
 	var target = null
 	var search: Array = interaction.get_overlapping_bodies()
 	if heldItem:
@@ -134,7 +161,26 @@ func interact():
 			elif body is Serving_Location || body is Trash && heldItem is Plate:
 				target = body
 				break; # terrain interactions take precedence and there is only one serving location
-		if target:
+	else:
+		for body in search:
+			if body == heldItem:
+				continue
+			elif body is Enemy_Drop || body is Plate || body is Weapon:
+				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
+					target = body
+				elif !target:
+					target = body
+			elif body is Bin && (not target || not (target is Enemy_Drop || target is Plate)): # less important than plates or drops
+				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
+					target = body
+				elif !target:
+					target = body
+	return target
+
+func interact():
+	var target = getInteractTarget()
+	if target:
+		if heldItem:
 			if target is Plate && heldItem is Enemy_Drop:
 				target.add_item(heldItem, heldItem.get_label())
 				remove_item(heldItem)
@@ -154,26 +200,13 @@ func interact():
 			else:
 				drop_item(heldItem)
 		else:
-			drop_item(heldItem)
-	else:
-		for body in search:
-			if body == heldItem:
-				continue
-			elif body is Enemy_Drop || body is Plate || body is Weapon:
-				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
-					target = body
-				elif !target:
-					target = body
-			elif body is Bin && (not target || not (target is Enemy_Drop || target is Plate)): # less important than plates or drops
-				if target && (target.global_position-global_position).length() > (body.global_position-global_position).length():
-					target = body
-				elif !target:
-					target = body
-		if target is Bin:
-			target.spawn_enemy()
-		elif target:
-			equip_item(target)
-			
+			if target is Bin:
+				target.spawn_enemy()
+			else:
+				equip_item(target)
+	elif heldItem: # if no target, drop item
+		drop_item(heldItem)
+		
 func equip_item(item: Node2D):
 	animator.equip_item(item)
 	heldItem = item

@@ -29,3 +29,6 @@ collision_mask = 14
 [node name="Area" type="CollisionPolygon2D" parent="Hurtbox"]
 position = Vector2(502, -110)
 polygon = PackedVector2Array(-7, -97, 1138, -591, 1992, -537, 1984, 534, 1159, 643, -8, 136)
+
+[node name="InteractAnchor" type="Node2D" parent="."]
+position = Vector2(133, -110)

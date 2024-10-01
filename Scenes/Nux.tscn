@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://w4so3s5p0ysi"]
+[gd_scene load_steps=23 format=3 uid="uid://w4so3s5p0ysi"]
 
 [ext_resource type="Texture2D" uid="uid://yt82fh5e344w" path="res://art/Background/KitchenFloor.png" id="1_mqxr2"]
 [ext_resource type="Script" path="res://Code/Meta/Nux.gd" id="1_p8me3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cjbxkp5pbf5vs" path="res://Scenes/Item/Halberd.tscn" id="11_hgdwq"]
 [ext_resource type="PackedScene" uid="uid://naskr7a4axx8" path="res://Scenes/Item/Murasama.tscn" id="12_nsics"]
 [ext_resource type="PackedScene" uid="uid://bc4hgmuxper8v" path="res://Scenes/Item/Hammer.tscn" id="13_ejuei"]
+[ext_resource type="PackedScene" uid="uid://grci1jq7knqx" path="res://Scenes/Terrain/Trash_Can.tscn" id="15_7f5fj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ckv"]
 size = Vector2(1174.38, 20)
@@ -115,7 +116,7 @@ ignore_rotation = false
 zoom = Vector2(0.5, 0.5)
 
 [node name="OrderCooldown" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 120.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("4_aov8p")]
@@ -204,5 +205,8 @@ scale = Vector2(0.3, 0.3)
 [node name="Squeaky_Hammer" parent="." instance=ExtResource("13_ejuei")]
 position = Vector2(-645, -258)
 scale = Vector2(0.3, 0.3)
+
+[node name="Trash_Can" parent="." instance=ExtResource("15_7f5fj")]
+position = Vector2(-1039, -253)
 
 [connection signal="timeout" from="OrderCooldown" to="." method="_on_order_cooldown_timeout"]

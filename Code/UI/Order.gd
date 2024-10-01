@@ -55,3 +55,8 @@ func _on_area_2d_mouse_exited() -> void:
 	for each in tooltips:
 		each.queue_free()
 	tooltips = []
+
+func set_time(t):
+	$Timer.wait_time = t
+	$Timer.start()
+	timerMax = t

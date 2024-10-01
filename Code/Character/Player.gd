@@ -14,8 +14,6 @@ signal healthChanged
 # Node references, reduces work if scene heirarchy changed
 @onready var animator = $Animator
 @onready var interaction = $Interaction
-#@onready var hitEffect = $HitEffect
-@onready var attack = $Attack
 @onready var main = $".."
 @onready var dashCooldown = $Helpers/DashCooldown
 @onready var healCooldown = $Helpers/HealCooldown

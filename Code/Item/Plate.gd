@@ -11,7 +11,6 @@ func _process(delta: float) -> void:
 
 func add_item(node, itemLabel):
 	node.get_node("Hitbox").disabled = true
-	node.reparent(self)
 	node.global_position = position+Vector2(0, itemStackOffset*len(itemNodes))
 	itemLabels.append(itemLabel)
 	itemNodes.append(node)
